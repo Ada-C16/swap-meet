@@ -15,8 +15,6 @@ class Item:
             4 : "this went well",
             5 : "i love it"
         }
-        print(int(self.condition))
-        #val = self.condition
-        #print("the int", int(self.condition))
+        
         return descs[self.condition]
         
