@@ -15,13 +15,13 @@ class Vendor:
     def get_by_category(self, category):
         return [item for item in self.inventory if item.category == category]
 
-    def swap_items(self, vendor_b, item_a, item_b):
-        if item_a in self.inventory and item_b in vendor_b.inventory:
-            self.inventory.remove(item_a)
-            vendor_b.inventory.remove(item_b)
+    def swap_items(self, other, my_item, their_item):
+        if my_item in self.inventory and their_item in other.inventory:
+            self.inventory.remove(my_item)
+            other.inventory.remove(their_item)
 
-            self.inventory.append(item_b)
-            vendor_b.inventory.append(item_a)
+            self.inventory.append(their_item)
+            other.inventory.append(my_item)
 
             return True
         return False
