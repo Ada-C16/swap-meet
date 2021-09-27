@@ -1,4 +1,3 @@
-# wave 1
 class Vendor:
     def __init__(self, inventory=None):
         self.inventory = inventory if inventory else []
@@ -12,3 +11,6 @@ class Vendor:
             self.inventory.remove(item)
             return item
         return False
+
+    def get_by_category(self, category):
+        return [item for item in self.inventory if item.category == category]
