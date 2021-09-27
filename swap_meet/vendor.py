@@ -27,3 +27,9 @@ class Vendor:
         else:
             print("over here")
             return False
+    def swap_first_item(self, Vendor):
+        if len(self.inventory) > 0 and len(Vendor.inventory) > 0:
+            self.swap_items(Vendor, self.inventory[0], Vendor.inventory[0])
+            return True
+        else:
+            return False
