@@ -1,3 +1,5 @@
+from swap_meet.item import Item
+
 class Vendor:
     def __init__(self, inventory=[]):
         self.inventory = inventory
@@ -12,3 +14,6 @@ class Vendor:
             return removed_item
         else:
             return False
+    
+    def get_by_category(self, category):
+        pass
