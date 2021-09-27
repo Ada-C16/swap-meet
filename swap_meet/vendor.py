@@ -27,4 +27,6 @@ class Vendor:
         return False
 
     def swap_first_item(self, vendor_b):
-        return self.swap_items(vendor_b, self.inventory[0], vendor_b.inventory[0])
+        if len(self.inventory) and len(vendor_b.inventory):
+            return self.swap_items(vendor_b, self.inventory[0], vendor_b.inventory[0])
+        return False
