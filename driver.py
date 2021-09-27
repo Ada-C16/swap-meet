@@ -13,9 +13,13 @@ tai = Vendor(
     inventory=[item_a, item_b, item_c, item_d, item_e]
 )
 
-best_item = tai.get_best_by_category("Clothing")
-print(best_item)
-print(best_item.category, best_item.condition)
+# best_item = tai.get_best_by_category("Clothing")
+# print(best_item)
+# print(best_item.category, best_item.condition)
 
 # assert best_item.category == "Clothing"
 # assert best_item.condition == pytest.approx(4.0)
+
+print(tai.get_by_category("Clothing"))
+print("Best")
+print(tai.get_best_by_category("Clothing"))

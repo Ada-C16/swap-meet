@@ -19,12 +19,9 @@ class Vendor:
         else:
             return False
 
-    def get_by_category(self, select_category):
-        items_by_category = []
-        for item in self.inventory:
-            if item.category == select_category:
-                items_by_category.append(item)
-        return items_by_category
+    def get_by_category(self, selected_category):
+        items_in_category = [item for item in self.inventory if item.category == selected_category]
+        return items_in_category
 
     def swap_items(self, other_vendor, item_out, item_in):
         # are these two tests the most efficient route?
@@ -51,11 +48,7 @@ class Vendor:
         return False
 
     def get_best_by_category(self, category):
-        # return object with best condition in category
-        category_items = []
-        for item in self.inventory:
-            if item.category == category:
-                category_items.append(item)
+        category_items = self.get_by_category(category)
         if not category_items:
             return None
         best_item = max(category_items, key= lambda i: i.condition)
