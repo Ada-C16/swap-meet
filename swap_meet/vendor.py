@@ -21,3 +21,8 @@ class Vendor:
             self.add(other_vendor.remove(their_item))
             return True
         return False
+    
+    def swap_first_item(self, other_vendor):
+        my_first_item = next(iter(self.inventory),None)
+        their_first_item = next(iter(other_vendor.inventory),None)
+        return self.swap_items(other_vendor,my_first_item,their_first_item)
