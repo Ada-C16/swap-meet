@@ -26,9 +26,9 @@ class Vendor:
             return True
         return False
 
-    def swap_first_item(self, vendor_b):
-        if self.inventory and vendor_b.inventory:
-            return self.swap_items(vendor_b, self.inventory[0], vendor_b.inventory[0])
+    def swap_first_item(self, other):
+        if self.inventory and other.inventory:
+            return self.swap_items(other, self.inventory[0], other.inventory[0])
         return False
 
     def get_best_by_category(self, category):
