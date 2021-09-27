@@ -40,3 +40,14 @@ class Vendor:
             return self.inventory
         else:
             return False
+
+    def swap_first_item(self, person):
+        if not self.inventory or not person.inventory:
+            return False
+        self.inventory.append(person.inventory[0])
+        person.remove(person.inventory[0])
+
+        person.inventory.append(self.inventory[0])
+        self.remove(self.inventory[0])
+
+        return True
