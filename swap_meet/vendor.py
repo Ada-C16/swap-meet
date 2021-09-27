@@ -5,3 +5,10 @@ class Vendor:
     def add(self, item):
         self.inventory.append(item)
         return item
+    
+    def remove(self, item):
+        if item in self.inventory:
+            removed_item = self.inventory.pop()
+            return removed_item
+        else:
+            return False
