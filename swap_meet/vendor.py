@@ -27,3 +27,16 @@ class Vendor:
                 items.append(item) # Append the whole item to the list
 
         return items
+
+    def swap_items(self, person, item_1, item_2):
+        # Make self.inventory item replace itself with person.inventory item
+        if item_1 in self.inventory and item_2 in person.inventory:
+            self.remove(item_1)
+            self.add(item_2)
+
+            person.remove(item_2)
+            person.add(item_1)
+
+            return self.inventory
+        else:
+            return False
