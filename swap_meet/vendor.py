@@ -1,4 +1,4 @@
-from item import *
+from swap_meet.item import Item
 
 class Vendor:
     """
@@ -10,6 +10,7 @@ class Vendor:
     """
     def __init__(self, inventory = []):
         self.inventory = inventory
+        self.category_list = []
 
     def add(self, item):
         self.inventory.append(item)
@@ -20,6 +21,9 @@ class Vendor:
             self.inventory.remove(item)
             return item
         
-    # def get_by_category(self, category):
-    #     if category in self.inventory:
-    #         return item
+    def get_by_category(self, category):
+        # return list of item with 
+        for item in self.inventory:
+            if item.category == category:
+                self.category_list.append(item)
+        return self.category_list
