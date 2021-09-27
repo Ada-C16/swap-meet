@@ -30,3 +30,7 @@ class Vendor:
         if len(self.inventory) and len(vendor_b.inventory):
             return self.swap_items(vendor_b, self.inventory[0], vendor_b.inventory[0])
         return False
+
+    def get_best_by_category(self, category):
+        items = self.get_by_category(category)
+        return max(items, key=lambda x: x.condition) if items else None
