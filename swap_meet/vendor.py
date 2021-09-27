@@ -25,3 +25,6 @@ class Vendor:
 
             return True
         return False
+
+    def swap_first_item(self, vendor_b):
+        return self.swap_items(vendor_b, self.inventory[0], vendor_b.inventory[0])
