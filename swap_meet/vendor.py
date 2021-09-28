@@ -24,6 +24,15 @@ class Vendor:
                 items.append(item)
         return items
 
+    def get_by_newest(self):
+        if self.inventory:
+            newest_item = self.inventory[0]
+            for item in self.inventory:
+                if item.age < newest_item.age:
+                    newest_item = item
+            return newest_item
+        return None
+
     def swap_items(self, swapee, my_item, their_item):
         if my_item in self.inventory and their_item in swapee.inventory:
             swapee.add(my_item)
@@ -61,7 +70,17 @@ class Vendor:
     def swap_best_by_category(self, other, my_priority, their_priority):
         swapee_best_item = other.get_best_by_category(my_priority)
         my_best_item = self.get_best_by_category(their_priority)
+        
         if my_best_item and swapee_best_item:
             self.swap_items(other, my_best_item, swapee_best_item)
+            return True
+        return False
+
+    def swap_by_newest(self, other):
+        my_newest_item = self.get_by_newest()
+        swapee_newest_item = other.get_by_newest()
+
+        if my_newest_item and swapee_newest_item:
+            self.swap_items(other, my_newest_item, swapee_newest_item)
             return True
         return False
