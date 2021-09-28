@@ -40,3 +40,21 @@ class Vendor:
             friend_vendor.inventory[0] = first_self_item
             return True
         return False
+
+    def get_best_by_category(self, category:str):
+        result = None
+        list_categories = [item for item in self.inventory if item.category.upper() == category.upper() ]
+        if not list_categories:
+            return None
+        else:
+            max_value = max([item.condition for item in list_categories])
+            for item in list_categories:
+                if item.condition == max_value:
+                    result = item 
+            return result
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        friend_request = self.get_best_by_category(their_priority)
+        self_request = other.get_best_by_category(my_priority)
+        return self.swap_items(other, friend_request, self_request)
+        
