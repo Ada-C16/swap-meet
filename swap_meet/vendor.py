@@ -19,7 +19,7 @@ class Vendor:
             if item.category ==  category:
                 items_in_category.append(item)
         return items_in_category
-        
+
     def swap_items(self, vendor, my_item, their_item):
         try:
             self.inventory.remove(my_item)
@@ -34,3 +34,9 @@ class Vendor:
             vendor.inventory.remove(my_item)
             return False
         return True
+
+    def swap_first_item(self, vendor):
+        if self.inventory and vendor.inventory:
+            return self.swap_items(vendor, self.inventory[0], vendor.inventory[0])
+        else:
+            return False
