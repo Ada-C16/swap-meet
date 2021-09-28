@@ -47,14 +47,18 @@ class Vendor:
         inventory = self.inventory
         decending_condition_inventory = sorted(inventory, key=lambda item: item.condition, reverse=True)
 
-        if category in inventory:
-            for item in decending_condition_inventory:
-                if item.category == category:
-                    return item
-        else:
-            return None
+
+        for item in decending_condition_inventory:
+            if item.category == category:
+                return item
+        
+        return None
 
     def swap_best_by_category(self, other, my_priority, their_priority):
-        pass
+        my_swap = self.get_best_by_category(their_priority)
+        their_swap = other.get_best_by_category(my_priority)
         
-
+        if my_swap and their_swap:
+            return self.swap_items(other, my_swap, their_swap)
+        else:
+            return False
