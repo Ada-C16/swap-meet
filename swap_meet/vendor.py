@@ -28,14 +28,14 @@ class Vendor:
 
         return items
 
-    def swap_items(self, person, item_1, item_2):
+    def swap_items(self, person, my_item, their_item):
         # Make self.inventory item replace itself with person.inventory item
-        if item_1 in self.inventory and item_2 in person.inventory:
-            self.remove(item_1)
-            self.add(item_2)
+        if my_item in self.inventory and their_item in person.inventory:
+            self.remove(my_item)
+            self.add(their_item)
 
-            person.remove(item_2)
-            person.add(item_1)
+            person.remove(their_item)
+            person.add(my_item)
 
             return self.inventory
         else:
@@ -51,3 +51,27 @@ class Vendor:
         self.remove(self.inventory[0])
 
         return True
+
+    def get_best_by_category(self, category):
+        
+        max_list = []
+        
+        for item in self.inventory:
+            if item.category == category:
+                # Return that instance
+                max_list.append(item)
+
+        if len(max_list) == 0:
+            return None
+        max_list.remove(min(max_list, key=lambda item: item.condition))
+
+        return max(max_list, key=lambda item: item.condition)
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        # Find the item with the best condition
+        # Swap those items in each vendor instance's inventory
+
+        my_swap_item = self.get_best_by_category(their_priority) # Finds highest one in mine
+        their_swap_item = other.get_best_by_category(my_priority)
+
+        return self.swap_items(other, my_swap_item, their_swap_item)
