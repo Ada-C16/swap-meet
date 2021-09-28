@@ -5,5 +5,5 @@ vendor = Vendor()
 item = Item()
 
 
-print(vendor)
-print(item)
+print(vendor.inventory)
+#print(item)
