@@ -44,3 +44,18 @@ class Vendor:
             swapee.remove(their_item)
             return True
         return False
+
+    def get_best_by_category(self, category):
+        category_items = self.get_by_category(category)
+        
+        if not category_items:
+            return None
+        
+        best_item = category_items[0]
+        for item in category_items:
+            if item.condition > best_item.condition:
+                best_item = item
+        
+        return best_item
+
+    
