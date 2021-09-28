@@ -3,4 +3,4 @@ class Item:
         self.category = category
 
     def __str__(self):
-        return f'Hello World!'
+        return 'Hello World!'
