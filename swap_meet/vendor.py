@@ -32,17 +32,32 @@ class Vendor:
             return True
         else:
             return False
+    
+    def get_best_in_category_by_feature(self, category, feature):
+        if feature == "age":
+            if category == None:
+                best_item = min(self.inventory, key=lambda item: getattr(item, feature), default=None)
+            else:
+                best_item = min(self.get_by_category(category), key=lambda item: getattr(item, feature), default=None)   
+        else:
+            if category == None:
+                best_item = max(self.inventory, key=lambda item: getattr(item, feature), default=None)
+            else:
+                best_item = max(self.get_by_category(category), key=lambda item: getattr(item, feature), default=None)
+        return best_item
 
     def get_best_by_category(self, category):
-        record = [0,None]
-        for item in self.get_by_category(category): 
-            if item.condition > record[0]:
-                record[0] = item.condition
-                record[1] = item        
-        return record[1]
+        return self.get_best_in_category_by_feature(category, feature ="condition")
     
     def swap_best_by_category(self, other, my_priority, their_priority):
         my_offer = self.get_best_by_category(their_priority)
         their_offer = other.get_best_by_category(my_priority)    
         return self.swap_items(other, my_offer, their_offer)
-        
+
+    def get_newest_by_category(self, category=None):
+        return self.get_best_in_category_by_feature(category=category, feature="age")
+
+    def swap_by_newest(self, other, my_priority=None, their_priority=None):
+        my_offer = self.get_newest_by_category(category=their_priority)
+        their_offer = other.get_newest_by_category(category = my_priority)
+        return self.swap_items(other, my_offer, their_offer)
