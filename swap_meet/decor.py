@@ -1,13 +1,6 @@
-#WAVE 05
-# [ ] For Tests X-X 
-#     [ ]  
-#     [ ]  
-# [ ] For Tests X-X
-#     [ ]  
-#     [ ]  
-#     [ ]  
-#     [ ]  
-#     [ ]  
-
 class Decor:
-    pass
+    def __init__(self, category):
+        self.category = category
+    
+    def __str__(self):
+        return "Something to decorate your space."
