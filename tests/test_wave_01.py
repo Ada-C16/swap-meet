@@ -20,7 +20,7 @@ def test_adding_to_inventory():
     vendor = Vendor()
     item = "new item"
 
-    result = vendor.add(item)
+    result = vendor.add(item) # does this mean that the .add method returns the item?
 
     assert len(vendor.inventory) == 1
     assert item in vendor.inventory
@@ -33,7 +33,7 @@ def test_removing_from_inventory_returns_item():
         inventory=["a", "b", "c", item]
     )
 
-    result = vendor.remove(item)
+    result = vendor.remove(item) # this method should return the item?
 
     assert len(vendor.inventory) == 3
     assert item not in vendor.inventory
