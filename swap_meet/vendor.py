@@ -38,3 +38,8 @@ class Vendor:
             return False
 
 
+    def swap_first_item(self, friend):
+        if self.inventory and friend.inventory:
+            return self.swap_items(friend, self.inventory[0], friend.inventory[0])
+        else:
+            return False
