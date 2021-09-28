@@ -1,5 +1,7 @@
 from .item import Item
 
 class Electronics(Item):
-    def __init__(self, descrip="A gadget full of buttons and secrets.", category="Electronics", condition=None):
-        super().__init__(descrip=descrip,category=category,condition=condition)
+    def __str__(self) -> str:
+        return "A gadget full of buttons and secrets."
+    def __init__(self, category="Electronics", condition=None):
+        super().__init__(category,condition)
