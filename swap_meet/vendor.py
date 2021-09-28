@@ -34,3 +34,13 @@ class Vendor:
             friend.remove(their_item)
             return True
         return False
+
+    def swap_first_item(self, friend):
+        if self.inventory and friend.inventory:
+            my_first_item = self.inventory[0]
+            their_first_item = friend.inventory[0]
+
+            self.swap_items(friend, my_first_item, their_first_item)
+
+            return True
+        return False
