@@ -9,8 +9,8 @@ class Vendor:
         return item
 
     def remove(self, item):
-        index_list = [i for (i, value) in enumerate(self.inventory) if value == item]
-        if len(index_list) == 0:
-            return False
-        else:
-            return self.inventory.pop(index_list[0])
+        for i in range(len(self.inventory)):
+            if self.inventory[i] == item:
+                return self.inventory.pop(i)
+        return False
+
