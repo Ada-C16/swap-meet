@@ -17,4 +17,11 @@ class Vendor:
                 cat_list.append(item)
         return cat_list
     def swap_items(self, Vendor, my_item, their_item):
-        return Item
+        if my_item in self.inventory and their_item in Vendor.inventory:
+            self.remove(my_item)
+            Vendor.add(my_item)
+            Vendor.remove(their_item)
+            self.add(their_item)
+            return True
+        else:
+            return False
