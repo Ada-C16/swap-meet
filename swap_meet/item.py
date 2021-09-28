@@ -1,6 +1,5 @@
 class Item:
-    
-    def __init__(self, category="", condition=0): 
+    def __init__(self, category="", condition=0):
        self.category = category
        self.condition = condition
        
@@ -17,5 +16,5 @@ class Item:
             5 : "i love it"
         }
         
-        return descs[self.condition]
+        return descs[int(self.condition)]
         
