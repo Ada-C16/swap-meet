@@ -28,3 +28,16 @@ def test_get_by_newest_no_inventory_return_none():
 
     assert newest_item is None
 
+def test_get_by_newest_with_duplicates():
+    item_a = Clothing(age=2.0)
+    item_b = Clothing(age=2.0)
+    item_c = Clothing(age=4.0)
+    tai = Vendor(
+        inventory=[item_a, item_b, item_c]
+    )
+
+    newest_item = tai.get_by_newest()
+
+    assert newest_item.category == "Clothing"
+    assert newest_item.age == pytest.approx(2.0)
+
