@@ -24,3 +24,12 @@ class Vendor:
         self.inventory.append(item_to_receive)
         other_vendor.inventory.remove(item_to_receive)
         return True
+
+    def swap_first_item(self, other_vendor):
+        if not self.inventory or not other_vendor.inventory:
+            return False
+        item_to_give = self.inventory.pop(0)
+        other_vendor.inventory.append(item_to_give)
+        item_to_receive = other_vendor.inventory.pop(0)
+        self.inventory.append(item_to_receive)
+        return True
