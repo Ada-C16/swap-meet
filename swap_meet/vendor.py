@@ -55,3 +55,23 @@ class Vendor:
             return True
 
         return False
+
+    def get_best_by_category(self, category):
+        items_in_category = self.get_by_category(category)
+
+        # lamda allows us to define a function inline for the key to decide which will determine how the items are compared
+        best_item = max(items_in_category, key=lambda item: item.condition, default=None)
+
+        return best_item
+
+    # I'm not sure why these need keyword aruguments????
+    def swap_best_by_category(self, other="", my_priority="", their_priority=""):
+        
+        my_best_item = self.get_best_by_category(their_priority)
+
+        vendor2_best_item = other.get_best_by_category(my_priority)
+
+        if not (my_best_item and vendor2_best_item):
+            return False
+
+        return self.swap_items(other, my_best_item, vendor2_best_item)
