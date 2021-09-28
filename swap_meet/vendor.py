@@ -8,12 +8,10 @@ class Vendor:
             self.inventory = []
 
     def add(self, item):
-        item = Item()
         self.inventory.append(item)
         return item
 
     def remove(self, item):
-        item = Item()
         if item in self.inventory:
             self.inventory.remove(item)
             return item
