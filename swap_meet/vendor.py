@@ -9,43 +9,31 @@ class Vendor:
         return item
 
     def remove(self, item):
-        found_item = False
-        for current_item in self.inventory:
-            if current_item == item:
-                self.inventory.remove(current_item)
-                found_item = True
-        if found_item:
-            return item
-        else:
+        if item not in self.inventory:
             return False
+        self.inventory.remove(item)
+        return item
 
     def get_by_category(self, selected_category):
         items_in_category = [item for item in self.inventory if item.category == selected_category]
         return items_in_category
 
     def swap_items(self, other_vendor, item_out, item_in):
-        # are these two tests the most efficient route?
-        if item_out in self.inventory and item_in in other_vendor.inventory:
-            # remove my item from inv
-            self.remove(item_out)
-            # remove new item from other vendor's inv
-            other_vendor.remove(item_in)
-            # add new item to my inv
-            self.add(item_in)
-            # add item to other vendor's inv
-            other_vendor.add(item_out)
-            # return True
-            return True
-        # if items successfully added and removed, return True
-        return False
+        if not (item_out in self.inventory and item_in in other_vendor.inventory):
+            return False
+        self.remove(item_out)
+        other_vendor.add(item_out)
+        other_vendor.remove(item_in)
+        self.add(item_in)
+        return True
 
     def swap_first_item(self, other_vendor): 
-        if self.inventory and other_vendor.inventory:
-            item_in = other_vendor.inventory[0]
-            item_out = self.inventory[0]
-            self.swap_items(other_vendor, item_out, item_in)
-            return True
-        return False
+        if not (self.inventory and other_vendor.inventory):
+            return False
+        item_in = other_vendor.inventory[0]
+        item_out = self.inventory[0]
+        self.swap_items(other_vendor, item_out, item_in)
+        return True
 
     def get_best_by_category(self, category):
         category_items = self.get_by_category(category)
@@ -55,20 +43,13 @@ class Vendor:
         return best_item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
-        if (self.inventory and other.inventory):
-            their_priority_found = False
-            my_priority_found = False
-            for item in self.inventory:
-                if item.category == their_priority:
-                    their_priority_found = True
-            for item in other.inventory:
-                if item.category == my_priority:
-                    my_priority_found = True       
-            if my_priority_found and their_priority_found:
-                # an item in my inv whose item.category attribute matches their_priority
-                # an item in their inv whose item.category matches my_priority
-                item_in = other.get_best_by_category(my_priority)
-                item_out = self.get_best_by_category(their_priority)
-                self.swap_items(other, item_out, item_in)
-                return True
-        return False
+        if not (self.inventory and other.inventory):
+            return False
+        their_target_found = any(item.category == my_priority for item in other.inventory)
+        my_target_found = any(item.category == their_priority for item in self.inventory)
+        if not (their_target_found and my_target_found):
+            return False
+        item_in = other.get_best_by_category(my_priority)
+        item_out = self.get_best_by_category(their_priority)
+        self.swap_items(other, item_out, item_in)
+        return True
