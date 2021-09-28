@@ -21,19 +21,6 @@ def test_best_by_newest():
     assert best_item.age == pytest.approx(0.0)
 
 
-# def test_best_by_category_no_matches_is_none():
-#     item_a = Decor(age=2.0)
-#     item_b = Decor(age=2.0)
-#     item_c = Decor(age=4.0)
-#     tai = Vendor(
-#         inventory=[item_a, item_b, item_c]
-#     )
-
-#     best_item = tai.get_newest_by_category("Electronics")
-
-#     assert best_item is None
-
-
 def test_best_by_age_with_duplicates():
     item_a = Clothing(age=2.0)
     item_b = Clothing(age=2.0)
