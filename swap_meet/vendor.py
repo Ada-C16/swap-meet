@@ -35,22 +35,43 @@ class Vendor:
         
         return category_items_list
 
-    def swap_items(self, friend, my_item, their_item):
+    def swap_items(self, other_vendor, my_item, their_item):
         """
         Swapping items between two vendors. 
         Returns false if items not in one or both inventories. 
         """
+        # Returning false if items not in one or both inventories. 
         if my_item not in self.inventory or \
-        their_item not in friend.inventory: 
+        their_item not in other_vendor.inventory: 
             return False
 
         # Swapping my_item
-        self.inventory.remove(my_item)
-        friend.inventory.append(my_item)
+        self.remove(my_item)
+        other_vendor.add(my_item)
 
         # Swapping their_item
-        self.inventory.append(their_item)
-        friend.inventory.remove(their_item)
+        self.add(their_item)
+        other_vendor.remove(their_item)
 
         return True
+
+    def swap_first_item(self, other_vendor):
+        """
+        Swapping first item in vendors' inventories. 
+        Returns false if either inventory is empty. 
+        """
+        # Returning false if either inventory is empty. 
+        if len(self.inventory) == 0 or \
+        len(other_vendor.inventory) == 0:
+            return False
+
+        # Initializing variables to represent first item in vendors' inventories.
+        my_first_item = self.inventory[0]
+        their_first_item = other_vendor.inventory[0]
+
+        # Calling swap_items with first item in inventory variables set. 
+        result = self.swap_items(other_vendor, my_first_item, their_first_item)
+        
+        return result
+
 
