@@ -1,3 +1,4 @@
+from swap_meet import item
 from swap_meet.item import Item
 
 class Vendor:
@@ -44,3 +45,17 @@ class Vendor:
 
             return True
         return False
+
+    def get_best_by_category(self, category):
+        items_by_category = self.get_by_category(category)
+        highest_condition = 0
+        best_item = ""
+        
+        if items_by_category:
+            for item in items_by_category:
+                if item.condition > highest_condition:
+                    best_item = item
+                    highest_condition = item.condition
+            return best_item
+        return None
+

@@ -18,4 +18,4 @@ class Item:
         if self.condition == 4:
             return "Your cat will love this."
         if self.condition == 5:
-            return "MINT"
+            return "MINT 👌"
