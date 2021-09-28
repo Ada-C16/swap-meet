@@ -23,3 +23,24 @@ class Vendor:
             if item.category == category:
                 items.append(item)
         return items
+
+    def swap_items(self, swapee, my_item, their_item):
+        if my_item in self.inventory and their_item in swapee.inventory:
+            swapee.add(my_item)
+            self.add(their_item)
+            swapee.remove(their_item)
+            self.remove(my_item)
+            return True
+        return False
+
+    def swap_first_item(self, swapee):
+        if self.inventory and swapee.inventory:
+            my_item = self.inventory[0]
+            their_item = swapee.inventory[0]
+            
+            self.add(their_item)
+            swapee.add(my_item)
+            self.remove(my_item)
+            swapee.remove(their_item)
+            return True
+        return False
