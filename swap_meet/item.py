@@ -8,4 +8,9 @@ class Item:
         return "Hello World!"
 
     def condition_description(self):
-        return str(self.condition)
+        if self.condition <= 2.0:
+            return "Better luck next time"
+        elif self.condition == 3.0:
+            return "This one's just about average"
+        else:
+            return "You're in luck -- it's perfect!"
