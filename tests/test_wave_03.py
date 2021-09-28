@@ -1,6 +1,7 @@
 from swap_meet.vendor import Vendor
 from swap_meet.item import Item
 
+
 def test_item_overrides_to_string():
     item = Item()
 
@@ -8,19 +9,16 @@ def test_item_overrides_to_string():
 
     assert stringified_item == "Hello World!"
 
+
 def test_swap_items_returns_true():
     item_a = Item(category="clothing")
     item_b = Item(category="clothing")
     item_c = Item(category="clothing")
-    fatimah = Vendor(
-        inventory=[item_a, item_b, item_c]
-    )
+    fatimah = Vendor(inventory=[item_a, item_b, item_c])
 
     item_d = Item(category="electronics")
     item_e = Item(category="decor")
-    jolie = Vendor(
-        inventory=[item_d, item_e]
-    )
+    jolie = Vendor(inventory=[item_d, item_e])
 
     result = fatimah.swap_items(jolie, item_b, item_d)
 
@@ -35,19 +33,16 @@ def test_swap_items_returns_true():
     assert item_b in jolie.inventory
     assert result
 
+
 def test_swap_items_when_my_item_is_missing_returns_false():
     item_a = Item(category="clothing")
     item_b = Item(category="clothing")
     item_c = Item(category="clothing")
-    fatimah = Vendor(
-        inventory=[item_a, item_b, item_c]
-    )
+    fatimah = Vendor(inventory=[item_a, item_b, item_c])
 
     item_d = Item(category="electronics")
     item_e = Item(category="decor")
-    jolie = Vendor(
-        inventory=[item_d, item_e]
-    )
+    jolie = Vendor(inventory=[item_d, item_e])
 
     result = fatimah.swap_items(jolie, item_e, item_d)
 
@@ -61,19 +56,16 @@ def test_swap_items_when_my_item_is_missing_returns_false():
     assert item_e in jolie.inventory
     assert not result
 
+
 def test_swap_items_when_their_item_is_missing_returns_false():
     item_a = Item(category="clothing")
     item_b = Item(category="clothing")
     item_c = Item(category="clothing")
-    fatimah = Vendor(
-        inventory=[item_a, item_b, item_c]
-    )
+    fatimah = Vendor(inventory=[item_a, item_b, item_c])
 
     item_d = Item(category="electronics")
     item_e = Item(category="decor")
-    jolie = Vendor(
-        inventory=[item_d, item_e]
-    )
+    jolie = Vendor(inventory=[item_d, item_e])
 
     result = fatimah.swap_items(jolie, item_b, item_c)
 
@@ -87,16 +79,13 @@ def test_swap_items_when_their_item_is_missing_returns_false():
     assert item_e in jolie.inventory
     assert not result
 
+
 def test_swap_items_from_my_empty_returns_false():
-    fatimah = Vendor(
-        inventory=[]
-    )
+    fatimah = Vendor(inventory=[])
 
     item_d = Item(category="electronics")
     item_e = Item(category="decor")
-    jolie = Vendor(
-        inventory=[item_d, item_e]
-    )
+    jolie = Vendor(inventory=[item_d, item_e])
 
     nobodys_item = Item(category="clothing")
 
@@ -106,17 +95,14 @@ def test_swap_items_from_my_empty_returns_false():
     assert len(jolie.inventory) == 2
     assert not result
 
+
 def test_swap_items_from_their_empty_returns_false():
     item_a = Item(category="clothing")
     item_b = Item(category="clothing")
     item_c = Item(category="clothing")
-    fatimah = Vendor(
-        inventory=[item_a, item_b, item_c]
-    )
+    fatimah = Vendor(inventory=[item_a, item_b, item_c])
 
-    jolie = Vendor(
-        inventory=[]
-    )
+    jolie = Vendor(inventory=[])
 
     nobodys_item = Item(category="clothing")
 
