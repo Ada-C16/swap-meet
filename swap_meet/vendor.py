@@ -33,21 +33,21 @@ class Vendor:
         else:
             return False
     
-    def get_best_in_category_by_feature(self, category, feature):
-        if feature == "age":
+    def get_best_in_category_by_attribute(self, category, attribute):
+        if attribute == "age":
             if category == None:
-                best_item = min(self.inventory, key=lambda item: getattr(item, feature), default=None)
+                best_item = min(self.inventory, key=lambda item: getattr(item, attribute), default=None)
             else:
-                best_item = min(self.get_by_category(category), key=lambda item: getattr(item, feature), default=None)   
+                best_item = min(self.get_by_category(category), key=lambda item: getattr(item, attribute), default=None)   
         else:
             if category == None:
-                best_item = max(self.inventory, key=lambda item: getattr(item, feature), default=None)
+                best_item = max(self.inventory, key=lambda item: getattr(item, attribute), default=None)
             else:
-                best_item = max(self.get_by_category(category), key=lambda item: getattr(item, feature), default=None)
+                best_item = max(self.get_by_category(category), key=lambda item: getattr(item, attribute), default=None)
         return best_item
 
     def get_best_by_category(self, category):
-        return self.get_best_in_category_by_feature(category, feature ="condition")
+        return self.get_best_in_category_by_attribute(category, attribute ="condition")
     
     def swap_best_by_category(self, other, my_priority, their_priority):
         my_offer = self.get_best_by_category(their_priority)
@@ -55,7 +55,7 @@ class Vendor:
         return self.swap_items(other, my_offer, their_offer)
 
     def get_newest_by_category(self, category=None):
-        return self.get_best_in_category_by_feature(category=category, feature="age")
+        return self.get_best_in_category_by_attribute(category=category, attribute="age")
 
     def swap_by_newest(self, other, my_priority=None, their_priority=None):
         my_offer = self.get_newest_by_category(category=their_priority)
