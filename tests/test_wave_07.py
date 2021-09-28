@@ -17,6 +17,12 @@ def test_swap_by_newest():
     result = devin.swap_by_newest(renee)
 
     assert result
+    assert item_b in renee.inventory
+    assert item_b not in devin.inventory
+    assert item_e in devin.inventory
+    assert item_e not in renee.inventory
+    assert len(renee.inventory) == 3
+    assert len(devin.inventory) == 3
 
 def test_swap_by_newest_empty_inventory_is_false():
     devin = Vendor()
