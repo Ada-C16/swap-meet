@@ -23,15 +23,16 @@ class Vendor:
     
     def swap_items(self, Vendor, my_item, their_item):
         
-        if len(self.inventory) == 0 or len(Vendor.inventory) == 0:
-            return False
+        if my_item in self.inventory and their_item in Vendor.inventory:
+        
+            self.remove([my_item])
+            Vendor.remove(their_item)
+            self.add(their_item)
+            Vendor.add(my_item)
+            return True
         
         else:
-            self.inventory.remove(self.inventory[my_item])
-            Vendor.inventory.remove(Vendor.inventory[their_item])
-            self.inventory.add(Vendor.inventory[their_item])
-            Vendor.inventory.add(self.inventory[my_item])
-        return True
+            return False
         
     def swap_first_item(self, Vendor):
         if len(self.inventory) == 0 or len(Vendor.inventory) == 0:
@@ -41,8 +42,8 @@ class Vendor:
             self.inventory.remove(Vendor.inventory[0])  
             return True
         
-class Other_Vendor(Vendor):
-    def __init__(self, inventory = []):
+class OtherVendor(Vendor):
+    def __init__(self, inventory = None):
         super().__init__(inventory)
         self.inventory = inventory
         
