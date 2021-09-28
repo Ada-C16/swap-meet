@@ -4,6 +4,3 @@ class Item:
 
     def __str__(self):
         return "Hello World!" 
-
-#my_item = Item("baby")
-#print(my_item)
