@@ -1,5 +1,5 @@
 class Item:
-    def __str__(self) -> str:
+    def __str__(self):
         return "Hello World!"
 
     def __init__(self, category=None, condition=None):
