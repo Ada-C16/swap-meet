@@ -28,4 +28,15 @@ class Vendor:
         
         return items_by_category
 
+    def swap_items(self, friend, my_item, their_item):
+
+        if my_item in self.inventory and their_item in friend.inventory:
+            self.inventory.remove(my_item)
+            friend.inventory.remove(their_item)
+            friend.inventory.append(my_item)
+            self.inventory.append(their_item)
+            return True
+        else:
+            return False
+
 
