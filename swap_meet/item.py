@@ -6,4 +6,12 @@ class Item:
         self.category = category or ""
         self.condition = condition or 0.0
     def condition_description(self):
-        return "Condition " + str(self.condition)
+        conditions = {
+            5: "This is definitely an item",
+            4: "An object",
+            3: "Pretty sure it's a thing",
+            2: "Can't tell what's going on here",
+            1: "Notions of form and substance",
+            0: "What",
+        }
+        return conditions[int(self.condition)]
