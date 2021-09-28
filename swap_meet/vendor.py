@@ -7,12 +7,14 @@ class Vendor(Item):
     def add(self, item):
         self.inventory.append(item)
         return item
+        
     def remove(self, item):
         if item in  self.inventory:
            self.inventory.remove(item)
            return item
         if item not in self.inventory:
             return False
+
     def get_by_category(self, category):
         list_category = []
         items = self.inventory
@@ -21,6 +23,7 @@ class Vendor(Item):
             if item.category == category:
                 list_category.append(item)
         return list_category
+
     def swap_items(self, friend, my_item, their_item):
         if my_item in self.inventory and their_item in friend.inventory:
             friend.inventory.append(my_item)
@@ -30,16 +33,14 @@ class Vendor(Item):
             return True 
         elif my_item not in self.inventory or their_item not in friend.inventory:
             return False 
+
     def swap_first_item(self,friend):
         if len(self.inventory) and len(friend.inventory) == 0:
             return False 
         elif len(self.inventory) and len(friend.inventory) > 0:
             item = self.inventory[0]
             friend_item = friend.inventory[0]
-            friend.inventory.append(item)
-            self.inventory.remove(item)
-            self.inventory.append(friend_item)
-            friend.inventory.remove(friend_item)
+            self.swap_items(friend, item, friend_item)
             return True
 
     def get_best_by_category(self, category):
@@ -60,14 +61,10 @@ class Vendor(Item):
         best_item_their_priority = self.get_best_by_category(their_priority)
 
         if len(self.get_by_category(their_priority)) and len(other.get_by_category(my_priority)) > 0:
-            # self.swap_items(other, their_priority, my_priority)
-            
-            
-            self.inventory.append(best_item_my_priority)
-            other.inventory.remove(best_item_my_priority)
-            other.inventory.append(best_item_their_priority)
-            self.inventory.remove(best_item_their_priority)
+            self.swap_items(other, best_item_their_priority, best_item_my_priority)
             return True
+        
+        
 
 
         
