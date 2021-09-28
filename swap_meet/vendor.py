@@ -1,21 +1,6 @@
 from typing import ItemsView
-from swap_meet.item import Item
 
 class Vendor:
-    """
-    Attributes:: 
-    inventory: an empty list by default, 
-    optionally can pass in a list
-
-    Ins. methods::
-    add : takes in one item and adds it to the inventory
-    returns the item that was added
-
-    remove: takes in an item and removes it from inventory
-    returns the item removed
-
-    if no matching item in the inventory return false
-    """
 
     def __init__(self, inventory = []):
         self.inventory = inventory
@@ -40,26 +25,26 @@ class Vendor:
 
         return items_in_category
 
-    def swap_items(self, other_vendor, my_item, their_item):
+    def swap_items(self, other, my_item, their_item):
 
-        if not my_item in self.inventory or not their_item in other_vendor.inventory:
+        if not my_item in self.inventory or not their_item in other.inventory:
             return False
 
         self.inventory.remove(my_item)
         self.inventory.append(their_item)
-        other_vendor.inventory.remove(their_item)
-        other_vendor.inventory.append(my_item)
+        other.inventory.remove(their_item)
+        other.inventory.append(my_item)
         return True
 
     
-    def swap_first_item(self, other_vendor):
-        if len(self.inventory) == 0 or len(other_vendor.inventory) == 0:
+    def swap_first_item(self, other):
+        if len(self.inventory) == 0 or len(other.inventory) == 0:
             return False
 
         my_first_item = self.inventory[0]
-        their_first_item = other_vendor.inventory[0]
+        their_first_item = other.inventory[0]
 
-        self.swap_items(other_vendor, my_first_item, their_first_item)
+        self.swap_items(other, my_first_item, their_first_item)
 
         return True
     
