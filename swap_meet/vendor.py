@@ -47,7 +47,6 @@ class Vendor:
         inventory = self.inventory
         decending_condition_inventory = sorted(inventory, key=lambda item: item.condition, reverse=True)
 
-
         for item in decending_condition_inventory:
             if item.category == category:
                 return item
