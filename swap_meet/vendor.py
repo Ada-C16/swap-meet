@@ -26,10 +26,10 @@ class Vendor:
 
     def swap_items(self, other_vendor, self_item, other_vendor_item):
         if self_item in self.inventory and other_vendor_item in other_vendor.inventory:
-            self.inventory.append(other_vendor_item)
-            other_vendor.inventory.remove(other_vendor_item)
-            other_vendor.inventory.append(self_item)
-            self.inventory.remove(self_item)
+            self.add(other_vendor_item)
+            other_vendor.remove(other_vendor_item)
+            other_vendor.add(self_item)
+            self.remove(self_item)
             return True
         else:
             return False
@@ -56,6 +56,20 @@ class Vendor:
         if not ( my_item and their_item ):
             return False
         else:
-            self.swap_items(other,my_item, their_item)
-            return True
+            return self.swap_items(other,my_item, their_item)
+
+    def swap_by_newest(self, other = None):
+        if len(self.inventory) < 1 or len(other.inventory) < 1:
+            return False
+        else:
+            my_youngest_item = self.inventory[0]
+            their_youngest_item = other.inventory[0]
+            for my_item in self.inventory:
+                if my_item.age < my_youngest_item.age:
+                    my_youngest_item = my_item
+            for their_item in other.inventory:
+                if their_item.age < their_youngest_item.age:
+                    their_youngest_item = their_item
+
+            return self.swap_items(other, my_youngest_item, their_youngest_item)
 
