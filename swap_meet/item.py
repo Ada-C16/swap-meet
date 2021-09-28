@@ -1,9 +1,11 @@
 class Item:
     def __str__(self) -> str:
         return "Hello World!"
+
     def __init__(self, category=None, condition=None):
         self.category = category or ""
         self.condition = condition or 0.0
+
     def condition_description(self):
         conditions = {
             5: "This is definitely an item",

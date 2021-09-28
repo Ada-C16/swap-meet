@@ -11,7 +11,7 @@ class Vendor:
             return False
         self.inventory.remove(to_remove)
         return to_remove
-    
+
     def get_by_category(self, category):
         return [item for item in self.inventory if item.category == category]
 
@@ -21,17 +21,19 @@ class Vendor:
             self.add(other.remove(their_item))
             return True
         return False
-    
+
     def swap_first_item(self, other):
-        my_first_item = next(iter(self.inventory),None)
-        their_first_item = next(iter(other.inventory),None)
-        return self.swap_items(other,my_first_item,their_first_item)
-    
+        my_first_item = next(iter(self.inventory), None)
+        their_first_item = next(iter(other.inventory), None)
+        return self.swap_items(other, my_first_item, their_first_item)
+
     def get_best_by_category(self, category):
-        items_in_category = (item for item in self.inventory if item.category == category)
+        items_in_category = (
+            item for item in self.inventory if item.category == category
+        )
         return max(items_in_category, key=lambda item: item.condition, default=None)
-    
+
     def swap_best_by_category(self, other, my_priority, their_priority):
         their_best = other.get_best_by_category(my_priority)
         my_best = self.get_best_by_category(their_priority)
-        return self.swap_items(other,my_best,their_best)
+        return self.swap_items(other, my_best, their_best)
