@@ -9,6 +9,6 @@ class Item:
 
         return "Hello World!"
 
-    def contidition_description(self):
+    def condition_description(self):
         return self.condition
     
