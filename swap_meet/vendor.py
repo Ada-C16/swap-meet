@@ -11,10 +11,10 @@ class Vendor:
         else:
             return False
     def get_by_category(self,category):
-        from swap_meet.item import Item
         cat_list=[]
-        if Item in self.inventory:
-            cat_list.append(self.inventory[Item])
+        for item in self.inventory:
+            if item.category==category:
+                cat_list.append(item)
         return cat_list
     def swap_items(self, Vendor, my_item, their_item):
         return Item
