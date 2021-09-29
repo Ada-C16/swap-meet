@@ -44,3 +44,17 @@ class Vendor:
             return True
         else:
             return False
+
+    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
+        pass
+    # best_item in self.inventory == their_priority
+    # swapped with best item in other_vendor.inventory == my_priority
+    # return True
+
+    # if self.inventory != their_priority
+    # no swapping
+    # return False
+
+    # if other_vendor != my_priority
+    # no swapping
+    # return False 
