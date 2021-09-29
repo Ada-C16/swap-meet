@@ -50,8 +50,27 @@ class Vendor:
             vendor.inventory[0] = first_item_a
             return True
 
-    def get_best_by_category(self, category):
-        pass
+    def get_best_by_category(self, type):
+    
+        highest_rating = 0
+        
+        
+        for item in self.inventory:
+            if item.category == type:
+                if item.conditiona > highest_rating:
+                    highest_rating = item.condition
+                    highest_item = item
+                else: 
+                    continue
+            else: 
+                return None
+                
+        return highest_item
+
+       
+
+            
+        
 
 
         
