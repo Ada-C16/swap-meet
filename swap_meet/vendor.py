@@ -1,2 +1,19 @@
+#from swap_meet.item import Item
+
 class Vendor:
-    pass
+    def __init__(self, inventory = None):
+        if not inventory: 
+            inventory = []
+        self.inventory = inventory
+        #self.item = Item()
+
+
+    def add(self, item):
+        self.inventory.append(item)
+        return item
+
+    def remove(self, item):
+        if item in self.inventory:
+            self.inventory.remove(item)
+            return item
+        return False
