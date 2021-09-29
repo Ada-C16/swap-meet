@@ -6,7 +6,6 @@ class Vendor():
             inventory = []
         #instantiate attributes
         self.inventory = inventory
-        self.item = Item()
 
 
     #adds item to inventory list
@@ -30,9 +29,9 @@ class Vendor():
 
         #loop through each item in inventory and add item
         #if item category matches given category
-        for self.item in self.inventory:
-            if self.item.category == category:
-                inventory_category.append(self.item)
+        for item in self.inventory:
+            if item.category == category:
+                inventory_category.append(item)
         return inventory_category
 
 
