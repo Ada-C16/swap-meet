@@ -1,6 +1,6 @@
 class Vendor:
-    def __init__(self, inventory=[]):
-        self.inventory = inventory
+    def __init__(self, inventory=None):
+        self.inventory = inventory if inventory is not None else []
 
     def add(self, item):
         self.inventory.append(item)
@@ -29,6 +29,7 @@ class Vendor:
             return True
         else:
             return False
+
     #not working        
     def swap_first_item(self, vendor):
         if vendor.inventory and self.inventory:
@@ -39,3 +40,45 @@ class Vendor:
             return True
         else:
             return False
+
+    def get_best_by_category(self,category):
+        
+        highest_condition = -1
+        for item in self.inventory:
+            if item.category == category:
+                if item.condition > highest_condition:
+                    highest_condition = item.condition
+                    highest_condition_item = item
+        if highest_condition == -1:
+            return None
+        else:
+            return highest_condition_item
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        my_best_condition = -1
+        their_best_condition = -1
+        
+        my_best_item_matches_their_priority = None
+        their_best_item_matches_my_priority = None
+
+        for item in self.inventory:
+            if item.category == their_priority:
+                if item.condition > my_best_condition:
+                    my_best_item_matches_their_priority = item
+                    my_best_condition = item.condition
+                
+        if my_best_condition == -1:
+            return False
+        
+        for item in other.inventory:
+            if item.category == my_priority:
+                if item.condition > their_best_condition:
+                    their_best_item_matches_my_priority = item
+                    their_best_condition = item.condition
+
+        if their_best_condition == -1:
+            return False
+        
+        self.swap_items(other, my_best_item_matches_their_priority, their_best_item_matches_my_priority)
+            
+        return True
