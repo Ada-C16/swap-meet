@@ -14,6 +14,7 @@ class Vendor:
     #     self.inventory = inventory
 
     def add(self, item):
+
         self.inventory.append(item)
         return item
 
@@ -24,6 +25,7 @@ class Vendor:
         return item
     
     def get_by_category(self, category):
+
         item_list = [] 
         for item in self.inventory:
             if item.category == category:
@@ -32,6 +34,7 @@ class Vendor:
         return item_list
 
     def swap_items(self, friend_inv, this_item, their_item):
+
         if not this_item in self.inventory or not their_item in friend_inv.inventory:
             return False
 
@@ -42,14 +45,18 @@ class Vendor:
         return True
 
     def swap_first_item(self, friend_inv):
+
         if not self.inventory or not friend_inv.inventory:
             return False
-        removed_self = self.remove(self.inventory[0])
-        removed_friend = friend_inv.remove(friend_inv.inventory[0])
-        self.add(removed_friend)
-        friend_inv.add(removed_self)
+        # removed_self = self.remove(self.inventory[0])
+        # removed_friend = friend_inv.remove(friend_inv.inventory[0])
+        self.swap_items(friend_inv, self.inventory[0], friend_inv.inventory[0])
+        # self.add(removed_friend)
+        # friend_inv.add(removed_self)
         return True
+
     def get_best_by_category(self, category):
+
        best_item = None
        best_condition = 0.0
        match_list = []
@@ -67,6 +74,7 @@ class Vendor:
        return best_item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
+
         my_category = []
         their_category = []
         for my_item in self.inventory:
@@ -76,14 +84,24 @@ class Vendor:
         if not my_priority in their_category or not their_priority in my_category:
             return False
 
-        my_best_to_swap = self.get_best_by_category(their_priority)
+        # my_best_to_swap = self.get_best_by_category(their_priority)
+        # their_best_to_swap = other.get_best_by_category(my_priority)
         
-        other.inventory.append(my_best_to_swap)
-        self.inventory.remove(my_best_to_swap)
+        # # swap_items(self, friend_inv, this_item, their_item)
+        
+        # other.inventory.append(my_best_to_swap)
+        # self.inventory.remove(my_best_to_swap)
+        # their_best_to_swap = other.get_best_by_category(my_priority)
+        # self.inventory.append(their_best_to_swap)
+        # other.inventory.remove(their_best_to_swap)
+        # return True
+
+        my_best_to_swap = self.get_best_by_category(their_priority)
         their_best_to_swap = other.get_best_by_category(my_priority)
-        self.inventory.append(their_best_to_swap)
-        other.inventory.remove(their_best_to_swap)
-        return True
+        
+        my_return = self.swap_items(other, my_best_to_swap, their_best_to_swap)
+    
+        return my_return
 
        
        
