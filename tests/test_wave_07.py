@@ -11,10 +11,10 @@ from swap_meet.item import Item
 
 def test_item_has_age():
     # Arrange
-    item = Item(age=1)
+    # ?? what should go here?
 
     # Act
-    # ?? not sure what should go here
+    item = Item(age=1)
 
     # Assert
     assert item.age == 1
