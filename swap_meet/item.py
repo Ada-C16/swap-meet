@@ -14,5 +14,4 @@ class Item():
         4: "Lightly used Item no imperfections",
         5: "New"
         }
-
         return description_rating[self.condition]
