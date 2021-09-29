@@ -1,5 +1,3 @@
-# Wave 1
-
 class Vendor:
     def __init__(self, inventory = None):
         self.inventory = inventory if inventory is not None else []
@@ -39,7 +37,7 @@ class Vendor:
             return False
 
     def swap_first_item(self, vendor):
-        
+
         vendor_inventory = vendor.inventory.copy()
         self_inventory = self.inventory.copy()
 
@@ -51,6 +49,10 @@ class Vendor:
             self.inventory[0] = first_item_b
             vendor.inventory[0] = first_item_a
             return True
+
+    def get_best_by_category(self, category):
+        pass
+
 
         
             
