@@ -64,7 +64,7 @@ def test_swap_best_by_category():
     )
 
     result = tai.swap_best_by_category(
-        other=jesse,
+        swapping_vendor=jesse,
         my_priority="Clothing",
         their_priority="Decor"
     )
@@ -98,7 +98,7 @@ def test_swap_best_by_category_reordered():
     )
 
     result = tai.swap_best_by_category(
-        other=jesse,
+        swapping_vendor=jesse,
         my_priority="Clothing",
         their_priority="Decor"
     )
@@ -129,7 +129,7 @@ def test_swap_best_by_category_no_inventory_is_false():
     )
 
     result = tai.swap_best_by_category(
-        other=jesse,
+        swapping_vendor=jesse,
         my_priority="Clothing",
         their_priority="Decor"
     )
@@ -155,7 +155,7 @@ def test_swap_best_by_category_no_other_inventory_is_false():
     )
 
     result = tai.swap_best_by_category(
-        other=jesse,
+        swapping_vendor=jesse,
         my_priority="Decor",
         their_priority="Clothing"
     )
@@ -184,7 +184,7 @@ def test_swap_best_by_category_no_match_is_false():
     )
 
     result = tai.swap_best_by_category(
-        other=jesse,
+        swapping_vendor=jesse,
         my_priority="Clothing",
         their_priority="Clothing"
     )
@@ -216,7 +216,7 @@ def test_swap_best_by_category_no_other_match_is_false():
     )
 
     result = tai.swap_best_by_category(
-        other=jesse,
+        swapping_vendor=jesse,
         my_priority="Electronics",
         their_priority="Decor"
     )
