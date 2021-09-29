@@ -28,6 +28,7 @@ vendor4 = Vendor(inventory = [Item_1, Item_2, Item_3])
 print(len(vendor4.inventory))
 
 vendor2 = Vendor()
+vendor2.inventory = []
 print(len(vendor2.inventory))
 
 vendor3 = Vendor()

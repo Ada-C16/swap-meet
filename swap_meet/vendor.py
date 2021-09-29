@@ -3,15 +3,7 @@ class Vendor:
         if not inventory:
             inventory = []
         self.inventory = inventory
-   
-    # def __init__(self):
-        
-    #     self.inventory = []
-
-    # def __init__(self, inventory = []):
-    #     # if not inventory:
-    #     #     inventory = []
-    #     self.inventory = inventory
+ 
 
     def add(self, item):
 
@@ -48,12 +40,10 @@ class Vendor:
 
         if not self.inventory or not friend_inv.inventory:
             return False
-        # removed_self = self.remove(self.inventory[0])
-        # removed_friend = friend_inv.remove(friend_inv.inventory[0])
+        
         self.swap_items(friend_inv, self.inventory[0], friend_inv.inventory[0])
-        # self.add(removed_friend)
-        # friend_inv.add(removed_self)
         return True
+       
 
     def get_best_by_category(self, category):
 
@@ -83,18 +73,6 @@ class Vendor:
             their_category.append(their_item.category)
         if not my_priority in their_category or not their_priority in my_category:
             return False
-
-        # my_best_to_swap = self.get_best_by_category(their_priority)
-        # their_best_to_swap = other.get_best_by_category(my_priority)
-        
-        # # swap_items(self, friend_inv, this_item, their_item)
-        
-        # other.inventory.append(my_best_to_swap)
-        # self.inventory.remove(my_best_to_swap)
-        # their_best_to_swap = other.get_best_by_category(my_priority)
-        # self.inventory.append(their_best_to_swap)
-        # other.inventory.remove(their_best_to_swap)
-        # return True
 
         my_best_to_swap = self.get_best_by_category(their_priority)
         their_best_to_swap = other.get_best_by_category(my_priority)
