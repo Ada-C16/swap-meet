@@ -17,11 +17,11 @@ class Vendor:
     return item
 
 
+
   def swap_items(self, vendor_2, my_item, their_item):
     if not (my_item in self.inventory and their_item in vendor_2.inventory):
       return False
-    # elif not their_item in vendor_2.inventory:
-    #   return False
+
     vendor_2.inventory.insert(0, self.inventory.pop(self.inventory.index(my_item)))
     self.inventory.insert(0, vendor_2.inventory.pop(vendor_2.inventory.index(their_item)))
     return True
@@ -35,29 +35,12 @@ class Vendor:
 
   
   def get_by_category(self, category):
-    # for item in self.inventory:
-    #   if item.category == category:
-    #     by_category_list.append(item)
+
     return [item for item in self.inventory if item.category == category]
 
   def get_best_by_category(self, category):
 
       temp_list = self.get_by_category(category)
-
-      # if temp_list:
-
-      #   # for item in temp_list:
-      #   #     max_condition.append(item.condition)
-
-      #   max_condition = [item.condition for item in temp_list]
-
-      #   max_score = max(max_condition)
-
-      #   for item in temp_list:
-      #       if item.condition == max_score:
-      #           return item
-
-      # return None
 
       return max(temp_list, key = lambda a: a.condition, default = None)
       
