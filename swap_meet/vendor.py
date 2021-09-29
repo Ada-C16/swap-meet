@@ -95,5 +95,20 @@ class Vendor:
 
         return best_item
 
-    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
-        """"""
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        """
+        Returns True if both vendors trade best conditioned item from preferred cateogry. 
+        Returns False if either vendor doesn't have an item in the other's preferred cateogry. 
+        """
+        # Identifying best conditioned item in inventory based on other vendor's preferred category.
+        taken_item = other.get_best_by_category(my_priority)
+        given_item = self.get_best_by_category(their_priority)
+
+        # Returning False if either vendor doesn't have an item in the other's preferred category. 
+        if not taken_item or not given_item:
+            return False 
+
+        # Swapping best items in preferred category. 
+        self.swap_items(other, given_item, taken_item)
+
+        return True
