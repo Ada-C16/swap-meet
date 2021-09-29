@@ -4,6 +4,15 @@ class Vendor:
             inventory = []
         self.inventory = inventory
    
+    # def __init__(self):
+        
+    #     self.inventory = []
+
+    # def __init__(self, inventory = []):
+    #     # if not inventory:
+    #     #     inventory = []
+    #     self.inventory = inventory
+
     def add(self, item):
         self.inventory.append(item)
         return item
@@ -40,3 +49,23 @@ class Vendor:
         self.add(removed_friend)
         friend_inv.add(removed_self)
         return True
+    def get_best_by_category(self, category):
+       best_item = None
+       best_condition = 0.0
+       match_list = []
+       for item in self.inventory:
+             match_list.append(item.category)
+
+       if not category in match_list:
+           return None 
+                    
+       for item in self.inventory:
+             if item.category == category:
+                if item.condition > best_condition:
+                    best_condition = item.condition
+                    best_item = item
+       return best_item
+       
+       
+
+  
