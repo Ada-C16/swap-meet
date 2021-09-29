@@ -57,7 +57,7 @@ $ python3 -m venv venv
 ```bash
 $ source venv/bin/activate
 ```
-
+py
 Verify that you're in a python3 virtual environment by running:
 
 - `$ python --version` should output a Python 3 version
