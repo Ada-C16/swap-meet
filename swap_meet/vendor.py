@@ -74,4 +74,26 @@ class Vendor:
         
         return result
 
+    def get_best_by_category(self, category): 
+        """
+        Returns item with highest condition score within a category.
+        """
+        # Initializing variables
+        items_in_category = self.get_by_category(category)
+        highest_condition = 0.0
+        best_item = ""
 
+        # Returning None if there are no items in the category
+        if not items_in_category: 
+            return None 
+
+        # Identifying item with highest condition rating.
+        for item in items_in_category:
+            if item.condition > highest_condition:
+                highest_condition = item.condition
+                best_item =item
+
+        return best_item
+
+    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
+        """"""

@@ -1,6 +1,3 @@
-from swap_meet.item import Item
-
-
 from .item import Item
 
 class Clothing(Item):
