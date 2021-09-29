@@ -50,3 +50,22 @@ class Vendor:
         self.remove(my_item)
 
         return True
+
+    def swap_first_item(self, friend_vendor):
+        """
+        This function has one parameter, an instance of Vendor class 
+        for their friend_vendor. If either the self inventory or friend's inventory
+        is empty, we return False. Otherwise, we take the first item from the self
+        inventory and add it to friend_vendor inventory. We take the first item from 
+        friend_vendor inventory and add it to self inventory.
+        """
+        if self.inventory == [] or friend_vendor.inventory == []:
+            return False
+
+        self.add(friend_vendor.inventory[0])
+        friend_vendor.add(self.inventory[0])
+
+        self.inventory.remove(self.inventory[0])
+        friend_vendor.inventory.remove(friend_vendor.inventory[0])
+        
+        return True
