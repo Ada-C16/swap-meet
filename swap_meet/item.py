@@ -6,5 +6,5 @@ class Item:
     def __str__(self):
         return "Hello World!"
 
-    # def condition_description(self):
-        
+    # def condition_description(self, condition):
+    #     if condition 
