@@ -22,6 +22,3 @@ class Item:
           return "Bad"
       else:
           return "Not even if you paid me."
-
-
-
