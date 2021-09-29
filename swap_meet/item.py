@@ -24,7 +24,3 @@ class Item:
             condition_description = "wow"
 
         return condition_description
-
-
-
-
