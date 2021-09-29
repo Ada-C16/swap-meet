@@ -14,8 +14,8 @@ v1 = Vendor([radio, shirt, pan, shoes, earbuds])
 
 v1.get_by_category("clothing")
 
-pants = Clothing(condition=3.5)
-candlestick = Decor(condition=3.5)
+pants = Clothing(age=3.5)
+candlestick = Decor(age=3.5)
 phone = Electronics(condition=3.5)
 
 items = [
