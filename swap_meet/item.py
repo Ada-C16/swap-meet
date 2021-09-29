@@ -8,17 +8,17 @@ class Item:
 
     def condition_description(self):
         if self.condition == 0:
-            print("needs some love")
+            return "needs some love"
         elif self.condition == 1:
-            print("heavily loved")
+            return "heavily loved"
         elif self.condition == 2:
-            print("used condition")
+            return "used condition"
         elif self.condition == 3:
-            print("some signs of wear")
+            return "some signs of wear"
         elif self.condition == 4:
-            print("almost new")
+            return "almost new"
         elif self.condition == 5:
-            print("mint")
+            return "mint"
         
     
      
