@@ -97,7 +97,7 @@ class Vendor:
 
         return self.swap_items(other, my_best_item, vendor2_best_item)
 
-    def get_newest_item_with_optional_category(self, category = ""):
+    def get_newest_item(self, category = ""):
         '''
         Optionally, take in a category.
         If no category specified, return the neweset item the vendor has in any category.
@@ -115,8 +115,8 @@ class Vendor:
         If a category is provided, swap the newest item in that category.
         Return True if the swap was completed successfully and False if it was not.
         '''
-        my_newest_item = self.get_newest_item_with_optional_category(category2)
-        vendor2_newest_item = vendor2.get_newest_item_with_optional_category(category1)
+        my_newest_item = self.get_newest_item(category2)
+        vendor2_newest_item = vendor2.get_newest_item(category1)
 
         if not (my_newest_item and vendor2_newest_item):
             return False

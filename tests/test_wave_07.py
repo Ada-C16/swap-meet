@@ -30,7 +30,7 @@ def test_get_newest_item_with_optional_category_returns_newest_item_with_no_cate
         inventory=[item_a, item_b, item_c, item_d, item_e]
     )
     # Act
-    newest_item = tai.get_newest_item_with_optional_category()
+    newest_item = tai.get_newest_item()
 
     # Assert
     assert newest_item == item_b
@@ -47,7 +47,7 @@ def test_newest_item_with_optional_category_returns_newest_item_in_category():
     )
 
     # Act
-    newest_clothing = tai.get_newest_item_with_optional_category("Clothing")
+    newest_clothing = tai.get_newest_item("Clothing")
 
     # Assert
     newest_clothing = item_e
