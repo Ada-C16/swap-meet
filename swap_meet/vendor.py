@@ -26,3 +26,13 @@ class Vendor:
             return True
         else: 
             return False
+        
+    def swap_first_item(self, Vendor):
+        if len(self.inventory) > 0 and len(Vendor.inventory) > 0:
+            self.inventory.append(Vendor.inventory[0])
+            Vendor.inventory.append(self.inventory[0])
+            self.inventory.pop(0)
+            Vendor.inventory.pop(0)
+            return True
+        else: 
+            return False
