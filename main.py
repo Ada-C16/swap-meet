@@ -14,7 +14,7 @@ jolie = Vendor(
     inventory=[item_d, item_e]
 )
 
-result = fatimah.swap_items(jolie, item_b, item_d)
+result = fatimah.swap_first_item(jolie)
 
-print(fatimah.item)
+#print(fatimah)
 print(result)

@@ -48,9 +48,12 @@ class Vendor():
             
 
 
-    # def swap_first_ten_items(self,
-    #                         other_vendor,
-    #                         inventory[0],
-    #                         other_vendor.inventory[0]):
+    def swap_first_item(self, other_vendor):
+        if self.inventory==[] or other_vendor.inventory==[]:
+            return False
+
+        self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
+        return True
+
+
     
-    #     pass
