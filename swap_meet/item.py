@@ -1,5 +1,5 @@
 class Item:
-    def __init__(self, category="", condition=0):
+    def __init__(self, condition=0, category=""):
         self.category = category
         self.condition = condition
 
