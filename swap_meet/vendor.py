@@ -44,27 +44,27 @@ class Vendor:
 
       temp_list = self.get_by_category(category)
 
-      if temp_list:
+      # if temp_list:
 
-        # for item in temp_list:
-        #     max_condition.append(item.condition)
+      #   # for item in temp_list:
+      #   #     max_condition.append(item.condition)
 
-        max_condition = [item.condition for item in temp_list]
+      #   max_condition = [item.condition for item in temp_list]
 
-        max_score = max(max_condition)
+      #   max_score = max(max_condition)
 
-        for item in temp_list:
-            if item.condition == max_score:
-                return item
+      #   for item in temp_list:
+      #       if item.condition == max_score:
+      #           return item
 
-      return None
+      # return None
 
-      # return max(self.get_by_category(category), key = a.condition)
+      return max(temp_list, key = lambda a: a.condition, default = None)
       
 
   def swap_best_by_category(self, other, my_priority, their_priority):
 
-      my_item =self.get_best_by_category(their_priority)
+      my_item = self.get_best_by_category(their_priority)
       their_item = other.get_best_by_category(my_priority)
 
       return self.swap_items(other, my_item, their_item)
