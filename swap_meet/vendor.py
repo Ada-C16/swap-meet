@@ -26,7 +26,7 @@ class Vendor:
             
         return items
 #Wave 3
-    def swap_items(self, vendor,my_item, their_item):
+    def swap_items(self, vendor, my_item, their_item):
         if my_item in self.inventory and their_item  in vendor.inventory:
             self.inventory.append(their_item)
             vendor.inventory.append(my_item)
@@ -37,7 +37,24 @@ class Vendor:
         return False
 
 #Wave 4 
-#   
+    def swap_first_item(self, vendor):
+
+        if self.inventory and vendor.inventory:
+            my_item = self.inventory[0]
+            their_item = vendor.inventory[0]
+            self.inventory.append(their_item)
+            vendor.inventory.append(my_item)
+            self.inventory.remove(my_item)
+            vendor.inventory.remove(their_item)
+            return True
+
+        return False
+
+#Wave 5
+    
+
+
+
 
 
 
