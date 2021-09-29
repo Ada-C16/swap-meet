@@ -75,3 +75,26 @@ class Vendor:
             return False
 
         return self.swap_items(other, my_best_item, vendor2_best_item)
+
+    def get_newest_item_with_optional_category(self, category = ""):
+        '''
+        If no category specified, returns the neweset item the vendor has in any category.
+        Otherwise, returns the newest item in the category.
+        '''
+        if not category:
+            return min(self.inventory, key=lambda item: item.age, default=None)
+
+        return min(self.get_by_category(category), key=lambda item: item.age, default=None)
+
+    def swap_by_newest(self, vendor2, category1 ="", category2 = ""):
+        '''
+        Swap the newest item each vendor has. 
+        Optionally, pass in a category to get the newest item in that category.
+        '''
+        my_newest_item = self.get_newest_item(category1)
+        vendor2_newest_item = vendor2.get_newest_item(category2)
+
+        if not (my_newest_item and vendor2_newest_item):
+            return False
+
+        return self.swap_items(vendor2, my_newest_item, vendor2_newest_item)
