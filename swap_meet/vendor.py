@@ -37,6 +37,8 @@ class Vendor:
         if self.inventory == [] or other_vendor.inventory == []:
             return False
         else:
+            
+            #self.swap.iyems(other_vendor, self.incentory[0])
             other_vendor.inventory.append(self.inventory[0])
             self.inventory.remove(self.inventory[0])
             self.inventory.append(other_vendor.inventory[0])
