@@ -36,8 +36,7 @@ class Vendor:
         if friend_vendor.inventory and self.inventory:
             first_friend_item= friend_vendor.inventory[0]
             first_self_item = self.inventory[0]
-            self.inventory[0] = first_friend_item
-            friend_vendor.inventory[0] = first_self_item
+            self.swap_items(friend_vendor, first_self_item, first_friend_item)
             return True
         return False
 
