@@ -20,19 +20,19 @@ class Vendor:
         items = [item for item in self.inventory if item.category == category]
         return items
 
-    def swap_items(self, swapping_vendor, item_to_give, item_to_get):
-        if not (item_to_give in self.inventory and item_to_get in swapping_vendor.inventory):
+    def swap_items(self, other, item_to_give, item_to_get):
+        if not (item_to_give in self.inventory and item_to_get in other.inventory):
             return False
         
         self.remove(item_to_give)
         self.add(item_to_get)
-        swapping_vendor.remove(item_to_get)
-        swapping_vendor.add(item_to_give)
+        other.remove(item_to_get)
+        other.add(item_to_give)
         return True
     
-    def swap_first_item(self, swapping_vendor):
-        if self.inventory and swapping_vendor.inventory:
-            return self.swap_items(swapping_vendor, self.inventory[0], swapping_vendor.inventory[0])
+    def swap_first_item(self, other):
+        if self.inventory and other.inventory:
+            return self.swap_items(other, self.inventory[0], other.inventory[0])
 
         return False
 
@@ -44,20 +44,20 @@ class Vendor:
         best_item = max(items, key = lambda item:item.condition)
         return best_item
 
-    def swap_best_by_category(self, swapping_vendor, my_priority, their_priority):
+    def swap_best_by_category(self, other, my_priority, their_priority):
         item_to_give = self.get_best_by_category(their_priority)
-        item_to_get = swapping_vendor.get_best_by_category(my_priority)
+        item_to_get = other.get_best_by_category(my_priority)
         if not (item_to_give and item_to_get):
             return False
 
-        return self.swap_items(swapping_vendor, item_to_give, item_to_get)
+        return self.swap_items(other, item_to_give, item_to_get)
     
     def get_newest(self):
         if not self.inventory:
             return None
         return min(self.inventory, key = lambda item:item.age)
 
-    def swap_by_newest(self, swapping_vendor):
+    def swap_by_newest(self, other):
         item_to_give = self.get_newest()
-        item_to_get = swapping_vendor.get_newest()
-        return self.swap_items(swapping_vendor, item_to_give, item_to_get)
+        item_to_get = other.get_newest()
+        return self.swap_items(other, item_to_give, item_to_get)
