@@ -3,5 +3,5 @@ class Item:
         self.category = "" if category is None else category
 
     def __str__(self):
-        return f"Hello World!"
+        return "Hello World!"
         
