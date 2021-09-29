@@ -13,10 +13,10 @@ class Item:
         elif 1 <= self.condition and self.condition < 2:
             return "An item only a mother could love."
         elif 2 <= self.condition and  self.condition < 3:
-            return "Hopefully we can repurpose this."
+            return "Hopefully we can repurpose this..."
         elif 3 <= self.condition and self.condition < 4:
-            return "Nothing to write home about, but somewhat useful."
+            return "Nothing to write home about, but somewhat useful!"
         elif 4 <= self.condition and self.condition < 5:
-            return "Butter my rump and call me toast, this is fantastic."
+            return "Butter my rump and call me toast, this is fantastic!!!"
         else:
             return "*chef's kiss*"
