@@ -1,3 +1,5 @@
+# from .item import Items
+
 class Vendor:
     
     def __init__(self, inventory=[]): 
@@ -15,3 +17,11 @@ class Vendor:
         self.inventory.remove(item_to_remove)
         removed_item = item_to_remove
         return removed_item
+
+    def get_by_category(self, category):
+        """ Returns a list of items that have the category attribute given argument for category """
+        inventory_items_in_category = []
+        for item in self.inventory:
+            if item.category == category:
+                inventory_items_in_category.append(item)
+        return inventory_items_in_category
