@@ -52,20 +52,22 @@ class Vendor:
 
     def get_best_by_category(self, type):
     
-        highest_rating = 0
+        item_list = self.get_by_category(type)
+        highest_condition = 0
         
-        
-        for item in self.inventory:
-            if item.category == type:
-                if item.conditiona > highest_rating:
-                    highest_rating = item.condition
+        if len(item_list) == 0:
+            return None
+        else:
+            for item in item_list:
+                if item.condition > highest_condition:
+                    highest_condition = item.condition
                     highest_item = item
-                else: 
-                    continue
-            else: 
-                return None
-                
-        return highest_item
+
+            return highest_item
+    
+                    
+
+       
 
        
 
