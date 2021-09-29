@@ -44,4 +44,21 @@ class Vendor:
                 self.inventory.append(their_item)
                 trading_vendor.inventory.remove(their_item)
         return True
+    
+    def swap_first_item(self, trading_vendor):
+        """ Takes in 1 argument: another vendor instance. Trades the first item in the calling instance's inventory
+        with the first item in the other vendor's first item. Return True.
+        """
+        if not self.inventory or not trading_vendor.inventory:
+            return False
+        my_first = self.inventory[0]
+        their_first = trading_vendor.inventory[0]
+        # Swap my first item
+        trading_vendor.inventory.append(my_first)
+        self.inventory.remove(my_first)
+        # Swap their first item
+        self.inventory.append(their_first)
+        trading_vendor.inventory.remove(their_first)
+
+        return True
 
