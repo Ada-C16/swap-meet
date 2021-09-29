@@ -65,6 +65,26 @@ class Vendor:
                     best_condition = item.condition
                     best_item = item
        return best_item
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        my_category = []
+        their_category = []
+        for my_item in self.inventory:
+            my_category.append(my_item.category)
+        for their_item in other.inventory:
+            their_category.append(their_item.category)
+        if not my_priority in their_category or not their_priority in my_category:
+            return False
+
+        my_best_to_swap = self.get_best_by_category(their_priority)
+        
+        other.inventory.append(my_best_to_swap)
+        self.inventory.remove(my_best_to_swap)
+        their_best_to_swap = other.get_best_by_category(my_priority)
+        self.inventory.append(their_best_to_swap)
+        other.inventory.remove(their_best_to_swap)
+        return True
+
        
        
 
