@@ -61,5 +61,5 @@ from swap_meet.item import Item
 # print(cloth.category)
 # print(str(cloth))
 
-cloth = Clothing()
-print(cloth.condition)
+decor = Decor(condition=3.5)
+print(decor.condition)

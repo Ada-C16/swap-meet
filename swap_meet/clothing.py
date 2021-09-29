@@ -1,9 +1,11 @@
 from swap_meet.item import Item
 
 class Clothing(Item):
-    def __init__(self, condition = None):
+    # Want to use attributes from Item Class (keep condition as is)
+    # But want to declare category as Clothing (modify)
+    def __init__(self, category = None, condition = None):
+        super().__init__(category, condition)
         self.category = "Clothing"
-        self.condition = condition if condition is not None else 0
 
     def __str__(self):
         return "The finest clothing you could wear."

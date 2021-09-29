@@ -1,8 +1,9 @@
 from swap_meet.item import Item
+
 class Electronics(Item):
-    def __init__(self, condition = None):
+    def __init__(self, category = None, condition = None):
+        super().__init__(category, condition)
         self.category = "Electronics"
-        self.condition = condition if condition is not None else 0
 
     def __str__(self):
         return "A gadget full of buttons and secrets."
