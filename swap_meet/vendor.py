@@ -30,4 +30,15 @@ class Vendor:
         self.add(their_item)
         return True
         
-        
+    def swap_first_item(self,friend):
+        if self.inventory == [] or friend.inventory ==[]:
+            return False 
+        first_item_self = self.inventory[0]
+        first_item_friend = friend.inventory[0]
+        self.remove(first_item_self)
+        self.add(first_item_friend)
+        friend.remove(first_item_friend)
+        friend.add(first_item_self)
+        return True
+    def get_best_by_category(self, category_name):
+         pass
