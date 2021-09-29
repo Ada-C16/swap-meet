@@ -64,8 +64,10 @@ class Vendor():
             return True 
         return False 
 
-
+# Optional Enhancements
     def get_newest_item(self):
+        if len(self.inventory) == 0:
+            return False 
         newest_item = self.inventory[0]
         min_age = self.inventory[0].age
         for index in range(len(self.inventory)):
