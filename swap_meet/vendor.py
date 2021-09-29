@@ -1,5 +1,3 @@
-# from .item import Items
-
 class Vendor:
     
     def __init__(self, inventory=[]): 
@@ -25,3 +23,25 @@ class Vendor:
             if item.category == category:
                 inventory_items_in_category.append(item)
         return inventory_items_in_category
+
+    def swap_items(self, trading_vendor, my_item, their_item):
+        """
+        Takes in 3 arguments: another vendor instance, and item in the calling vendor's inventory, and an item from the
+        the other vendor's inventory.
+        
+        If the items are in their expected inventories, the two given items are traded, and we return True. 
+        
+        Else, if either of the items aren't in their expected inventories, we return False.
+        """
+        if my_item not in self.inventory or their_item not in trading_vendor.inventory:
+            return False
+        for item in self.inventory:
+            if my_item in self.inventory:
+                trading_vendor.inventory.append(my_item)
+                self.inventory.remove(my_item)
+        for item in trading_vendor.inventory:
+            if their_item in trading_vendor.inventory:
+                self.inventory.append(their_item)
+                trading_vendor.inventory.remove(their_item)
+        return True
+
