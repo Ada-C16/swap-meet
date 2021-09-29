@@ -4,6 +4,7 @@ class Item:
 
         self.category = category.title()
         self.condition = condition
+        self.age = age
 
     def __str__(self):
 
