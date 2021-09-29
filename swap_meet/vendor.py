@@ -1,6 +1,6 @@
 class Vendor:
     def __init__(self, inventory=None):
-        self.inventory = inventory if inventory is not None else []
+        self.inventory = inventory or []
 
     def add(self, item):
         self.inventory.append(item)
@@ -33,6 +33,28 @@ class Vendor:
     def swap_first_item(self, friend):
         if self.inventory and friend.inventory:
             self.swap_items(friend, self.inventory[0], friend.inventory[0])
+            return True
+        else:
+            return False
+    
+    def get_best_by_category(self, category):
+        '''
+        Finds "best" item from items by category based on highest value for \
+        condition. If more than one item has the highest value for condition, \
+        the one supplied first will be returned.
+        '''
+        best_item = None
+        best_condition = -1
+        for item in self.get_by_category(category):
+            if item.condition > best_condition:
+                best_item = item
+                best_condition = item.condition
+        return best_item
+    
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        if self.get_by_category(their_priority) and other.get_by_category(my_priority):
+            self.swap_items(other, self.get_best_by_category(their_priority), \
+                other.get_best_by_category(my_priority))
             return True
         else:
             return False
