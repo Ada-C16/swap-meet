@@ -24,29 +24,22 @@ class Vendor:
 
         return items
 
-    def swap_items(self, friend_vendor, my_item, their_item):
-        if my_item in self.inventory and their_item in friend_vendor.inventory:
+    def swap_items(self, their_vendor, my_item, their_item):
+        if my_item in self.inventory and their_item in their_vendor.inventory:
             self.inventory.remove(my_item)
-            friend_vendor.inventory.append(my_item)
+            their_vendor.inventory.append(my_item)
         
-            friend_vendor.inventory.remove(their_item)
+            their_vendor.inventory.remove(their_item)
             self.inventory.append(their_item)
             return True
             
         return False
 
-    def swap_first_item(self, friend_vendor):
-        if not self.inventory or not friend_vendor.inventory:
+    def swap_first_item(self, their_vendor):
+        if not self.inventory or not their_vendor.inventory:
             return False
 
-        first_elem_self = self.inventory[0]
-        first_elem_friend = friend_vendor.inventory[0]
-
-        print(self.inventory[0])
-        self.inventory[0] = first_elem_friend
-        print(self.inventory[0])
-
-        friend_vendor.inventory[0] = first_elem_self
+        self.swap_items(their_vendor, self.inventory[0], their_vendor.inventory[0])
 
         return True
         
