@@ -26,7 +26,6 @@ class Vendor:
                 items_by_category.append(item)
         return items_by_category
     
-
     def swap_items(self, vendor, my_item, their_item):
         if my_item not in self.inventory or their_item not in vendor.inventory:
             return False
@@ -56,3 +55,33 @@ class Vendor:
             return False
         else:
             return self.swap_items(other,my_item, their_item)
+
+### Challenge question/Optional Enhancements and a bunny ／( ˃ ᆺ ˂ )＼
+### Everyone needs a bunny
+
+    def get_oldest_item(self,age):
+        oldest_item= None
+        oldest_item_age=0
+        for item in self.inventory(age):
+            if item.age> oldest_item_age:
+                oldest_item_age = item.age
+                oldest_item = item
+            return oldest_item
+
+    def get_newest_item(self,age):
+        best_item= None
+        smallest_age_finder=  self.get_oldest_item(age)
+
+        for item in self.inventory(age):
+            if item.age< smallest_age_finder:
+                smallest_age_finder = item.age
+                best_item = item
+            return best_item
+
+    def swap_by_newest(self, other):
+        my_item=0
+        their_item=0
+        if  my_item == None and their_item == None:
+            return False
+        else:
+            return self.swap_items(other,my_item,their_item)
