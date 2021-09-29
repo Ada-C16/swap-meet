@@ -45,16 +45,18 @@ class Vendor:
         else:
             return False
 
-    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
-        pass
-    # best_item in self.inventory == their_priority
-    # swapped with best item in other_vendor.inventory == my_priority
-    # return True
+    def get_best_by_category(self, category=""):
+        items_by_category = self.get_by_category(category)
+        if len(items_by_category) == 0:
+            return None
+        
+        return max(items_by_category, key=lambda item: item.condition)
 
-    # if self.inventory != their_priority
-    # no swapping
-    # return False
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        best_item = self.get_best_by_category(category=their_priority)
+        their_best_item = other.get_best_by_category(category=my_priority)
 
-    # if other_vendor != my_priority
-    # no swapping
-    # return False 
+        if len(self.inventory) == 0 or len(other.inventory) == 0:
+            return False
+
+        return self.swap_items(other, best_item, their_best_item)
