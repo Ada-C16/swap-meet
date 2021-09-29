@@ -18,5 +18,7 @@ class Item:
             return "Nothing to write home about, but somewhat useful!"
         elif 4 <= self.condition and self.condition < 5:
             return "Butter my rump and call me toast, this is fantastic!!!"
-        else:
+        elif self.condition == 5:
             return "*chef's kiss*"
+        else:
+            return "Rating invalid. Check condition attribute value is between 0-5."
