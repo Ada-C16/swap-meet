@@ -30,7 +30,6 @@ class Vendor:
     def get_best_by_category(self, category):
         return max(
             self.get_by_category(category),
-            key=lambda item: item.condition,
             default=None,
         )
 
