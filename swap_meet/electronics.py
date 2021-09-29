@@ -6,4 +6,4 @@ class Electronics(Item):
         return "A gadget full of buttons and secrets."
 
     def __init__(self, condition=None):
-        super().__init__(category="Electronics", condition)
+        super().__init__(category="Electronics", condition=condition)
