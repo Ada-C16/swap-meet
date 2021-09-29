@@ -91,8 +91,8 @@ class Vendor:
         Swap the newest item each vendor has. 
         Optionally, pass in a category to get the newest item in that category.
         '''
-        my_newest_item = self.get_newest_item(category1)
-        vendor2_newest_item = vendor2.get_newest_item(category2)
+        my_newest_item = self.get_newest_item_with_optional_category(category2)
+        vendor2_newest_item = vendor2.get_newest_item_with_optional_category(category1)
 
         if not (my_newest_item and vendor2_newest_item):
             return False
