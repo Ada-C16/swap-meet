@@ -40,3 +40,14 @@ class Vendor:
         else:
             return False
         return True
+
+    def swap_first_item(self, friend):
+        for i in range(len(self.inventory)):
+            remove_my_item = self.remove(self.inventory[0]) 
+            friend.add(remove_my_item) 
+
+            remove_friend_item = friend.remove(friend.inventory[0])
+            self.add(remove_friend_item)
+            return True
+        else:
+            return False
