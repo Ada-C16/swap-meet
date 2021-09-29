@@ -11,11 +11,15 @@ class Vendor:
         return item
     
     def remove(self, item):
-        if item in self.inventory:
-            removed_item = self.inventory.pop()
-            return removed_item
-        else:
+        if item not in self.inventory:
             return False
+        else:
+            for i in range(len(self.inventory)):
+                inventory_set = (self.inventory[i], i)
+                if item in inventory_set:
+                    self.inventory.pop(i)
+                    break
+            return inventory_set[0]
     
     def get_by_category(self, category=''):
         categories_present_list = []
@@ -28,19 +32,11 @@ class Vendor:
 
     def swap_items(self, friend, my_item, their_item):
         if my_item in self.inventory and their_item in friend.inventory:
-            # Remove my_item from MY inventory. 
-            # Add removed item to THEIR inventory.
-            my_removed_item = self.remove(my_item)
-            friend_removed_item = friend.remove(their_item)
+            remove_my_item = self.remove(my_item) 
+            friend.add(remove_my_item) 
 
-            # their_item:
-            # Remove an item from THEIR inventory.
-            # Add removed item to MY inventory.
-            self.add(friend_removed_item)
-            friend.add(my_removed_item)
+            remove_friend_item = friend.remove(their_item)
+            self.add(remove_friend_item)
         else:
-            # return False if:
-            # my_item is not in self.inventory
-            # their_item is not in friend's inventory
             return False
         return True
