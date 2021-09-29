@@ -25,7 +25,6 @@ class Vendor:
             return item
 
     def get_by_category(self, category):
-        # return list of item with
         for item in self.inventory:
             if item.category == category:
                 self.category_list.append(item)
@@ -67,5 +66,45 @@ class Vendor:
 
         self.inventory.remove(self.inventory[0])
         friend_vendor.inventory.remove(friend_vendor.inventory[0])
-        
+
         return True
+
+    def get_best_by_category(self, category):
+        self.best_category = self.get_by_category(category)
+
+        items_condition_list = []
+        for item in self.best_category:
+            items_condition_list.append(item.condition)
+            if items_condition_list != False:
+                best_item = max(items_condition_list)
+        for item in self.best_category:
+            if item.condition == best_item:
+                return item
+        if self.get_by_category(category) == False:
+            return None
+
+    # def swap_best_by_category(self, other_vendor, my_priority,their_priority):
+    #     self.other = other_vendor
+    #     self.my_priority = my_priority
+    #     self.their_priority = their_priority
+    #     self.default_condition = 0
+    #     self.their_default_condition = 0
+
+    #     if self.their_priority not in self.inventory:
+    #         return False
+    #     if self.my_priority not in self.other:
+    #         return False
+    #     else:
+    #         for item in self.inventory:
+    #             if item.category == their_priority:
+    #                 if item.condition_description > self.default_condition:
+    #                     self.default_condition = item.condition_description
+    #         for item in self.other.inventory:
+    #             if item.category == my_priority:
+    #                 if item.condition_description > self.their_default_condition:
+    #                     self.their_default_condition = item.condition_description
+    #         self.inventory.remove(self.default_condition)
+    #         self.inventory.add(self.their_default_condition)
+    #         self.other.inventory.remove(self.their_default_condition)
+    #         self.other.inventory.add(self.default_condition)
+    #         return True
