@@ -25,3 +25,13 @@ class Vendor:
                 items_in_same_category.append(item)
 
         return items_in_same_category
+
+    def swap_items(self, friend_vendor, my_item, their_item):
+        if my_item not in self.inventory or their_item not in friend_vendor.inventory:
+            return False
+        else:
+            self.inventory.append(their_item)
+            friend_vendor.inventory.remove(their_item)
+            friend_vendor.inventory.append(my_item)
+            self.inventory.remove(my_item)
+            return True
