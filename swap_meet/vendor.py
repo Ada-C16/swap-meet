@@ -55,15 +55,15 @@ class Vendor:
             return False
         return self.swap_items(other, best_item, their_best_item)
 
-    def get_by_age(self, age):
-        items = []
-        for item in self.inventory:
-            if item.age == age:
-                items.append(item)
-        return items
+    # def get_by_age(self, age):
+    #     items = []
+    #     for item in self.inventory:
+    #         if item.age == age:
+    #             items.append(item)
+    #     return items
     
     def get_newest_item(self, age = ""):
-        items_by_age = self.get_by_age(age)
+        items_by_age = self.get_by_category(age)
         if len(items_by_age) == 0:
             return None
         return min(items_by_age, key=lambda item: item.age)
