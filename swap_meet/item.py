@@ -12,7 +12,7 @@ class Item:
         elif self.condition == 1:
             return "I wouldn't pick this up off the street"
         elif self.condition == 2:
-            return "Eh"
+            return "You sure?"
         elif self.condition == 3:
             return "stuck in the middle with you"
         elif self.condition == 4:
