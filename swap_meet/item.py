@@ -1,20 +1,13 @@
 class Item:
-    # Each Item will have an attribute named 'category'
-    # Category is an empty string by default
-    # After initialization, we can pass the keyword argument 'category'
-    pass
-    def __init__(self, category = "", condition = 0, age = None):
+    def __init__(self, category = "", condition = 0, age = 0):
         self.category = category
         self.condition = condition
         self.age = age
 
-    # stringify (convert to string) and instance of Item 
-    # using str(), it returns "Hello World!"
     def __str__(self):
         return "Hello World!"
 
     def condition_description(self):
-        # return string
         if self.condition >= 5:
             return "New Without Tags"
         elif self.condition >= 4:
