@@ -10,6 +10,8 @@ item4 = Item("Decor", 5)
 item5 = Item("Clothing", 4)
 item6 = Item("Electronics", 2)
 
+item1
+
 # print(item1.category)
 # print(item2.category)
 # print(item3.category)
