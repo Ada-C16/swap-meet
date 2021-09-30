@@ -26,17 +26,14 @@ class Vendor:
             return True
         else: 
             return False
-        
+
     def swap_first_item(self, Vendor):
         if len(self.inventory) > 0 and len(Vendor.inventory) > 0:
-            self.inventory.append(Vendor.inventory[0])
-            Vendor.inventory.append(self.inventory[0])
-            self.inventory.pop(0)
-            Vendor.inventory.pop(0)
+            self.swap_items(Vendor, self.inventory[0], Vendor.inventory[0])
             return True
         else: 
             return False
-    
+
     def get_best_by_category(self, category):
         category_list = [item for item in self.inventory if item.category == category]
         if len(category_list) > 0:
