@@ -42,8 +42,7 @@ class Vendor:
     def swap_items(self, friend_vendor, my_item, their_item):
         """
         Takes in three arguments: friend_vendor: Vendor, my_item: Item, and their_item: Item.
-        If my_item not in inventory or their_item not in friend_vendor inventory, return False. 
-        Else, remove item from original inventory and add it to the others' inventory.
+        Remove item from original inventory and add to the others' inventory. Else, return False
         """
 
         if their_item not in friend_vendor.inventory or \
@@ -52,10 +51,8 @@ class Vendor:
 
         friend_vendor.add(my_item)
         self.add(their_item)
-        friend_vendor.remove(their_item)
-        self.remove(my_item)
-
-        return True
+        
+        return friend_vendor.remove(their_item), self.remove(my_item)
 
     def swap_first_item(self, friend_vendor):
         """
@@ -66,14 +63,13 @@ class Vendor:
         """
         if self.inventory == [] or friend_vendor.inventory == []:
             return False
-
-        self.add(friend_vendor.inventory[0])
-        friend_vendor.add(self.inventory[0])
-
-        self.inventory.remove(self.inventory[0])
-        friend_vendor.inventory.remove(friend_vendor.inventory[0])
-
-        return True
+        else:
+            self.add(friend_vendor.inventory[0])
+            friend_vendor.add(self.inventory[0])
+            
+            self.inventory.remove(self.inventory[0])
+            friend_vendor.inventory.remove(friend_vendor.inventory[0])
+            return True
 
     def get_best_by_category(self, category):
         """
@@ -96,24 +92,13 @@ class Vendor:
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         """
-        Takes in three parameters: other for other vendor, my_priority for category self wants
-        and their_priority for category other wants.
-        Returns False if my_priority or their_priority is not present in the other's inventory.
-        Else, best my_priority and best their_priority item from original inventory and swaps
-        them into other vendor's inventory.
+        Like swap_items but by the best category
         """
-        self.other = other
-        self.my_priority = my_priority
-        self.their_priority = their_priority
-
-        # looks for their priority in self inventory
-        if self.get_best_by_category(self.their_priority) == None:
-            return False
-        # looks for my priority in other inventory
-        elif self.other.get_best_by_category(self.my_priority) == None:
+        if self.get_best_by_category(their_priority) == None or (
+                other.get_best_by_category(my_priority)) == None:
             return False
         else:
-            what_self_wants = self.other.get_best_by_category(self.my_priority)
-            what_they_want = self.get_best_by_category(self.their_priority)
-            self.swap_items(self.other, what_they_want, what_self_wants)
-            return True
+            what_self_wants = other.get_best_by_category(my_priority)
+            what_they_want = self.get_best_by_category(their_priority)
+
+        return self.swap_items(other, what_they_want, what_self_wants)
