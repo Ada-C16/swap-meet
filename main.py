@@ -24,10 +24,11 @@ alex = Vendor(
 
 result = khandice.swap_first_item(alex)
 
-# print(result)
+for item in khandice.inventory:
+    print(item)
 
 
-pants = Clothing(5)
-print(pants.condition)
-print(pants.category)
-print(pants.condition_description())
+# pants = Clothing(5)
+# print(pants.condition)
+# print(pants.category)
+# print(pants.condition_description())
