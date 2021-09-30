@@ -3,17 +3,17 @@ class Item:
         self.category = category
         self.condition = condition
 
-    def condition_description(self, condition):
+    def condition_description(self):
         if self.condition <= 1:
-            return "statement"
+            return "Poor"
         if 1 < self.condition <= 2: 
-            return "statement"
+            return "Fair"
         if 2 < self.condition <= 3:
-            return "statement"
+            return "Neutral"
         if 3 < self.condition <= 4:
-            return "statement"
+            return "Good"
         if 4 < self.condition <= 5:   
-            return "statement"
+            return "Like New"
             
     def __str__(self):
         return "Hello World!"
