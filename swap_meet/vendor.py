@@ -17,14 +17,12 @@ class Vendor:
         else:
             return False
 
-    # def get_by_category(self, string_category):
-    #     list_of_items = []
-    #     for i in range(len(self.inventory)):
-    #         if self.inventory[i] == string_category:
-
-    #             list_of_items.append(Item(self.inventory[i]))
-                
-    #     return list_of_items
+    def get_by_category(self, string_category):
+        list_of_items = []
+        for item in self.inventory:
+            if item == string_category:
+                list_of_items.append(Item(string_category))       
+        return list_of_items
 
     def swap_items(self, friends_inventory, my_item, their_item):
         if my_item in self.inventory and their_item in friends_inventory.inventory:
@@ -47,6 +45,10 @@ class Vendor:
             return True
         else:
             return False
+
+    # def get_best_by_category(self, category):
+    #     for item in self.inventory:
+    #         if 
         
 
       
