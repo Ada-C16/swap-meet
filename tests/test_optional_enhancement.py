@@ -15,7 +15,7 @@ def test_swap_by_newest():
     john = Vendor([item_a,item_c,item_e])
     mary = Vendor([item_b, item_d])
 
-    swap_result = john.swap_by_newest(other = mary, my_age_limit = 15, their_age_limit = 10)
+    swap_result = john.swap_by_newest_with_age_limit(other = mary, my_age_limit = 15, their_age_limit = 10)
 
     assert swap_result
     assert item_b in john.inventory
@@ -36,7 +36,7 @@ def test_swap_by_newest_with_one_empty_inventory_list():
     john = Vendor([item_a,item_c,item_e])
     mary = Vendor([])
 
-    swap_result = john.swap_by_newest(other = mary, my_age_limit = 15, their_age_limit = 10)
+    swap_result = john.swap_by_newest_with_age_limit(other = mary, my_age_limit = 15, their_age_limit = 10)
 
     assert not swap_result
     assert len(john.inventory) == 3
