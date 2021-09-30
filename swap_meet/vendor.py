@@ -25,83 +25,88 @@ class Vendor:
                 items.append(item)        
         return items
 
-#############################################################################
-#attempt to reuse code
-
-    # def swap_items(self, vendor, my_item, their_item, position=0):
-    #     if my_item in self.inventory and their_item in vendor.inventory:
-    #         if position:
-    #             self.inventory[position] = their_item
-    #             vendor.inventory[position] = my_item
-    #         else:    
-    #             self.inventory.remove(my_item)
-    #             vendor.inventory.append(my_item)
-    #             vendor.inventory.remove(their_item)
-    #             self.inventory.append(their_item)
-
-    #         return True
-    #     else:
-    #         return False
-    
-    # def swap_first_item(self, vendor_friend, position=0):
-    #     if len(self.inventory) == 0 or len(vendor_friend.inventory) == 0:
-    #         return False
-    #     else:
-    #         my_item = self.inventory[position]
-    #         their_item = vendor_friend.inventory[position]
-    #         result = self.swap_items(vendor_friend, my_item, their_item, position=0)
-
-
-
-
-
-######################################################################
     def swap_items(self, vendor, my_item, their_item):
-
-        #helper function for this condition?
         if my_item in self.inventory and their_item in vendor.inventory:
             self.inventory.remove(my_item)
             vendor.inventory.append(my_item)
             vendor.inventory.remove(their_item)
             self.inventory.append(their_item)
-
             return True
         else:
             return False
-    
-    #maybe there can be a helper function that does the swapping portion for us. 
-    #We can send it the items and have it swap them, you can optionally send it position too?
-    
+
     def swap_first_item(self, vendor_friend):
         if len(self.inventory) == 0 or len(vendor_friend.inventory) == 0:
             return False
-        else:
-            my_item = self.inventory[0]
-            their_item = vendor_friend.inventory[0]
-            self.inventory[0] = their_item
-            vendor_friend.inventory[0] = my_item
-            return True
+        my_item = self.inventory[0]
+        their_item = vendor_friend.inventory[0]
+        self.swap_items(vendor_friend, my_item, their_item)
+        return True
     
     def get_best_by_category(self, category):
         highest_rating = 0
         most_pristine_item = None
+        
         for item in self.inventory:
             if item.category == category and item.condition >= highest_rating:
                 highest_rating = item.condition
                 most_pristine_item = item
-
+        
         return most_pristine_item
-    
+
     def swap_best_by_category(self, other, my_priority, their_priority):
         my_item = self.get_best_by_category(their_priority)
         their_item = other.get_best_by_category(my_priority)
         
         if my_item == None or their_item == None:
             return False
-        else:
-            self.inventory.remove(my_item)
-            self.inventory.append(their_item)
-            other.inventory.remove(their_item)
-            other.inventory.append(my_item)
+        
+        self.swap_items(other, my_item, their_item)
+        return True
+        
+####################################################################################
+    # def swap_items(self, vendor, my_item, their_item):
+    #     if my_item in self.inventory and their_item in vendor.inventory:
+    #         self.inventory.remove(my_item)
+    #         vendor.inventory.append(my_item)
+    #         vendor.inventory.remove(their_item)
+    #         self.inventory.append(their_item)
 
-            return True
+    #         return True
+    #     else:
+    #         return False
+    
+    # def swap_first_item(self, vendor_friend):
+    #     if len(self.inventory) == 0 or len(vendor_friend.inventory) == 0:
+    #         return False
+    #     else:
+    #         my_item = self.inventory[0]
+    #         their_item = vendor_friend.inventory[0]
+    #         self.inventory[0] = their_item
+    #         vendor_friend.inventory[0] = my_item
+    #         return True
+    
+    # def get_best_by_category(self, category):
+    #     highest_rating = 0
+    #     most_pristine_item = None
+    #     for item in self.inventory:
+    #         if item.category == category and item.condition >= highest_rating:
+    #             highest_rating = item.condition
+    #             most_pristine_item = item
+
+    #     return most_pristine_item
+    
+    # def swap_best_by_category(self, other, my_priority, their_priority):
+    #     my_item = self.get_best_by_category(their_priority)
+    #     their_item = other.get_best_by_category(my_priority)
+        
+    #     if my_item == None or their_item == None:
+    #         return False
+    #     else:
+    #         self.inventory.remove(my_item)
+    #         self.inventory.append(their_item)
+    #         other.inventory.remove(their_item)
+    #         other.inventory.append(my_item)
+
+    #         return True
+####################################################################################
