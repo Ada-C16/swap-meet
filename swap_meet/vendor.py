@@ -93,8 +93,8 @@ class Vendor:
         """
         Like swap_items but by the best category
         """
-        if self.get_best_by_category(their_priority) == None or (
-                other.get_best_by_category(my_priority)) == None:
+        if not self.get_best_by_category(their_priority) and (
+                other.get_best_by_category(my_priority)):
             return False
         else:
             what_self_wants = other.get_best_by_category(my_priority)
