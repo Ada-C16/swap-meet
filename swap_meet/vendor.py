@@ -67,7 +67,7 @@ class Vendor:
     def get_newest_item(self):
             inventory = self.inventory
             if inventory:
-                descending_age_inventory = sorted(inventory, key=lambda item: item.age, reverse=True)
+                descending_age_inventory = sorted(inventory, key=lambda item: item.age)
                 return descending_age_inventory[0]
             else:
                 return False
