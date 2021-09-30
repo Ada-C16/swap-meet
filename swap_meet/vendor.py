@@ -33,14 +33,11 @@ class Vendor:
         """
         if my_item not in self.inventory or their_item not in trading_vendor.inventory:
             return False
-        for item in self.inventory:
-            if my_item in self.inventory:
-                trading_vendor.inventory.append(my_item)
-                self.inventory.remove(my_item)
-        for item in trading_vendor.inventory:
-            if their_item in trading_vendor.inventory:
-                self.inventory.append(their_item)
-                trading_vendor.inventory.remove(their_item)
+        
+        self.remove(my_item)
+        trading_vendor.add(my_item)
+        self.add(their_item)
+        trading_vendor.remove(their_item)
         return True
 
     def swap_first_item(self, trading_vendor):
