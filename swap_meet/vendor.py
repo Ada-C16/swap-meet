@@ -16,12 +16,20 @@ class Vendor:
     self.inventory.remove(item)
     return item
 
+  def insert_item(self, vendor_2, item):
+    return vendor_2.inventory.insert(0, self.inventory.pop(self.inventory.index(item)))
+
   def swap_items(self, vendor_2, my_item, their_item):
     if not (my_item in self.inventory and their_item in vendor_2.inventory):
       return False
 
-    vendor_2.inventory.insert(0, self.inventory.pop(self.inventory.index(my_item)))
-    self.inventory.insert(0, vendor_2.inventory.pop(vendor_2.inventory.index(their_item)))
+
+    self.insert_item(vendor_2, my_item)
+
+    vendor_2.insert_item(self, their_item)
+
+    #vendor_2.inventory.insert(0, self.inventory.pop(self.inventory.index(my_item)))
+    #self.inventory.insert(0, vendor_2.inventory.pop(vendor_2.inventory.index(their_item)))
     return True
   
   def swap_first_item(self, vendor_2):
