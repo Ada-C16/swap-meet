@@ -51,7 +51,7 @@ class Vendor:
 
         friend_vendor.add(my_item)
         self.add(their_item)
-        
+
         return friend_vendor.remove(their_item), self.remove(my_item)
 
     def swap_first_item(self, friend_vendor):
@@ -61,15 +61,14 @@ class Vendor:
         Else, remove first items from original inventories and add them the other inventory. 
         Return True
         """
+
         if self.inventory == [] or friend_vendor.inventory == []:
             return False
         else:
-            self.add(friend_vendor.inventory[0])
-            friend_vendor.add(self.inventory[0])
-            
-            self.inventory.remove(self.inventory[0])
-            friend_vendor.inventory.remove(friend_vendor.inventory[0])
-            return True
+            my_item = self.inventory[0]
+            their_item = friend_vendor.inventory[0]
+
+        return self.swap_items(friend_vendor, my_item, their_item)
 
     def get_best_by_category(self, category):
         """
