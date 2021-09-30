@@ -19,9 +19,9 @@ class Vendor:
 
     def get_by_category(self, string_category):
         list_of_items = []
-        for item in self.inventory:
-            if item == string_category:
-                list_of_items.append(Item(string_category))       
+        for i in range(len(self.inventory)):
+          if string_category == self.inventory[i].category:
+                list_of_items.append(self.inventory[i])       
         return list_of_items
 
     def swap_items(self, friends_inventory, my_item, their_item):
@@ -46,9 +46,17 @@ class Vendor:
         else:
             return False
 
-    # def get_best_by_category(self, category):
-    #     for item in self.inventory:
-    #         if 
+    def get_best_by_category(self, category):
+        for i in range(len(self.inventory)):
+            if category == self.inventory[i].category:
+                return self.inventory[i].category
+            # print(self.inventory[i].condition)
+            
+            return None
+            
+
+    
+     
         
 
       
