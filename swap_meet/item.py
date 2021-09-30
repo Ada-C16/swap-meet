@@ -1,6 +1,7 @@
 class Item:
-    def __init__(self, category="", condition=0):
+    def __init__(self, category="", condition=0, age=0):
         self.category = category
+        self.age = age
         if condition != 0:
             self.condition = condition
 

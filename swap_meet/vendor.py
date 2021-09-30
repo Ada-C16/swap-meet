@@ -84,3 +84,11 @@ class Vendor():
 
         #returns True/False if items are swapped
         return self.swap_items(other, my_item, their_item)
+
+    def swap_by_newest(self, other):
+        
+        my_new_item = min(self.inventory, key=lambda item: item.age)
+        their_new_item = min(other.inventory, key=lambda item: item.age)
+
+        #returns True/False if items are swapped
+        return self.swap_items(other, my_new_item, their_new_item)
