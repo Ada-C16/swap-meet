@@ -64,3 +64,9 @@ class Vendor:
             self.swap_items(other, my_highest, their_highest)
             other.swap_items(other, my_highest, their_highest)
             return True
+    
+
+    def swap_by_newest(self):
+        pass
+        #similar to swap_best_by_category but minus finding best category
+        #create function to find the newest, is age number of years? months? 
