@@ -36,21 +36,14 @@ class Vendor:
             return True
         else:
             return False
-    
+        
     def get_best_by_category(self, category):
         '''
-        Finds "best" item from items by category based on highest value for \
-        condition. If more than one item has the highest value for condition, \
-        the one supplied first will be returned.
+        Finds "best" item from items by category based on highest condition rating.
         '''
-        best_item = None
-        best_condition = -1
-        for item in self.get_by_category(category):
-            if item.condition > best_condition:
-                best_item = item
-                best_condition = item.condition
-        return best_item
-    
+        return max(self.get_by_category(category), key=lambda item: item.condition, \
+            default=None)
+
     def swap_best_by_category(self, other, my_priority, their_priority):
         if self.get_by_category(their_priority) and other.get_by_category(my_priority):
             self.swap_items(other, self.get_best_by_category(their_priority), \
