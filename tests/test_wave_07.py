@@ -18,8 +18,11 @@ def test_swap_by_newest():
     )
 
     result = fatimah.swap_by_newest(jolie)
+    their_newest_item = jolie.get_newest_item()
+    my_newest_item = fatimah.get_newest_item()
 
     assert len(fatimah.inventory) == 3
+    assert my_newest_item == item_b
     assert item_b not in fatimah.inventory
     assert item_a in fatimah.inventory
     assert item_c in fatimah.inventory
