@@ -48,19 +48,14 @@ class Vendor:
     def swap_first_item(self, trading_vendor):
         """ 
         Takes in 1 argument: another vendor instance. Trades the first item in the calling instance's inventory
-        with the first item in the other vendor's first item. Return True.
+        with the first item in the other vendor's first item. Returns True.
         """
         if not self.inventory or not trading_vendor.inventory:
             return False
+        
         my_first = self.inventory[0]
         their_first = trading_vendor.inventory[0]
-        # Swap my first item
-        trading_vendor.inventory.append(my_first)
-        self.inventory.remove(my_first)
-        # Swap their first item
-        self.inventory.append(their_first)
-        trading_vendor.inventory.remove(their_first)
-
+        self.swap_items(trading_vendor, my_first, their_first)
         return True
 
     def get_best_by_category(self, category):
@@ -72,7 +67,7 @@ class Vendor:
         for item in self.inventory:
             if item.category == category:
                 items_in_category.append(item)
-        # Returns None if no category matches
+        # Returns None if no item matches given category
         if not items_in_category:
             return None
         # Iterates through list of category items to find one in best condition
