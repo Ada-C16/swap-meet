@@ -38,15 +38,16 @@ class Vendor:
             self.add(Vendor_first_item)
             return True
     def get_best_by_category(self, category):
-        cat=self.get_by_category(category)
+        list_of_items_with_cat=self.get_by_category(category)
         cond_list=[]
-        if not cat:
+        if not list_of_items_with_cat:
             return None
         else:
-            for item in cat:
+            for item in list_of_items_with_cat:
                 cond_list.append(item.condition)
-            if item.condition==max(cond_list):
-                return item
+            for item in list_of_items_with_cat:
+                if item.condition==max(cond_list):
+                    return item
                 
     def swap_best_by_category(self,other,my_priority,their_priority):
         best_their_inventory=other.get_best_by_category(my_priority)
@@ -58,5 +59,5 @@ class Vendor:
             return self.swap_items(other, best_my_inventory, best_their_inventory)
 
 
-
+from swap_meet.item import Item
 
