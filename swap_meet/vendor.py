@@ -34,12 +34,15 @@ class Vendor:
         if len(self.inventory) == 0 or len(vendor.inventory) == 0:
             return False
         else:
-            friend_items = vendor.inventory
-            friend_item = friend_items[1]
-            my_items = self.inventory
-            my_item = my_items[1]
+            friends_items = copy(vendor.inventory)
+            friend_item = friends_items[0]
+            my_items = copy(self.inventory)
+            my_item = my_items[0]
+            # add items to other person's inventory
             self.inventory.append(friend_item)
             vendor.inventory.append(my_item)
-            vendor.inventory.pop([1])
-            self.inventory.pop([1])
+            # remove items
+            vendor.inventory.pop([0])
+            self.inventory.pop([0])
+            # returns true
             return True
