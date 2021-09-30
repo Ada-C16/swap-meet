@@ -38,11 +38,7 @@ class Vendor:
             return False
         my_first_item = self.inventory[0]
         their_first_item = friend.inventory[0]
-        friend.inventory.append(my_first_item)
-        self.inventory.remove(my_first_item)
-        self.inventory.append(their_first_item)
-        friend.inventory.remove(their_first_item)
-        
+        self.swap_items(friend, my_first_item, their_first_item)
         return True
 
     def get_best_by_category(self, category):
