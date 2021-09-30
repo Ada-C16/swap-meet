@@ -6,6 +6,7 @@ class Item:
         self.category = category if category is not None else ""
         self.condition = condition if condition is not None else 0
         self.age = age if age is not None else 0
+        # age is from range 0-5 because we a bougie swap meet and don't allow things older than 5 years
     def __str__(cls):
         return "Hello World!"
         
