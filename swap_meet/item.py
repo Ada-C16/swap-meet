@@ -3,8 +3,8 @@ class Item:
         self.category = category
         self.condition = condition
     
-    def __str__(self):
-        return "Hello World!"
+    def __str__(self, statement="Hello World!"):
+        return statement
     
     def condition_description(self):
         if self.condition == 0 or self.condition <= 2.9:
