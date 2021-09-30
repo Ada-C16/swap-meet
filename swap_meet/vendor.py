@@ -40,5 +40,27 @@ class Vendor:
             friend.inventory.pop(0)
             return True
 
-
-
+    def get_best_by_category(self, category):
+        items_in_category = self.get_by_category(category)
+        item_highest_condition=""
+        condition_value=0
+        if not items_in_category:
+            return None
+        for item in items_in_category:
+            if item.condition > condition_value:
+                item_highest_condition=item
+                condition_value=item.condition
+        return item_highest_condition
+    
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        my_items_their_priority = self.get_by_category(their_priority)
+        their_items_my_priority = other.get_by_category(my_priority)
+        if not my_items_their_priority or not their_items_my_priority:
+            return False
+        else:
+            my_highest = self.get_best_by_category(their_priority)
+            their_highest = other.get_best_by_category(my_priority)
+            
+            self.swap_items(other, my_highest, their_highest)
+            other.swap_items(other, my_highest, their_highest)
+            return True
