@@ -1,5 +1,3 @@
-from swap_meet.item import Item
-
 class Vendor:
     def __init__(self, inventory=[], item=None):
         self.inventory = inventory
