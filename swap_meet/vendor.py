@@ -23,19 +23,28 @@ class Vendor:
         return items_in_category
 
     def swap_items(self, vendor, my_item, their_item):
-        try:
-            self.inventory.remove(my_item)
-            vendor.inventory.append(my_item)
-        except ValueError:
+        # try:
+        #     self.inventory.remove(my_item)
+        #     vendor.inventory.append(my_item)
+        # except ValueError:
+        #     return False
+        # try:
+        #     vendor.inventory.remove(their_item)
+        #     self.inventory.append(their_item)
+        # except ValueError:
+        #     self.inventory.append(my_item)
+        #     vendor.inventory.remove(my_item)
+        #     return False
+        # return True
+
+        if my_item in self.inventory and their_item in vendor.inventory:
+            self.add(their_item)
+            self.remove(my_item)
+            vendor.add(my_item)
+            vendor.remove(their_item)
+            return True
+        else:
             return False
-        try:
-            vendor.inventory.remove(their_item)
-            self.inventory.append(their_item)
-        except ValueError:
-            self.inventory.append(my_item)
-            vendor.inventory.remove(my_item)
-            return False
-        return True
 
     def swap_first_item(self, vendor):
         if self.inventory and vendor.inventory:
@@ -73,7 +82,7 @@ class Vendor:
         else:
             return None
 
-    def swap_by_newest(self, other, my_newest, their_newest):
+    def swap_by_newest(self, other):
         """
         
         """
