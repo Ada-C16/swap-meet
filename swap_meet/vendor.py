@@ -28,9 +28,7 @@ class Vendor:
         """
         Takes in 3 arguments: another vendor instance, and item in the calling vendor's inventory, and an item from the
         the other vendor's inventory.
-
         If the items are in their expected inventories, the two given items are traded, and we return True. 
-
         Else, if either of the items aren't in their expected inventories, we return False.
         """
         if my_item not in self.inventory or their_item not in trading_vendor.inventory:
@@ -59,9 +57,7 @@ class Vendor:
         return True
 
     def get_best_by_category(self, category):
-        """
-        Returns the item of the best condition in a given category
-        """
+        """ Returns the item of the best condition in a given category """
         items_in_category = self.get_by_category(category)
         if not items_in_category:
             return None
@@ -87,9 +83,5 @@ class Vendor:
         if their_best is None or my_best is None:
             return False
 
-        # swap em!
-        self.inventory.append(their_best)
-        other.inventory.remove(their_best)
-        other.inventory.append(my_best)
-        self.inventory.remove(my_best)
+        self.swap_items(other, my_best, their_best)
         return True
