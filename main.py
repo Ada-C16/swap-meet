@@ -21,4 +21,4 @@ jesse = Vendor(
 result = tai.swap_by_newest(jesse,
                             my_newest_item= tai.get_new_item(),
                             friend_newest_item = jesse.get_new_item() ) 
-print(item_b in jesse.inventory)
+print(item_a in jesse.inventory)
