@@ -2,10 +2,10 @@
 
 class Item:
     pass
-    def __init__(self, category = '', condition = 0):
-        self.category = category
-        self.condition = condition
-    
+    def __init__(self, category = None, condition = None, age = None):
+        self.category = category if category is not None else ""
+        self.condition = condition if condition is not None else 0
+        self.age = age if age is not None else 0
     def __str__(cls):
         return "Hello World!"
         
