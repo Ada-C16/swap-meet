@@ -8,20 +8,24 @@ Item_1 = Item(category = "cosmetics")
 Item_2 = Item(category = "clothing")
 Item_3 = Item(category = "houseware")
 Item_4 = Item(category = "houseware")
-# vendor3 = Vendor()
-# vendor3.inventory = [Item_1, Item_2, Item_3]
 
-# # vendor3.inventory.extend([Item_1,Item_2,Item_3])
-# print(len(vendor3.inventory))
-# v =Clothing ()
-# print(v.category)
+cloth1 = Clothing(category = "ven", condition = 4)
+print(cloth1.category)
+print(cloth1.condition)
+vendor3 = Vendor()
+vendor3.inventory = [Item_1, Item_2, Item_3]
 
-# vendor1 = Vendor(inventory = [Item_1, Item_2, Item_3])
-# print(len(vendor1.inventory))
-# for each in vendor1.get_by_category("houseware"):
-#     print(each.category)
+# vendor3.inventory.extend([Item_1,Item_2,Item_3])
+print(len(vendor3.inventory))
+cloth1 =Clothing ()
+print(cloth1.category)
 
-# vendor1.add(Item_4)
+vendor1 = Vendor(inventory = [Item_1, Item_2, Item_3])
+print(len(vendor1.inventory))
+for each in vendor1.get_by_category("houseware"):
+    print(each.category)
+
+vendor1.add(Item_4)
 
 vendor4 = Vendor(inventory = [Item_1, Item_2, Item_3])
 
