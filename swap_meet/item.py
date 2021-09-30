@@ -9,6 +9,7 @@ class Item:
 
     def condition_description(self):
         CONDITION_STATEMENTS = {
+            -1: 'Invalid rating. Error from the calculator',
             0: 'Probably it has no rating yet',
             1: 'We blame bad service',
             2: 'Barely acceptable',
@@ -18,7 +19,9 @@ class Item:
             6: 'Rating value out of bound'
         }
         condition_statement = CONDITION_STATEMENTS[6]
-        if self.condition <= 0.5:
+        if self.condition < 0.0:
+            condition_statement = CONDITION_STATEMENTS[-1]
+        elif self.condition <= 0.5:
             condition_statement = CONDITION_STATEMENTS[0]
         elif self.condition <= 1.5:
             condition_statement = CONDITION_STATEMENTS[1]
