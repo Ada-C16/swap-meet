@@ -50,11 +50,10 @@ class Vendor():
 
     #returns True/False if inventories are not empty
     def swap_first_item(self, other_vendor):
-        if self.inventory or other_vendor.inventory:
+        if not self.inventory or not other_vendor.inventory:
             return False
 
-        self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
-        return True
+        return self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
 
     #returns item with the best condition in given category
     def get_best_by_category(self, category):
@@ -64,8 +63,8 @@ class Vendor():
         if self.inventory==[]:
             return None
 
-        #iterate through self.inventory
-            #checks for self.condition and matching category
+        #iterate through self.inventory list and checks if items' category
+        #is the same as given category
         for item in self.inventory:
             if item.category == category:
                 category_list.append(item)
@@ -77,4 +76,11 @@ class Vendor():
         return max(category_list, key=lambda item : item.condition)
 
 
-    
+    #swaps priority item with other vendor
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        #get the best item in inventory with the same category
+        my_item = self.get_best_by_category(their_priority)
+        their_item = other.get_best_by_category(my_priority)
+
+        #returns True/False if items are swapped
+        return self.swap_items(other, my_item, their_item)
