@@ -47,31 +47,11 @@ class Vendor:
 
 # Wave 6
     def get_best_by_category(self, category = ""):
-
-        # categories = self.get_by_category(category)
         if len(self.get_by_category(category)) == False:
             return None
-        
-        best_by_category = max(self.get_by_category(category), key = lambda item : item.condition)
-
-        
-
-        return best_by_category
-
-        # max_condition = 0
-
-        # items_by_category = self.get_by_category(category)
-
-        # for item in self.inventory:
-        # for item in items_by_category:
-        #     if item.condition >= max_condition:
-        #         max_condition = item.condition
-        #         return max_condition
-        #         # else:
-        #         #     max_condition = max_condition
-        #         #     return max_condition
-            # else:
-            #     return None
+        else:
+            best_by_category = max(self.get_by_category(category), key = lambda item : item.condition)
+            return best_by_category
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         if len(self.inventory) == False or len(other.inventory) == False:
