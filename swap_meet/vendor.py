@@ -92,14 +92,9 @@ class Vendor:
         if not self.inventory or not other.inventory:
             return False
 
-        # Look for item in best condition in their priority category from my inventory
         my_best = self.get_best_by_category(their_priority)
-        if my_best is None:
-            return False
-
-        # Look for item in their inventory with my priority category
         their_best = other.get_best_by_category(my_priority)
-        if their_best is None:
+        if their_best is None or my_best is None:
             return False
 
         # swap em!
