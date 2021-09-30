@@ -1,6 +1,6 @@
 class Decor:
     def __init__(self,category='',condition=0):
-        self.category="Decor"
+        self.category = "Decor"
         self.condition = condition
     def __str__(self):
         return f"Something to decorate your space."
