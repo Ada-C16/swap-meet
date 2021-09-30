@@ -4,15 +4,15 @@ from swap_meet.item import Item
 
 
 def test_swap_by_newest():
-    item_a = Item(age=0)
-    item_b = Item(age=3)
+    item_a = Item(age=3)
+    item_b = Item(age=0)
     item_c = Item(age=2)
     fatimah = Vendor(
         inventory=[item_a, item_b, item_c]
     )
 
-    item_d = Item(age=5)
-    item_e = Item(age=4)
+    item_d = Item(age=4)
+    item_e = Item(age=5)
     jolie = Vendor(
         inventory=[item_d, item_e]
     )
@@ -29,3 +29,40 @@ def test_swap_by_newest():
     assert item_e in jolie.inventory
     assert item_b in jolie.inventory
     assert result
+
+
+def test_swap_newest_from_my_empty_returns_false():
+    fatimah = Vendor(
+        inventory=[]
+    )
+
+    item_d = Item(age=4)
+    item_e = Item(age=5)
+    jolie = Vendor(
+        inventory=[item_d, item_e]
+    )
+
+    result = fatimah.swap_by_newest(jolie)
+
+    assert len(fatimah.inventory) == 0
+    assert len(jolie.inventory) == 2
+    assert not result
+
+
+def test_swap_newest_from_their_empty_returns_false():
+    item_a = Item(age=3)
+    item_b = Item(age=0)
+    item_c = Item(age=2)
+    fatimah = Vendor(
+        inventory=[item_a, item_b, item_c]
+    )
+
+    jolie = Vendor(
+        inventory=[]
+    )
+
+    result = fatimah.swap_by_newest(jolie)
+
+    assert len(fatimah.inventory) == 3
+    assert len(jolie.inventory) == 0
+    assert not result
