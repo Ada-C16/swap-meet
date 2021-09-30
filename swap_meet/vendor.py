@@ -23,9 +23,7 @@ class Vendor:
                 items.append(item)
 
         return items
-    
-    def __str__(self):
-        return self.inventory
+
 
     def swap_items(self, their_vendor, my_item, their_item):
         if my_item in self.inventory and their_item in their_vendor.inventory:
@@ -57,3 +55,13 @@ class Vendor:
             return best_condition
         else:
             return None
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        my_best = self.get_best_by_category(their_priority)
+        their_best = other.get_best_by_category(my_priority)
+
+        if not my_best or not their_best:
+            return False
+        else:
+            self.swap_items(other, my_best, their_best)
+            return True
