@@ -2,7 +2,6 @@ class Vendor:
     def __init__(self, inventory = None):
         self.inventory = inventory if inventory is not None else []
 
-
     def add(self, item):
         self.inventory.append(item)
         return item
@@ -23,7 +22,6 @@ class Vendor:
             if type == item.category:
                 item_list.append(item)
         return item_list
-
 
     def swap_items(self, vendor, my_item, their_item):
 
@@ -67,7 +65,6 @@ class Vendor:
 
     def swap_best_by_category(self, other, my_priority, their_priority):
 
-        
         vendor_best_item = self.get_best_by_category(their_priority)
         other_best_item = other.get_best_by_category(my_priority)
 
