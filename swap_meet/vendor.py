@@ -47,12 +47,18 @@ class Vendor:
             return False
 
     def get_best_by_category(self, category):
-        for i in range(len(self.inventory)):
-            if category == self.inventory[i].category:
-                return self.inventory[i].category
-            # print(self.inventory[i].condition)
-            
+        if not self.get_by_category(category):
             return None
+
+        best_condition = 0
+        item_with_best_condition = 0
+
+        for item in self.get_by_category(category):
+            if item.condition > best_condition:
+                best_condition = item.condition
+                item_with_best_condition = item
+
+        return item_with_best_condition
             
 
     
