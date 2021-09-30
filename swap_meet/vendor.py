@@ -53,7 +53,7 @@ class Vendor:
             return False
 
     def get_newest(self):
-        return max(self.inventory, key=lambda item: item.age, default=None)
+        return min(self.inventory, key=lambda item: item.age, default=None)
     
     def swap_by_newest(self, friend):
         if self.inventory and friend.inventory:
