@@ -51,3 +51,22 @@ class Vendor:
             return True
         else:
             return False
+
+    def get_best_by_category(self, category):
+        items_matching_category = self.get_by_category(category)
+        highest_rated_condition = 0
+        highest_rated_item = None
+
+        if len(items_matching_category) == 0:
+            return None
+        else:
+            for i in range(len(items_matching_category)):
+                if highest_rated_condition < items_matching_category[i].condition:
+                    highest_rated_condition = items_matching_category[i].condition
+                    highest_rated_item = items_matching_category[i]
+        return highest_rated_item
+
+
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        pass
