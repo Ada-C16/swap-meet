@@ -1,3 +1,5 @@
+from swap_meet.item import Item
+
 class Decor:
     def __init__(self, category="Decor", condition=0.0):
         self.category = category

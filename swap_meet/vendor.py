@@ -40,5 +40,19 @@ class Vendor:
             vendor.inventory.append(testing_2)
             vendor.inventory.pop(0)
             self.inventory.pop(0)
-            
             return True
+
+    def get_best_by_category(self, category):
+        best_quality = 0
+        try:
+            for item in self.inventory:
+                if item.category == category:
+                    if item.condition > best_quality:
+                        best_quality = item.condition
+                        best_item = item
+            else:
+                return best_item 
+        except UnboundLocalError as err:
+            return None
+
+                
