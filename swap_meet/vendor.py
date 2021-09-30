@@ -57,7 +57,7 @@ class Vendor:
     
     def swap_by_newest(self, friend):
         if self.inventory and friend.inventory:
-            self.swap_items(friend, self.get_newest, friend.get_newest)
+            self.swap_items(friend, self.get_newest(), friend.get_newest())
             return True
         else:
             return False
