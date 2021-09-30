@@ -59,5 +59,5 @@ class Vendor:
             return self.swap_items(other, best_my_inventory, best_their_inventory)
 
 
-from swap_meet.item import Item
+
 
