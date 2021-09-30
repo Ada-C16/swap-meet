@@ -3,16 +3,15 @@ from swap_meet.item import Item
 
 class Vendor:
     """
-    This class has one attribute, inventory, which is an empty list by default. 
-    Inventory can optionally taken in an 'inventory' argument.
-    This class has multiple methods to track and change the state of items in
-    a vendor's inventory at a swap meet.
+    Has one attribute, parameter, which is an empty list by default. 
+    Has multiple methods to track and change items in a vendor's inventory
     """
 
     def __init__(self, inventory=None):
 
         self.inventory = inventory if inventory is not None else []
         self.category_list = []
+        self.age_list = []
 
     def add(self, item):
         """
@@ -44,11 +43,9 @@ class Vendor:
         Takes in three arguments: friend_vendor: Vendor, my_item: Item, and their_item: Item.
         Remove item from original inventory and add to the others' inventory. Else, return False
         """
-
-        if their_item not in friend_vendor.inventory or \
-                my_item not in self.inventory:
+        if not (their_item in friend_vendor.inventory and
+                my_item in self.inventory):
             return False
-
         friend_vendor.add(my_item)
         self.add(their_item)
 
@@ -61,7 +58,6 @@ class Vendor:
         Else, remove first items from original inventories and add them the other inventory. 
         Return True
         """
-
         if self.inventory == [] or friend_vendor.inventory == []:
             return False
         else:
@@ -72,26 +68,20 @@ class Vendor:
 
     def get_best_by_category(self, category):
         """
-        Takes in one parameter, category. Returns all items with the highest condition value.
-        Returns None if no item matching category in inventory
+        Like get_by_category but searches for best/max condition
         """
         self.best_category = self.get_by_category(category)
-
-        items_condition_list = []
+        items_condition_list = [item.condition for item in self.best_category]
         for item in self.best_category:
             if item:
-                items_condition_list.append(item.condition)
-                if items_condition_list != False:
-                    best_item = max(items_condition_list)
+                if item.condition == max(items_condition_list):
+                    return item
             else:
                 return None
-        for item in self.best_category:
-            if item.condition == best_item:
-                return item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         """
-        Like swap_items but by the best category
+        Swaps items by the best category
         """
         if not self.get_best_by_category(their_priority) and (
                 other.get_best_by_category(my_priority)):
@@ -101,3 +91,30 @@ class Vendor:
             what_they_want = self.get_best_by_category(their_priority)
 
         return self.swap_items(other, what_they_want, what_self_wants)
+
+    def get_by_age(self, age):
+        """
+        Returns a specific item by the desired age passed in as argument
+        """
+        for item in self.inventory:
+            if item.age == age:
+                self.age_list.append(item)
+                return item
+
+    def get_by_newest(self):
+        """
+        Returns item of the lowest, valid range
+        """
+        ages = [item.age for item in self.inventory]
+        for item in self.inventory:
+            if item.age == min(ages):
+                return item
+
+    def swap_by_newest(self, other):
+        """
+        Vendor and other vendor will swap their newest items with each other.
+        """
+        their_newest = other.get_by_newest()
+        my_newest = self.get_by_newest()
+
+        return self.swap_items(other, my_newest, their_newest)
