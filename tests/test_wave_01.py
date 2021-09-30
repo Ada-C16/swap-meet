@@ -1,7 +1,6 @@
 # The following line imports the Vendor class from the module vendor inside the swap_meet package.
 from swap_meet.vendor import Vendor
 
-
 def test_vendor_has_inventory():
     vendor = Vendor()
     assert len(vendor.inventory) == 0

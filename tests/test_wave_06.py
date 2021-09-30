@@ -28,7 +28,7 @@ def test_best_by_category_no_matches_is_none():
     tai = Vendor(
         inventory=[item_a, item_b, item_c]
     )
-
+    
     best_item = tai.get_best_by_category("Electronics")
 
     assert best_item is None
