@@ -8,7 +8,6 @@ class Vendor:
         self.inventory.append(item)
         return item
         
-    
     def remove(self, item):
         if item in self.inventory:
             self.inventory.remove(item)
@@ -31,17 +30,14 @@ class Vendor:
         return True
         
     def swap_first_item(self,friend):
-        if self.inventory == [] or friend.inventory ==[]:
-            return False 
+        if self.inventory == [] or friend.inventory == []:
+            return False
         first_item_self = self.inventory[0]
         first_item_friend = friend.inventory[0]
-        self.remove(first_item_self)
-        self.add(first_item_friend)
-        friend.remove(first_item_friend)
-        friend.add(first_item_self)
+        self.swap_items(friend,first_item_self,first_item_friend)
         return True
+    
     def get_best_by_category(self, category_name):
-        
         best_condition = 0
         best_item = None
         for item in self.get_by_category(category_name):
@@ -50,6 +46,7 @@ class Vendor:
                 best_condition = item.condition
                 best_item = item
         return best_item
+    
     def swap_best_by_category(self,other,my_priority,their_priority):
             
         my_priority = other.get_best_by_category(my_priority) 
@@ -59,5 +56,20 @@ class Vendor:
             return False
         return True
         
-        
-            
+    def get_new_item(self):
+        newest_item = None
+        first_item = self.inventory[0]
+        min_age = first_item.age
+        for item in self.inventory:
+            if item.age < min_age:
+                min_age = item.age
+                newest_item = item
+        return newest_item 
+    
+    def swap_by_newest(self, friend, my_newest_item, friend_newest_item):
+        my_newest_item = self.get_new_item()
+        friend_newest_item = friend.get_new_item()
+        self.swap_items(friend, my_newest_item,friend_newest_item)
+        if my_newest_item == None or friend_newest_item == None:
+            return False
+        return True
