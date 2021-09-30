@@ -47,7 +47,31 @@ class Vendor:
             other_vendor.inventory.insert(0, selfs_item)
             return True
 
+    def get_best_by_category(self, category = ""):
+        best_condition = -1
+        best_item = None
+        for item in self.inventory:
+            if ((item.category == category) and
+            (item.condition > best_condition)):
+                best_item = item
+                best_condition = item.condition
+        return best_item
     
+    def swap_best_by_category(self, them, my_category = "", their_category = ""):
+        self_best = self.get_best_by_category(my_category)
+        them_best = them.get_best_by_category(their_category)
+
+        if (self_best == None) or (them_best == None):
+            return False
+        else:
+            self.swap_items(them, self_best, them_best)
+
+            return True
+
+
+
+
+
 
     
         
