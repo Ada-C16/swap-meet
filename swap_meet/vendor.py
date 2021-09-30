@@ -29,9 +29,9 @@ class Vendor:
             return False
             
         else:
-            other_vendor.inventory.append(my_item)
-            self.inventory.remove(my_item)
-            self.inventory.append(their_item)
+            other_vendor.add(my_item)
+            self.remove(my_item)
+            self.add(their_item)
             other_vendor.remove(their_item)
             return True
     
