@@ -63,27 +63,20 @@ class Vendor(Item):
         if len(self.get_by_category(their_priority)) and len(other.get_by_category(my_priority)) > 0:
             self.swap_items(other, best_item_their_priority, best_item_my_priority)
             return True
-            
-    def swap_by_newest(self, other):
-        newest = 1
+    
+    def get_by_newest (self):
+        newest = 5
         newest_item = ''
         for item in self.inventory:
-            if item.age < newest:
+            if item.age <= newest:
                 newest = item.age
                 newest_item = item
-            if len(self.inventory) or len(other.inventory) == 0:
-                newest_item = None
         return newest_item
 
-        their_newest_item = ''
-        their_newest_age = 1
-        for object in other.inventory:
-            if object.age < their_newest_age:
-                their_newest_age = object.age
-                their_newest_item = object
-        return their_newest_item
-
-        self.swap_items(other, newest_item, their_newest_item)
+    def swap_by_newest(self, other):
+        my_newest_item = self.get_by_newest()
+        their_newest_item = other.get_by_newest()
+        self.swap_items(other, my_newest_item, their_newest_item)
         return True         
 
 
