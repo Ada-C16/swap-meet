@@ -1,13 +1,13 @@
 class Vendor:
-    
-    def __init__(self, inventory=[]): 
+
+    def __init__(self, inventory=[]):
         self.inventory = inventory
 
     def add(self, new_item):
         """ Adds argument passed into new_item to Vendor's inventory list, and returns the new item. """
         self.inventory.append(new_item)
         return new_item
-    
+
     def remove(self, item_to_remove):
         """ Removes argument passed into item_to_remove from Vendor's inventory list, and returns the removed item. """
         if item_to_remove not in self.inventory:
@@ -28,9 +28,9 @@ class Vendor:
         """
         Takes in 3 arguments: another vendor instance, and item in the calling vendor's inventory, and an item from the
         the other vendor's inventory.
-        
+
         If the items are in their expected inventories, the two given items are traded, and we return True. 
-        
+
         Else, if either of the items aren't in their expected inventories, we return False.
         """
         if my_item not in self.inventory or their_item not in trading_vendor.inventory:
@@ -44,7 +44,7 @@ class Vendor:
                 self.inventory.append(their_item)
                 trading_vendor.inventory.remove(their_item)
         return True
-    
+
     def swap_first_item(self, trading_vendor):
         """ 
         Takes in 1 argument: another vendor instance. Trades the first item in the calling instance's inventory
@@ -62,12 +62,12 @@ class Vendor:
         trading_vendor.inventory.remove(their_first)
 
         return True
-    
+
     def get_best_by_category(self, category):
         """
         Returns the item of the best condition in a given category
         """
-        # Creates a list of items of the given category 
+        # Creates a list of items of the given category
         items_in_category = []
         for item in self.inventory:
             if item.category == category:
@@ -92,39 +92,19 @@ class Vendor:
         if not self.inventory or not other.inventory:
             return False
 
-        # Look for item in best condition in their priority category from my inventory 
-        my_items_they_want = []
-        for item in self.inventory:
-            if item.category == their_priority:
-                my_items_they_want.append(item)
-        if not my_items_they_want:
+        # Look for item in best condition in their priority category from my inventory
+        my_best = self.get_best_by_category(their_priority)
+        if my_best is None:
             return False
-        
-        my_best = my_items_they_want[0]
-        for item in my_items_they_want:
-            if item.condition > my_best.condition:
-                my_best = item
+
         # Look for item in their inventory with my priority category
-        their_items_i_want = []
-        for item in other.inventory:
-            if item.category == my_priority:
-                their_items_i_want.append(item)
-        if not their_items_i_want:
+        their_best = other.get_best_by_category(my_priority)
+        if their_best is None:
             return False
-        
-        their_best = their_items_i_want[0]
-        for item in their_items_i_want:
-            if item.condition > their_best.condition:
-                their_best = item
+
         # swap em!
         self.inventory.append(their_best)
         other.inventory.remove(their_best)
         other.inventory.append(my_best)
         self.inventory.remove(my_best)
         return True
-
-    
-
-
-
-
