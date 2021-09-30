@@ -1,11 +1,17 @@
 class Item:
+    """
+    Class Item with method: condition_description
+    """
+    # class constructor
     def __init__(self, category="", condition=0):
         self.category = category
         self.condition = condition
 
+    # stringify instances of class Item
     def __str__(self):
         return "Hello World!"
 
+    # returns description of Item condition given condition(int) between 0 and 5
     def condition_description(self):
         try:
             if self.condition == 0.0:
