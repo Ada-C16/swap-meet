@@ -62,15 +62,10 @@ class Vendor:
         """
         Returns the item of the best condition in a given category
         """
-        # Creates a list of items of the given category
-        items_in_category = []
-        for item in self.inventory:
-            if item.category == category:
-                items_in_category.append(item)
-        # Returns None if no item matches given category
+        items_in_category = self.get_by_category(category)
         if not items_in_category:
             return None
-        # Iterates through list of category items to find one in best condition
+        
         best_item = items_in_category[0]
         for item in items_in_category:
             if item.condition > best_item.condition:
