@@ -63,3 +63,21 @@ class Vendor:
             return self.swap_items(other, my_swap, their_swap)
         else:
             return False
+
+    def get_newest_item(self):
+            inventory = self.inventory
+            if inventory:
+                descending_age_inventory = sorted(inventory, key=lambda item: item.age, reverse=True)
+                return descending_age_inventory[0]
+            else:
+                return False
+
+    def swap_by_newest(self, friend):
+        my_newest_item = self.get_newest_item()
+        their_newest_item = friend.get_newest_item()
+
+        if my_newest_item and their_newest_item:
+            self.swap_items(friend, my_newest_item, their_newest_item)
+            return True
+        else:
+            return False
