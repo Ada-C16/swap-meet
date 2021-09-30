@@ -2,9 +2,7 @@ from .item import Item
 
 class Vendor:
     def __init__(self, inventory = None):
-        if not inventory:
-            inventory = []
-        self.inventory = inventory
+        self.inventory = inventory if inventory else []
 
     def add(self, new_item):
         self.inventory.append(new_item)
