@@ -66,7 +66,13 @@ class Vendor:
                     highest_rated_item = items_matching_category[i]
         return highest_rated_item
 
-
-
     def swap_best_by_category(self, other, my_priority, their_priority):
-        pass
+        my_best_item = self.get_best_by_category(their_priority)
+        their_best_item = other.get_best_by_category(my_priority)
+
+        if their_priority == my_best_item.category and my_priority == their_best_item.category:
+            self.swap_items(other, my_best_item, their_best_item)
+            return True
+        else:
+            return False
+        
