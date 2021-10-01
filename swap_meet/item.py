@@ -19,5 +19,7 @@ class Item:
             return "Slightly Less Excellent"
         elif self.condition == 5:
             return "Excellent"
+        else:
+            raise Exception(f"Condition must be an integer between 0 and 5. (Found {self.condition}).")
 
         

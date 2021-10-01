@@ -36,11 +36,13 @@ class Vendor:
         self_first_item = self.inventory[0]
         friend_first_item = vendor.inventory[0]
 
-        self.inventory = self.inventory[1:]
-        vendor.inventory = vendor.inventory[1:]
-        self.inventory.append(friend_first_item)
-        vendor.inventory.append(self_first_item)
-        return True
+        return self.swap_items(vendor, self_first_item, friend_first_item)
+        
+        # self.inventory = self.inventory[1:]
+        # vendor.inventory = vendor.inventory[1:]
+        # self.inventory.append(friend_first_item)
+        # vendor.inventory.append(self_first_item)
+        # return True
 
     def get_best_by_category(self, category):
         category_items = self.get_by_category(category)
@@ -64,11 +66,13 @@ class Vendor:
         if my_best_item == None or their_best_item == None:
             return False
         
-        self.inventory.remove(my_best_item)
-        other.inventory.remove(their_best_item)
-        self.inventory.append(their_best_item)
-        other.inventory.append(my_best_item)
-        return True
+        return self.swap_items(other, my_best_item, their_best_item)
+
+        # self.inventory.remove(my_best_item)
+        # other.inventory.remove(their_best_item)
+        # self.inventory.append(their_best_item)
+        # other.inventory.append(my_best_item)
+        # return True
         
 
 
