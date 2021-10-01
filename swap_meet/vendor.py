@@ -69,12 +69,3 @@ class Vendor:
             return False
         else:
             return self.swap_items(other, my_item, their_item)
-        
-    
-
-
-
-
-    
-    
-
