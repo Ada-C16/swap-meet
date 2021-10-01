@@ -1,7 +1,7 @@
 from swap_meet.item import Item
 
 class Electronics(Item):
-    def __init__ (self, category ="",condition=0):
+    def __init__ (self,condition=0):
         super().__init__("Electronics", condition) #super pulls inhertiance from the base class which is item class
         
     def __str__(self):
