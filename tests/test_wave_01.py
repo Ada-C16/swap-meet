@@ -17,6 +17,7 @@ def test_vendor_takes_optional_inventory():
 
 
 def test_adding_to_inventory():
+    print(Vendor)
     vendor = Vendor()
     item = "new item"
 
