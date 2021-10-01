@@ -1,7 +1,7 @@
 
 
 class Item:
-    pass
+    
     def __init__(self, category = None, condition = None, age = None):
         self.category = category if category is not None else ""
         self.condition = condition if condition is not None else 0
