@@ -44,15 +44,15 @@ class Vendor:
         best matched item
         '''
         if attribute == "age":
-            if category == None:
-                best_item = min(self.inventory, key=lambda item: getattr(item, attribute), default=None)
+            if category:
+                best_item = min(self.get_by_category(category), key=lambda item: getattr(item, attribute), default=None)
             else:
-                best_item = min(self.get_by_category(category), key=lambda item: getattr(item, attribute), default=None)   
+                best_item = min(self.inventory, key=lambda item: getattr(item, attribute), default=None)   
         else:
-            if category == None:
-                best_item = max(self.inventory, key=lambda item: getattr(item, attribute), default=None)
-            else:
+            if category:
                 best_item = max(self.get_by_category(category), key=lambda item: getattr(item, attribute), default=None)
+            else:
+                best_item = max(self.inventory, key=lambda item: getattr(item, attribute), default=None)
         return best_item
 
     def get_best_by_category(self, category):
