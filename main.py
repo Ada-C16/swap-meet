@@ -29,16 +29,23 @@ meet.print_welcome()
 
 meet.print_vendor_inventories()
 
+swapping = True
 
-swap_option = meet.get_swap_type()
+while swapping:
+    swap_option = meet.get_swap_type()
 
-if swap_option == 1:
-    knox.swap_by_newest(ryan)
-elif swap_option == 2:
-    knox.swap_first_item(ryan)
-elif swap_option == 3:
-    knox_category = meet.get_category_options(knox)
-    ryan_category = meet.get_category_options(ryan)
-    knox.swap_best_by_category(ryan, knox_category, ryan_category)
+    if swap_option == 1:
+        knox.swap_by_newest(ryan)
+    elif swap_option == 2:
+        knox.swap_first_item(ryan)
+    elif swap_option == 3:
+        knox_category = meet.get_category_options(knox)
+        ryan_category = meet.get_category_options(ryan)
+        knox.swap_best_by_category(ryan, knox_category, ryan_category)
 
-meet.print_vendor_inventories()
+    meet.print_vendor_inventories()
+    keep_swapping_input = input(
+        "Do you want to keep going? Enter 'y' to continue or 'n' to stop.\n"
+    )
+    if keep_swapping_input.lower() != "y":
+        swapping = False
