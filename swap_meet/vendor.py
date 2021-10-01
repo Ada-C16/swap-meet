@@ -57,3 +57,18 @@ class Vendor:
             print(f"            - category: {item.category}")
             print(f"            - condition: {item.condition}")
             print(f"            - age: {item.age}")
+
+    @staticmethod
+    def get_swap_type():
+        print(
+            "Do you want to: \n\
+    1. Swap the two newest items from each vendor's inventory? \n\
+    2. Swap the first items from each vendor's inventory? \n\
+    3. Swap the the 2 best by items by certain categories?"
+        )
+
+        option = int(input("Choose a number from above.\n"))
+        return option
+
+    # @staticmethod
+    # def get_category_options():
