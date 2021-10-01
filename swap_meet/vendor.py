@@ -43,7 +43,12 @@ class Vendor:
         items_by_category = self.get_by_category(category)
         if items_by_category == None:
             return None
-            
+
+        # initatied variables and looped over dictionary instead of using max. wanted to consider 
+        # the possibility in the future that there may be more than one max and I wanted the data 
+        # to be organized in a dictionary because I think it makes more sense. Please
+        # share your thoughts on this function aprticularly if you have some, thank you!
+
         top_item_condition = 0
         top_item = None
         best_by_category = {}
@@ -63,6 +68,8 @@ class Vendor:
         my_best_item = self.get_best_by_category(their_priority)
         vendor_best_item = other.get_best_by_category(my_priority)
 
+        # The commented out code below was another way to do lines 60-61 but I was curious if there 
+        # is a difference in time/space complexity that would argue one is better?
         # if not my_best_item or not vendor_best_item:
         #     return False
 
