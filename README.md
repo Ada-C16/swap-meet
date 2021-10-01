@@ -166,7 +166,7 @@ When our test failures leave us confused and stuck, let's use the detailed proje
 
 ### Wave 1
 
-The first two tests in wave 1 imply:
+<!-- The first two tests in wave 1 imply:
 
 - There is a module (file) named `vendor.py` inside of the `swap_meet` package (folder)
 - Inside this module, there is a class named `Vendor`
@@ -182,29 +182,29 @@ The remaining tests in wave 1 imply:
 - Similarly, every instance of `Vendor` has an instance method named `remove`, which takes in one item
 - This method removes the matching item from the `inventory`
 - This method returns the item that was removed
-- If there is no matching item in the `inventory`, the method should return `False`
+- If there is no matching item in the `inventory`, the method should return `False` -->
 
 ### Wave 2
 
 The first tests in wave 2 imply:
 
-- There is a module (file) named `item.py` inside of the `swap_meet` package (folder)
+<!-- - There is a module (file) named `item.py` inside of the `swap_meet` package (folder)
 
 - Inside this module, there is a class named `Item`
 - Each `Item` will have an attribute named `category`, which is an empty string by default
-- When we initialize an instance of `Item`, we can optionally pass in a string with the keyword argument `category`
-- Instances of `Vendor` have an instance method named `get_by_category`
+- When we initialize an instance of `Item`, we can optionally pass in a string with the keyword argument `category` -->
+<!-- - Instances of `Vendor` have an instance method named `get_by_category`
   - It takes one argument: a string, representing a category
-  - This method returns a list of `Item`s in the inventory with that category
+  - This method returns a list of `Item`s in the inventory with that category -->
 
 ### Wave 3
 
-The first test in wave 3 implies:
+<!-- The first test in wave 3 implies:
 
 - When we stringify (convert to a string) an instance of `Item` using `str()`, it returns `"Hello World!"`
-  - This implies `Item` overrides its stringify method. We may need to research the `__str__` method for more details!
+  - This implies `Item` overrides its stringify method. We may need to research the `__str__` method for more details! -->
 
-The remaining tests in wave 3 imply:
+<!-- The remaining tests in wave 3 imply:
 
 - Instances of `Vendor` have an instance method named `swap_items`
   - It takes 3 arguments:
@@ -214,11 +214,11 @@ The remaining tests in wave 3 imply:
   - It removes the `my_item` from this `Vendor`'s inventory, and adds it to the friend's inventory
   - It removes the `their_item` from the other `Vendor`'s inventory, and adds it to this `Vendor`'s inventory
   - It returns `True`
-  - If this `Vendor`'s inventory doesn't contain `my_item` or the friend's inventory doesn't contain `their_item`, the method returns `False`
+  - If this `Vendor`'s inventory doesn't contain `my_item` or the friend's inventory doesn't contain `their_item`, the method returns `False` -->
 
 ### Wave 4
 
-The tests in wave 4 imply:
+<!-- The tests in wave 4 imply:
 
 - Instances of `Vendor` have an instance method named `swap_first_item`
   - It takes one argument: an instance of another `Vendor`, representing the friend that the vendor is swapping with
@@ -226,13 +226,13 @@ The tests in wave 4 imply:
   - It removes the first item from its `inventory`, and adds the friend's first item
   - It removes the first item from the friend's `inventory`, and adds the instances first item
   - It returns `True`
-  - If either itself or the friend have an empty `inventory`, the method returns `False`
+  - If either itself or the friend have an empty `inventory`, the method returns `False` -->
 
 ### Wave 5
 
-The tests in Wave 5 imply there are three additional modules with three additional classes:
+<!-- The tests in Wave 5 imply there are three additional modules with three additional classes: -->
 
-- `Clothing`
+<!-- - `Clothing`
   - Has an attribute `category` that is `"Clothing"`
   - Its stringify method returns `"The finest clothing you could wear."`
 - `Decor`
@@ -241,11 +241,11 @@ The tests in Wave 5 imply there are three additional modules with three addition
 - `Electronics`
 
   - Has an attribute `category` that is `"Electronics"`
-  - Its stringify method returns `"A gadget full of buttons and secrets."`
+  - Its stringify method returns `"A gadget full of buttons and secrets."` -->
 
-- All three classes and the `Item` class have an attribute called `condition`, which can be optionally provided in the initializer. The default value should be `0`.
+<!-- - All three classes and the `Item` class have an attribute called `condition`, which can be optionally provided in the initializer. The default value should be `0`. -->
 
-- All three classes and the `Item` class have an instance method named `condition_description`, which should describe the condition in words based on the value, assuming they all range from 0 to 5. These can be basic descriptions (eg. 'mint', 'heavily used') but feel free to have fun with these (e.g. 'You probably want a glove for this one..."). The one requirement is that the `condition_description` for all three classes above have the same behavior.
+<!-- - All three classes and the `Item` class have an instance method named `condition_description`, which should describe the condition in words based on the value, assuming they all range from 0 to 5. These can be basic descriptions (eg. 'mint', 'heavily used') but feel free to have fun with these (e.g. 'You probably want a glove for this one..."). The one requirement is that the `condition_description` for all three classes above have the same behavior. -->
 
 #### Using Inheritance
 
@@ -260,7 +260,7 @@ from swap_meet.item import Item
 ```
 
 ### Wave 6
-
+<!-- 
 The first three tests in wave 6 imply:
 
 - `Vendor`s have a method named `get_best_by_category`, which will get the item with the best condition in a certain category
@@ -268,7 +268,7 @@ The first three tests in wave 6 imply:
   - This method looks through the instance's `inventory` for the item with the highest `condition` and matching `category`
     - It returns this item
     - If there are no items in the `inventory` that match the category, it returns `None`
-    - It returns a single item even if there are duplicates (two or more of the same item with the same condition)
+    - It returns a single item even if there are duplicates (two or more of the same item with the same condition) -->
 
 The remaining tests in wave 6 imply:
 
