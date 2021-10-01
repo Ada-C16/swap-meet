@@ -35,11 +35,8 @@ class Vendor:
     def swap_first_item(self, vendor_friend):
         if not self.inventory or not vendor_friend.inventory:
             return False
-        
-        vendor_friend.inventory.append(self.inventory[0])
-        self.inventory.pop(0)
-        self.inventory.append(vendor_friend.inventory[0])
-        vendor_friend.inventory.pop(0)
+
+        self.swap_items(vendor_friend, self.inventory[0], vendor_friend.inventory[0])
 
         return True
 
@@ -57,10 +54,6 @@ class Vendor:
         my_trade = self.get_best_by_category(their_priority) 
         their_trade = other.get_best_by_category(my_priority)
 
-        if my_trade != None and their_trade != None:
-            self.swap_items(other, my_trade, their_trade)
-            return True
-
-        return False
+        return self.swap_items(other, my_trade, their_trade)
 
 
