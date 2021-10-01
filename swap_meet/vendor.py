@@ -1,6 +1,7 @@
 class Vendor:
-    def __init__(self, inventory=None):
+    def __init__(self, inventory=None, name=""):
         self.inventory = inventory if inventory else []
+        self.name = name
 
     def add(self, item):
         self.inventory.append(item)
@@ -48,3 +49,11 @@ class Vendor:
         my_item = self.get_newest_item()
         their_item = other.get_newest_item()
         return self.swap_items(other, my_item, their_item)
+
+    def print_inventory(self):
+        print(f"    - {self.name}'s Inventory:")
+        for item in self.inventory:
+            print(f"        - {item.name}")
+            print(f"            - category: {item.category}")
+            print(f"            - condition: {item.condition}")
+            print(f"            - age: {item.age}")

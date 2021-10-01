@@ -4,21 +4,31 @@ from swap_meet.clothing import Clothing
 from swap_meet.decor import Decor
 from swap_meet.electronics import Electronics
 
-box = Item(condition=2, age=1, category="misc")
-shoe = Clothing(condition=1, age=0)
-tv = Electronics(condition=4, age=4)
-mirror = Decor(condition=3, age=50)
-rose = Item(condition=5)
+# knox's items
+box = Item(name="box", condition=2, age=1, category="misc")
+shoe = Clothing(name="shoe", condition=1, age=0)
+tv = Electronics(name="tv", condition=4, age=4)
+mirror = Decor(name="mirror", condition=3, age=50)
+rose = Item(name="rose", condition=5, category="misc")
 
-knox = Vendor([box, shoe, tv, mirror, rose])
-print(knox.get_newest_item())
+knox = Vendor([box, shoe, tv, mirror, rose], name="Knox")
 
-pen = Item(condition=3, age=0, category="misc")
-hat = Clothing(condition=4, age=2)
-tablet = Electronics(condition=3, age=1)
-fake_plant = Decor(condition=2, age=10)
-tulip = Item(condition=5)
+# ryan's items
+pen = Item(name="pen", condition=3, age=0, category="misc")
+hat = Clothing(name="hat", condition=4, age=2)
+tablet = Electronics(name="tablet", condition=3, age=1)
+fake_plant = Decor(name="fake plant", condition=2, age=10)
+tulip = Item(name="tulip", condition=5, category="misc")
 
+ryan = Vendor([pen, hat, tablet, fake_plant, tulip], name="Ryan")
 
-ryan = Vendor([pen, hat, tablet, fake_plant])
-print(ryan.get_newest_item())
+print("******************************")
+print("Welcome to the Swap Meet!")
+print("******************************")
+
+print("")
+print("")
+print("Meet our vendors:")
+
+knox.print_inventory()
+ryan.print_inventory()
