@@ -18,8 +18,7 @@ class Item:
             return "Acceptable."
         elif self.condition == 5:
             return "Yes."
-        
-        #return self.condition_description
+
 
 
 

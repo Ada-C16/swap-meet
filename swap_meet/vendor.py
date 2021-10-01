@@ -12,7 +12,6 @@ class Vendor:
     def remove(self, item_to_remove):
         if item_to_remove not in self.inventory:
             return False
-        #or maybe throw an error instead here?
         self.inventory.remove(item_to_remove)
         return item_to_remove
 
@@ -25,11 +24,11 @@ class Vendor:
 
     def swap_items(self, other_vendor, selfs_item, others_item):
         if selfs_item in self.inventory and others_item in other_vendor.inventory:
-            self.inventory.remove(selfs_item)
-            self.inventory.append(others_item)
+            self.remove(selfs_item)
+            self.add(others_item)
 
-            other_vendor.inventory.remove(others_item)
-            other_vendor.inventory.append(selfs_item)
+            other_vendor.remove(others_item)
+            other_vendor.add(selfs_item)
 
             return True
             
@@ -40,11 +39,12 @@ class Vendor:
         if (len(self.inventory) == 0) or (len(other_vendor.inventory) == 0):
             return False
         else:
-            selfs_item = self.inventory.pop(0)
-            others_item = other_vendor.inventory.pop(0)
+            selfs_item = self.remove(self.inventory[0])
+            others_item = other_vendor.remove(other_vendor.inventory[0])
 
-            self.inventory.insert(0, others_item)
-            other_vendor.inventory.insert(0, selfs_item)
+            self.add(others_item)
+            other_vendor.add(selfs_item)
+                
             return True
 
     def get_best_by_category(self, category = ""):
@@ -61,8 +61,6 @@ class Vendor:
         self_best = self.get_best_by_category(their_priority)
         other_best = other.get_best_by_category(my_priority)
 
-        
-        #if (self_best == None) or (other_best == None):
         if not self_best or not other_best:
             return False
         else:
