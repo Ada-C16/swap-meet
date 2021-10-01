@@ -95,6 +95,5 @@ result = tai.swap_best_by_category(
     my_priority="Clothing",
     their_priority="Decor"
 )
-for item in result:
-    print(item.category)
-    print(item.condition)
+print(result.category)
+print(result.condition)
