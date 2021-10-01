@@ -5,7 +5,8 @@ class Item:
 
     def __str__(self):
         return "Hello World!"
-        
+
+
     def condition_description(self):
         if 5 >= self.condition > 4:
             item_description = "Mint"
@@ -17,5 +18,4 @@ class Item:
             item_description = "Good"
         elif 1 >= self.condition > 0:
             item_description = "Fair"
-
         return item_description
