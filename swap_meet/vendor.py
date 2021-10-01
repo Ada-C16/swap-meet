@@ -35,14 +35,11 @@ class Vendor:
     def get_best(self, items=None):
         """
         input: list of selected item objects (if not given, default to all item objects in inventory)
-        output: object with the largest condition attribute value
+        output: object with the largest condition attribute value or if no applicable object, None
         """
         if items is None:
             items = self.inventory
-        try:
-            return max(items, key=attrgetter("condition"))
-        except ValueError:
-            return None
+        return max(items, key=attrgetter("condition"), default=None)
 
     def get_best_by_category(self, category):
         items_in_category = self.get_by_category(category)
@@ -56,14 +53,11 @@ class Vendor:
     def get_newest(self, items=None):
         """
         input: list of selected item objects (if not given, default to all item objects in inventory)
-        output: object with the smallest age attribute value
+        output: object with the smallest age attribute value or if no applicable object, None
         """
         if items is None:
             items = self.inventory
-        try:
-            return min(items, key=attrgetter("category"))
-        except ValueError:
-            return None
+        return min(items, key=attrgetter("category"), default=None)
 
     def swap_by_newest(self, other):
         item_to_give = self.get_newest()

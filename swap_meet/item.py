@@ -5,7 +5,7 @@ class Item:
         self.age = age
 
     def __str__(self):
-        return "Hello World!"
+        return f"Category: {self.category}, Condition: {self.condition_description()}, Age: {self.age}"
 
     def condition_description(self):
         if self.condition == 5:
@@ -20,3 +20,6 @@ class Item:
             return "Poor Condition"
         else:
             return "Junk"
+
+item = Item()
+print(item)
