@@ -1,10 +1,13 @@
 class Item:
-    def __init__(self, category=None, condition=0):
+    def __init__(self, category=None, condition=0, age=None):
         self.category = category if category is not None else ""
-        self.condition = condition 
+        self.condition = condition
+        self.age = age 
+
 
     def __str__(self):
         return 'Hello World!'
+
 
     def condition_description(self):
         """
@@ -24,3 +27,21 @@ class Item:
             return "In good condition."
         elif self.condition == 5:
             return "In mint condition."
+
+
+    def age_description(self):
+        """
+        Takes no parameters, returns a str
+        that describes the item age based
+        on a scale from 0 to 20yrs
+        """
+        if self.age >= 20:
+            return "Vintage"
+        elif self.age >= 10:
+            return "Retro"
+        elif self.age >= 5:
+            return "Modern"
+        elif self.age >= 1:
+            return "Contemporary"
+        else:
+            return "Brand New"

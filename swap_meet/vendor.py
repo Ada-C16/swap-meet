@@ -97,3 +97,44 @@ class Vendor:
         their_best_item = other.get_best_by_category(category=my_priority)
 
         return self.swap_items(other, best_item, their_best_item)
+
+
+    def get_by_age(self, age):
+        """
+        Takes one parameter age,
+        populates list items of a 
+        certain age, returns items
+        """
+        items = []
+        for item in self.inventory:
+            if item.category == age:
+                items.append(item)
+        return items
+
+
+    def get_newest_by_age(self, age):
+        """
+        Takes one parameter age, which 
+        default value is None, returns 
+        the youngest/newest by age
+        """
+        items_by_age = self.get_by_age(age)
+        if len(items_by_age) == 0:
+            return None
+        
+        return min(items_by_age, key=lambda item: item.age)
+
+
+    def swap_by_newest(self, other, my_newest, their_newest):
+        """
+        Takes three parameters, other (vendor), and each vendor's
+        newest item; returns a Boolean based on whether each 
+        vendor has inventory to perform a swap
+        """
+        if len(self.inventory) == 0 or len(other.inventory) == 0:
+            return False
+
+        my_newest_item = self.get_newest_by_age(age=their_newest)
+        their_newest_item = other.get_newest_by_age(age=my_newest)
+
+        return self.swap_items(other, my_newest_item, their_newest_item)
