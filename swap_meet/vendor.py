@@ -55,13 +55,10 @@ class Vendor:
         If self.inventory/friend_vendor.inventory is empty, return False. 
         Remove first items from original inventories and add to  other inventory. Return True
         """
-        if self.inventory == [] or friend_vendor.inventory == []:
+        if not (self.inventory and friend_vendor.inventory):
             return False
-        else:
-            my_item = self.inventory[0]
-            their_item = friend_vendor.inventory[0]
 
-        return self.swap_items(friend_vendor, my_item, their_item)
+        return self.swap_items(friend_vendor, self.inventory[0], friend_vendor.inventory[0])
 
     def get_best_by_category(self, category):
         """
