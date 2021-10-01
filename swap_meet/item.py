@@ -35,7 +35,7 @@ class Item:
             1: "This is being traded for parts",
             0: "No one remembered to update the condition, so we have no idea!",
         }
-        return condition_descriptions[self.condition]
+        return condition_descriptions[int(self.condition)]
 
     def __str__(self):
         return "Hello World!"
