@@ -8,17 +8,14 @@ class Item:
     return "Hello World!"
 
   def condition_description(self):
-      if self.condition == 5:
-          return "Fantastic"
-      elif 4 < self.condition < 5:
-          return "Great"
-      elif 3 < self.condition <= 4:
-          return "Good"
-      elif 2 < self.condition <= 3:
-          return "Meh"
-      elif 1 < self.condition <= 2:
-          return "Poor"
-      elif 0 < self.condition <= 1:
-          return "Bad"
-      else:
-          return "Not even if you paid me."
+ 
+      condition_description = [
+          "Not even if you paid me.",
+          "Poor",
+          "Meh.",
+          "Good",
+          "Great!",
+          "Fantastic!"
+      ]
+
+      return "I will give you my first born" if self.condition == 5 else condition_description[round(self.condition)]

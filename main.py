@@ -17,7 +17,7 @@ tai = Vendor(
 
 item_d = Clothing(condition=2.0, age=2.5)
 item_e = Decor(condition=4.0, age=1.7)
-item_f = Clothing(condition=4.0, age=50)
+item_f = Clothing(condition=0.3, age=50)
 jesse = Vendor(
         inventory=[item_d, item_e, item_f]
     )
@@ -25,7 +25,7 @@ jesse = Vendor(
 
 tessa = Vendor()
 
-
+print(jesse.inventory[2].condition_description())
 print(tessa.get_newest_in_inventory())
 print(tessa.swap_by_newest(tai))
 print(tai.swap_by_newest(jesse))
