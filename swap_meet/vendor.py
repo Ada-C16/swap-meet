@@ -39,3 +39,10 @@ class Vendor:
         my_item = self.get_best_by_category(their_priority)
         their_item = other.get_best_by_category(my_priority)
         return self.swap_items(other, my_item, their_item)
+
+    def get_newest_item(self):
+        return min(self.inventory, key=lambda item: item.age)
+
+
+#    def swap_by_newest(self, other):
+#       my_item = self.get_newest_item()
