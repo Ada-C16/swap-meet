@@ -148,6 +148,7 @@ def test_get_newest_by_category():
 
     assert result == item_a
 
+
 def test_get_newest_by_category_return_first_newest_item_by_category():
     item_a = Clothing(age=2.0)
     item_b = Decor(age=2.0)
