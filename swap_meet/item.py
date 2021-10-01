@@ -1,7 +1,3 @@
-from functools import total_ordering
-
-
-@total_ordering
 class Item:
     def __str__(self):
         return "Hello World!"
