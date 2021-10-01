@@ -1,5 +1,3 @@
-from swap_meet.item import Item
-# wave 1
 class Vendor:
     def __init__(self, inventory = []):
         self.inventory = inventory
@@ -15,7 +13,7 @@ class Vendor:
             self.inventory.remove(item)
             return item
         return False
-    
+
     def get_by_category(self, category):
         items_in_inventory = []
         self.category = category
@@ -47,5 +45,36 @@ class Vendor:
         return True
 
 
+    def get_best_by_category(self, category):
+        items_in_matching_category = []
+        self.category = category
+
+        for item in self.inventory:
+            if item.category == category:
+                items_in_matching_category.append(item)
+        if not items_in_matching_category:
+            return None
+
+        current = items_in_matching_category[0]
+        for item in items_in_matching_category:
+            if item.condition > current.condition:
+                current = item
+        return current
+
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        my_item = self.get_best_by_category(their_priority)
+        their_item = other.get_best_by_category(my_priority)
+
+        if not my_item or not their_item:
+            return False
+        else:
+            return self.swap_items(other, my_item, their_item)
+        
+    
+
+
+
+
+    
     
 
