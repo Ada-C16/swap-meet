@@ -20,3 +20,5 @@ class Item:
             return("Absolutely worth it")
         elif self.condition <=5:
             return("You bought it! YAY")
+
+"""Final Submission"""
