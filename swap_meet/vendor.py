@@ -54,10 +54,7 @@ class Vendor:
         
         max_list = self.get_by_category(category)
 
-        if len(max_list) == 0:
-            return None
-
-        return max(max_list, key=lambda item: item.condition)
+        return max(max_list, default=None, key=lambda item: item.condition)
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         # Find the item with the best condition
