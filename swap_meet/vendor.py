@@ -33,9 +33,9 @@ class Vendor:
         Takes in a string, category, and searches for item with that category attribute.
         Returns list of items with category attribute.
         """
-        for item in self.inventory:
-            if item.category == category:
-                self.category_list.append(item)
+        self.category_list = [
+            item for item in self.inventory if item.category == category]
+
         return self.category_list
 
     def swap_items(self, friend_vendor, my_item, their_item):
@@ -46,17 +46,14 @@ class Vendor:
         if not (their_item in friend_vendor.inventory and
                 my_item in self.inventory):
             return False
-        friend_vendor.add(my_item)
-        self.add(their_item)
+        friend_vendor.add(my_item) and self.add(their_item)
 
         return friend_vendor.remove(their_item), self.remove(my_item)
 
     def swap_first_item(self, friend_vendor):
         """
-        Takes in one argument: friend_vendor
-        If self.inventory or friend_vendor.inventory is empty, return False. 
-        Else, remove first items from original inventories and add them the other inventory. 
-        Return True
+        If self.inventory/friend_vendor.inventory is empty, return False. 
+        Remove first items from original inventories and add to  other inventory. Return True
         """
         if self.inventory == [] or friend_vendor.inventory == []:
             return False
