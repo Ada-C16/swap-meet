@@ -1,7 +1,6 @@
 from swap_meet.vendor import Vendor
 from swap_meet.item import Item
 
-
 def test_items_have_blank_default_category():
     item = Item()
     assert item.category == ""
