@@ -3,6 +3,7 @@ from swap_meet.item import Item
 from swap_meet.clothing import Clothing
 from swap_meet.decor import Decor
 from swap_meet.electronics import Electronics
+from swap_meet.swap_meet import SwapMeet
 
 # knox's items
 box = Item(name="box", condition=2, age=1, category="misc")
@@ -22,31 +23,22 @@ tulip = Item(name="tulip", condition=5, category="misc")
 
 ryan = Vendor([pen, hat, tablet, fake_plant, tulip], name="Ryan")
 
-print("******************************")
-print("Welcome to the Swap Meet!")
-print("******************************")
+meet = SwapMeet([knox, ryan])
 
-print("")
-print("")
-print("Meet our vendors:")
+meet.print_welcome()
 
-knox.print_inventory()
-ryan.print_inventory()
+meet.print_vendor_inventories()
 
-print("******************************")
 
-swap_option = knox.get_swap_type()
+swap_option = meet.get_swap_type()
 
 if swap_option == 1:
     knox.swap_by_newest(ryan)
 elif swap_option == 2:
     knox.swap_first_item(ryan)
 elif swap_option == 3:
-    knox_category = knox.get_category_options()
-    ryan_category = ryan.get_category_options()
+    knox_category = meet.get_category_options(knox)
+    ryan_category = meet.get_category_options(ryan)
     knox.swap_best_by_category(ryan, knox_category, ryan_category)
 
-print("******************************")
-print("Updated Inventories:")
-knox.print_inventory()
-ryan.print_inventory()
+meet.print_vendor_inventories()
