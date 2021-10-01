@@ -99,9 +99,9 @@ class Vendor:
         """
         Returns item of the lowest, valid range
         """
-        ages = [item.age for item in self.inventory]
+        min_age = min([item.age for item in self.inventory])
         for item in self.inventory:
-            if item.age == min(ages):
+            if item.age == min_age:
                 return item
 
     def swap_by_newest(self, other):
