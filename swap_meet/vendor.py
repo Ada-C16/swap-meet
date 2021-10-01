@@ -2,7 +2,6 @@ class Vendor:
     def __init__(self, inventory=None):
         self.inventory = inventory if inventory is not None else []
     
-
     def add(self, item):
         self.inventory.append(item)
         return item
@@ -44,6 +43,24 @@ class Vendor:
 
         return True
 
+    def get_best_by_category(self, category):
+        max_condition = 0
+        max_item = None
+        for item in self.inventory:
+            if item.category == category and item.condition > max_condition:
+                max_condition = item.condition
+                max_item = item
+        
+        return max_item
+                
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        my_trade = self.get_best_by_category(their_priority) 
+        their_trade = other.get_best_by_category(my_priority)
 
+        if my_trade != None and their_trade != None:
+            self.swap_items(other, my_trade, their_trade)
+            return True
+
+        return False
 
 
