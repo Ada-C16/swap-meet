@@ -1,16 +1,12 @@
 class Item:
+    def __str__(self):
+        return "Hello World!"
+
     def __init__(self, category= str(), condition =0, age =0):
         self.category = category
         self.condition = condition
         self.age = age        
-    def __str__(self):
-        return "Hello World!"
     
     def condition_description(self):
-        value = self.condition
-        if value >4:
-            return 'Great condition'
-        if value > 3:
-            return "Used but in good conditon"
-        if value < 3:
-            return "Heavily used"
+        condition_message = ['Heavily used', 'Used', 'Used but in good conditon','Worn a few times - Great condition','like new - Great condition']
+        return condition_message[round(self.condition -1)]

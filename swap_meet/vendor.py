@@ -30,7 +30,6 @@ class Vendor:
             self.add(friend_item)
             friend_vendor.remove(friend_item)
             return True
-        return False
         
     def swap_first_item(self, friend_vendor):
         if friend_vendor.inventory and self.inventory:
