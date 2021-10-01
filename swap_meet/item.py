@@ -7,7 +7,7 @@ class Item:
         return "Hello World!"
 
     def condition_description(self):
-        if self.condition <= 5:
+        if self.condition == 5:
             return "minty fresh"
         if self.condition <= 4:
             return "light scracthes"
@@ -17,5 +17,5 @@ class Item:
             return "used"
         if self.condition <= 1:
             return "mwah"
-        if self.condition <= 0:
+        if self.condition == 0:
             return "what are you doing? Put that down!"
