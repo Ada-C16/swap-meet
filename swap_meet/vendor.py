@@ -52,12 +52,7 @@ class Vendor:
 
     def get_best_by_category(self, category):
         
-        max_list = []
-        
-        for item in self.inventory:
-            if item.category == category:
-                # Return that instance
-                max_list.append(item)
+        max_list = self.get_by_category(category)
 
         if len(max_list) == 0:
             return None
