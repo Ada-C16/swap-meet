@@ -56,7 +56,6 @@ class Vendor:
 
         if len(max_list) == 0:
             return None
-        max_list.remove(min(max_list, key=lambda item: item.condition))
 
         return max(max_list, key=lambda item: item.condition)
 
