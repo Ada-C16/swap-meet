@@ -39,34 +39,14 @@ swap_option = knox.get_swap_type()
 
 if swap_option == 1:
     knox.swap_by_newest(ryan)
-    knox.print_inventory()
 elif swap_option == 2:
     knox.swap_first_item(ryan)
-    knox.print_inventory()
 elif swap_option == 3:
-    print(
-        "Categories: \n\
-        1. misc \n\
-        2. clothing\n\
-        3. electronics\n\
-        4. decor"
-    )
-    knox_category = int(
-        input(
-            "Choose a number from above to pick the category that Knox wants to recieve.\n"
-        )
-    )
-    ryan_category = int(
-        input(
-            "Choose a number from above to pick the category that Ryan wants to receive.\n"
-        )
-    )
+    knox_category = knox.get_category_options()
+    ryan_category = ryan.get_category_options()
+    knox.swap_best_by_category(ryan, knox_category, ryan_category)
 
-    if knox_category == 1:
-        knox_category = "misc"
-    elif knox_category == 2:
-        knox_category = "Clothing"
-    elif knox_category == 3:
-        knox_category = "Electronics"
-    elif knox_category == 4:
-        knox_category == "Decor"
+print("******************************")
+print("Updated Inventories:")
+knox.print_inventory()
+ryan.print_inventory()
