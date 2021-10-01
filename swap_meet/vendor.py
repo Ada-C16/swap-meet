@@ -68,13 +68,13 @@ class Vendor:
         Like get_by_category but searches for best/max condition
         """
         self.best_category = self.get_by_category(category)
-        items_condition_list = [item.condition for item in self.best_category]
+        best_item = None
+        best_condition = 0
         for item in self.best_category:
-            if item:
-                if item.condition == max(items_condition_list):
-                    return item
-            else:
-                return None
+            if item.condition > best_condition:
+                best_condition = item.condition
+                best_item = item
+        return best_item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         """
