@@ -6,7 +6,7 @@ from swap_meet.electronics import Electronics
 
 
 def test_best_by_category():
-    item_a = Clothing(age=2.0)
+    item_a = Clothing(age=1.0)
     item_b = Decor(age=2.0)
     item_c = Clothing(age=4.0)
     item_d = Decor(age=5.0)
@@ -18,7 +18,7 @@ def test_best_by_category():
     best_item = tai.get_newest_by_category("Clothing")
 
     assert best_item.category == "Clothing"
-    assert best_item.age == pytest.approx(4.0)
+    assert best_item.age == pytest.approx(1.0)
 
 
 def test_best_by_category_no_matches_is_none():
@@ -36,7 +36,7 @@ def test_best_by_category_no_matches_is_none():
 
 def test_best_by_category_with_duplicates():
     item_a = Clothing(age=2.0)
-    item_b = Clothing(age=4.0)
+    item_b = Clothing(age=2.0)
     item_c = Clothing(age=4.0)
     tai = Vendor(
         inventory=[item_a, item_b, item_c]
@@ -45,20 +45,20 @@ def test_best_by_category_with_duplicates():
     best_item = tai.get_newest_by_category("Clothing")
 
     assert best_item.category == "Clothing"
-    assert best_item.age == pytest.approx(4.0)
+    assert best_item.age == pytest.approx(2.0)
 
 
 def test_swap_best_by_category():
-    item_a = Decor(age=2.0)
-    item_b = Electronics(age=4.0)
-    item_c = Decor(age=4.0)
+    item_a = Decor(age=4.0)
+    item_b = Electronics(age=2.0)
+    item_c = Decor(age=2.0)
     tai = Vendor(
         inventory=[item_a, item_b, item_c]
     )
 
-    item_d = Clothing(age=2.0)
-    item_e = Decor(age=4.0)
-    item_f = Clothing(age=4.0)
+    item_d = Clothing(age=4.0)
+    item_e = Decor(age=2.0)
+    item_f = Clothing(age=2.0)
     jesse = Vendor(
         inventory=[item_d, item_e, item_f]
     )
@@ -83,16 +83,16 @@ def test_swap_best_by_category():
 
 
 def test_swap_best_by_category_reordered():
-    item_a = Decor(age=2.0)
-    item_b = Electronics(age=4.0)
-    item_c = Decor(age=4.0)
+    item_a = Decor(age=4.0)
+    item_b = Electronics(age=2.0)
+    item_c = Decor(age=2.0)
     tai = Vendor(
         inventory=[item_c, item_b, item_a]
     )
 
-    item_d = Clothing(age=2.0)
-    item_e = Decor(age=4.0)
-    item_f = Clothing(age=4.0)
+    item_d = Clothing(age=4.0)
+    item_e = Decor(age=2.0)
+    item_f = Clothing(age=2.0)
     jesse = Vendor(
         inventory=[item_f, item_e, item_d]
     )
@@ -121,9 +121,9 @@ def test_swap_best_by_category_no_inventory_is_false():
         inventory=[]
     )
 
-    item_a = Clothing(age=2.0)
-    item_b = Decor(age=4.0)
-    item_c = Clothing(age=4.0)
+    item_a = Clothing(age=4.0)
+    item_b = Decor(age=2.0)
+    item_c = Clothing(age=2.0)
     jesse = Vendor(
         inventory=[item_a, item_b, item_c]
     )
@@ -143,9 +143,9 @@ def test_swap_best_by_category_no_inventory_is_false():
 
 
 def test_swap_best_by_category_no_other_inventory_is_false():
-    item_a = Clothing(age=2.0)
-    item_b = Decor(age=4.0)
-    item_c = Clothing(age=4.0)
+    item_a = Clothing(age=4.0)
+    item_b = Decor(age=2.0)
+    item_c = Clothing(age=2.0)
     tai = Vendor(
         inventory=[item_a, item_b, item_c]
     )
@@ -169,16 +169,16 @@ def test_swap_best_by_category_no_other_inventory_is_false():
 
 
 def test_swap_best_by_category_no_match_is_false():
-    item_a = Decor(age=2.0)
-    item_b = Electronics(age=4.0)
-    item_c = Decor(age=4.0)
+    item_a = Decor(age=4.0)
+    item_b = Electronics(age=2.0)
+    item_c = Decor(age=2.0)
     tai = Vendor(
         inventory=[item_a, item_b, item_c]
     )
 
-    item_d = Clothing(age=2.0)
-    item_e = Decor(age=4.0)
-    item_f = Clothing(age=4.0)
+    item_d = Clothing(age=4.0)
+    item_e = Decor(age=2.0)
+    item_f = Clothing(age=2.0)
     jesse = Vendor(
         inventory=[item_d, item_e, item_f]
     )
@@ -201,16 +201,16 @@ def test_swap_best_by_category_no_match_is_false():
 
 
 def test_swap_best_by_category_no_other_match_is_false():
-    item_a = Decor(age=2.0)
-    item_b = Electronics(age=4.0)
-    item_c = Decor(age=4.0)
+    item_a = Decor(age=4.0)
+    item_b = Electronics(age=2.0)
+    item_c = Decor(age=2.0)
     tai = Vendor(
         inventory=[item_c, item_b, item_a]
     )
 
-    item_d = Clothing(age=2.0)
-    item_e = Decor(age=4.0)
-    item_f = Clothing(age=4.0)
+    item_d = Clothing(age=4.0)
+    item_e = Decor(age=2.0)
+    item_f = Clothing(age=2.0)
     jesse = Vendor(
         inventory=[item_f, item_e, item_d]
     )

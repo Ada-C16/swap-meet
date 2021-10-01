@@ -63,7 +63,7 @@ class Vendor:
         if not category_list:
             return None
         else:
-            return max(category_list, key=lambda item:item.age)
+            return min(category_list, key=lambda item:item.age)
     
     def swap_by_newest(self,other,my_priority, their_priority):
         my_newest_item = self.get_newest_by_category(their_priority)
