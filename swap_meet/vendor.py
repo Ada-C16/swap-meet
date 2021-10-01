@@ -16,11 +16,11 @@ class Vendor:
         return [item for item in self.inventory if item.category == category]
 
     def swap_items(self, other, my_item, their_item):
-        if my_item in self.inventory and their_item in other.inventory:
+        both_items_exist = my_item in self.inventory and their_item in other.inventory
+        if both_items_exist:
             other.add(self.remove(my_item))
             self.add(other.remove(their_item))
-            return True
-        return False
+        return both_items_exist
 
     def swap_first_item(self, other):
         my_first_item = next(iter(self.inventory), None)
