@@ -34,12 +34,9 @@ class Vendor:
         if len(self.inventory) == 0 or len(vendor.inventory) == 0:
             return False
         else:
-            testing_1 = vendor.inventory[0]
-            testing_2 = self.inventory[0]
-            self.inventory.append(testing_1)
-            vendor.inventory.append(testing_2)
-            vendor.inventory.pop(0)
-            self.inventory.pop(0)
+            my_new_item = vendor.inventory[0]
+            their_new_item = self.inventory[0]
+            self.swap_items(vendor, their_new_item, my_new_item)
             return True
 
     def get_best_by_category(self, category):
