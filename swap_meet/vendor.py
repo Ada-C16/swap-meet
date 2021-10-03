@@ -23,10 +23,10 @@ class Vendor:
 
     def swap_items(self, trading_vendor, my_item, their_item):
         """
-        Takes in 3 arguments: another vendor instance, and item in the calling vendor's inventory, and an item from the
+        Takes in 3 arguments: another vendor instance, an item in the calling vendor's inventory, and an item from the
         the other vendor's inventory.
         If the items are in their expected inventories, the two given items are traded, and we return True. 
-        Else, if either of the items aren't in their expected inventories, we return False.
+        Else if either of the items aren't in their expected inventories, we return False.
         """
         if my_item not in self.inventory or their_item not in trading_vendor.inventory:
             return False
