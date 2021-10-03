@@ -18,10 +18,7 @@ class Vendor:
 
     def get_by_category(self, category):
         """ Returns a list of items that have the category attribute given argument for category """
-        inventory_items_in_category = []
-        for item in self.inventory:
-            if item.category == category:
-                inventory_items_in_category.append(item)
+        inventory_items_in_category = [item for item in self.inventory if item.category == category]
         return inventory_items_in_category
 
     def swap_items(self, trading_vendor, my_item, their_item):
