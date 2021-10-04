@@ -51,8 +51,8 @@ class Vendor:
 
 
 # wave 5 
-    def condition_description(self,item):
-     
+    def condition_description(self):
+        self.condition = 0 
         pass 
 
 
