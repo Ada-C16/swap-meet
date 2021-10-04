@@ -18,7 +18,8 @@ class Vendor:
 
     def get_by_category(self, category):
         """ Returns a list of items that have the category attribute given argument for category """
-        inventory_items_in_category = [item for item in self.inventory if item.category == category]
+        inventory_items_in_category = [
+            item for item in self.inventory if item.category == category]
         return inventory_items_in_category
 
     def swap_items(self, trading_vendor, my_item, their_item):
@@ -30,7 +31,7 @@ class Vendor:
         """
         if my_item not in self.inventory or their_item not in trading_vendor.inventory:
             return False
-        
+
         self.remove(my_item)
         trading_vendor.add(my_item)
         self.add(their_item)
@@ -44,7 +45,7 @@ class Vendor:
         """
         if not self.inventory or not trading_vendor.inventory:
             return False
-        
+
         my_first = self.inventory[0]
         their_first = trading_vendor.inventory[0]
         self.swap_items(trading_vendor, my_first, their_first)
@@ -55,7 +56,7 @@ class Vendor:
         items_in_category = self.get_by_category(category)
         if not items_in_category:
             return None
-        
+
         best_item = items_in_category[0]
         for item in items_in_category:
             if item.condition > best_item.condition:
@@ -65,7 +66,7 @@ class Vendor:
     def swap_best_by_category(self, other, my_priority, their_priority):
         """
         Takes in other vendor name, the category of item that is my priority,
-        the category of item that is their priority. 
+        and the category of item that is their priority. 
         Looks for the item of best condition for each vendor's priority category, and
         swaps them. 
         """
