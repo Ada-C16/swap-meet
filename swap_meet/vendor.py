@@ -28,19 +28,24 @@ class Vendor:
         if my_item not in self.inventory or their_item not in other_vendor.inventory:
             return False
             
-        else:
-            other_vendor.add(my_item)
-            self.remove(my_item)
-            self.add(their_item)
-            other_vendor.remove(their_item)
-            return True
+        other_vendor.add(my_item)
+        self.remove(my_item)
+        self.add(their_item)
+        other_vendor.remove(their_item)
+        return True
     
     def swap_first_item(self, other_vendor):
         if self.inventory == [] or other_vendor.inventory == []:
             return False
-        else:
-            self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
-            return True
+        
+        other_vendor.inventory[0], self.inventory[0] = (
+            self.inventory[0], other_vendor.inventory[0]
+        )
+        return True
+        
+        # other implementation
+        # self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
+        # return True
 
     def get_best_by_category(self, category =""):
         items_by_category = self.get_by_category(category)
@@ -55,12 +60,12 @@ class Vendor:
             return False
         return self.swap_items(other, best_item, their_best_item)
 
-    # def get_by_age(self, age):
-    #     items = []
-    #     for item in self.inventory:
-    #         if item.age == age:
-    #             items.append(item)
-    #     return items
+    def get_by_age(self, age):
+        items = []
+        for item in self.inventory:
+            if item.age == age:
+                items.append(item)
+        return items
     
     def get_newest_item(self, age = ""):
         items_by_age = self.get_by_category(age)

@@ -49,16 +49,16 @@ def test_get_newest_item_with_duplicates():
 
 
 # def test_swap_by_newest():
-#     item_a = Decor(age=10.0)
-#     item_b = Electronics(age=1.0)
-#     item_c = Decor(age=1.0)
+#     item_a = Decor(age=2.0)
+#     item_b = Electronics(age=4.0)
+#     item_c = Decor(age=4.0)
 #     michelle = Vendor(
 #         inventory=[item_a, item_b, item_c]
 #     )
 
-#     item_d = Clothing(age=10.0)
-#     item_e = Decor(age=1.0)
-#     item_f = Clothing(age=1.0)
+#     item_d = Clothing(age=2.0)
+#     item_e = Decor(age=4.0)
+#     item_f = Clothing(age=4.0)
 #     ivette = Vendor(
 #         inventory=[item_d, item_e, item_f]
 #     )
