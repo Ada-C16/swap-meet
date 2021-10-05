@@ -1,7 +1,7 @@
 class Vendor:
 
-    def __init__(self, inventory=[]):
-        self.inventory = inventory
+    def __init__(self, inventory=None):
+        self.inventory = inventory if inventory else []
 
     def add(self, new_item):
         """ Adds argument passed into new_item to Vendor's inventory list, and returns the new item. """
