@@ -41,16 +41,21 @@ class Vendor:
         return True
 
     def get_best_by_category(self, category:str):
-        result = None
+        # result = None
+        # list_categories = [item for item in self.inventory if item.category.upper() == category.upper() ]
+        # if not list_categories:
+        #     return None
+        # else:
+        #     max_value = max([item.condition for item in list_categories])
+        #     for item in list_categories:
+        #         if item.condition == max_value:
+        #             result = item 
+        #     return result
+
+
         list_categories = [item for item in self.inventory if item.category.upper() == category.upper() ]
-        if not list_categories:
-            return None
-        else:
-            max_value = max([item.condition for item in list_categories])
-            for item in list_categories:
-                if item.condition == max_value:
-                    result = item 
-            return result
+        max_value = max(list_categories, key = lambda c: c.condition, default=None)
+        return max_value
 
     def swap_best_by_category(self, other, my_priority, their_priority):
         friend_request = self.get_best_by_category(their_priority)
