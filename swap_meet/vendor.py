@@ -32,12 +32,12 @@ class Vendor:
             return True
         
     def swap_first_item(self, friend_vendor):
-        if friend_vendor.inventory and self.inventory:
-            first_friend_item= friend_vendor.inventory[0]
-            first_self_item = self.inventory[0]
-            self.swap_items(friend_vendor, first_self_item, first_friend_item)
-            return True
-        return False
+        if not friend_vendor.inventory or not self.inventory:
+            return False
+        first_friend_item= friend_vendor.inventory[0]
+        first_self_item = self.inventory[0]
+        self.swap_items(friend_vendor, first_self_item, first_friend_item)
+        return True
 
     def get_best_by_category(self, category:str):
         result = None
