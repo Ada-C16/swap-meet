@@ -39,6 +39,7 @@ class Vendor:
             other_vendor.inventory.remove(my_item)
             return False
         return True
+        
     #Other implementation:
     #     if my_item not in self.inventory or their_item not in other_vendor.inventory:
     #          return False
