@@ -80,3 +80,26 @@ class Vendor:
 
         self.swap_items(other, my_best, their_best)
         return True
+
+    def get_newest(self):
+        """gets newest item in inventory. If there is more than one newest, returns the item with the best condition"""
+        if not self.inventory:
+            return False
+        
+        item_ages = [item.age for item in self.inventory]
+        newest = min(item_ages)
+
+        newest_item = [item for item in self.inventory if item.age == newest]
+        if len(newest_item) > 1:
+            return max(newest_item, key=lambda item: item.condition)
+        return newest_item[0]
+
+    def swap_by_newest(self, other):
+        """ Takes in two vendor instances. Swaps their newest items"""
+        if not self.inventory or not other.inventory:
+            return False
+
+        my_newest = self.get_newest()
+        their_newest = other.get_newest()
+        self.swap_items(other, my_newest, their_newest)
+        return True
