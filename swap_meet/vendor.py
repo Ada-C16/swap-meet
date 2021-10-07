@@ -51,30 +51,14 @@ class Vendor:
             return highest_condition_item
 
     def swap_best_by_category(self, other, my_priority, their_priority):
-        my_best_condition = -1
-        their_best_condition = -1
         
-        my_best_item_matches_their_priority = None
-        their_best_item_matches_my_priority = None
+        my_best_item = self.get_best_by_category(their_priority)
+        their_best_item = other.get_best_by_category(my_priority)
+        
+        if my_best_item == None or their_best_item == None:
+            return False
+        else:
 
-        for item in self.inventory:
-            if item.category == their_priority:
-                if item.condition > my_best_condition:
-                    my_best_item_matches_their_priority = item
-                    my_best_condition = item.condition
+            self.swap_items(other, my_best_item, their_best_item)
                 
-        if my_best_condition == -1:
-            return False
-        
-        for item in other.inventory:
-            if item.category == my_priority:
-                if item.condition > their_best_condition:
-                    their_best_item_matches_my_priority = item
-                    their_best_condition = item.condition
-
-        if their_best_condition == -1:
-            return False
-        
-        self.swap_items(other, my_best_item_matches_their_priority, their_best_item_matches_my_priority)
-            
-        return True
+            return True

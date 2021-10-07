@@ -14,7 +14,7 @@ class Item:
         elif self.condition <= 2:
             return "In okay condition"
         elif self.condition <= 3:
-            return "Im good condition"
+            return "In good condition"
         elif self.condition <= 4:
             return "In very good condition"
         else:
