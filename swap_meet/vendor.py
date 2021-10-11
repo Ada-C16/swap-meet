@@ -19,10 +19,8 @@ class Vendor:
     
     def swap_items(self, Vendor, my_item, their_item):
         if my_item in self.inventory and their_item in Vendor.inventory:
-            Vendor.remove(their_item)
-            self.add(their_item)
-            Vendor.add(my_item)
-            self.remove(my_item)
+            self.add(vendor.remove(their_item))
+            vendor.add(self.remove(my_item))
             return True
         else:
             return False
