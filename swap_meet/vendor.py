@@ -7,20 +7,21 @@ class Vendor:
     def add(self, item):
         self.inventory.append(item)
         return item 
+
     def remove(self, item):
         if item in self.inventory: 
             self.inventory.remove(item)
             return item
         else:
             return False 
+
     def get_by_category(self, category):
-        '''This method returns a list of Item`s in the 
-        inventory with that category'''
         inventory_list = []
         for item in self.inventory: 
             if item.category == category:
                 inventory_list.append(item)
         return inventory_list 
+
     def swap_items(self, friend, my_item, their_item):
         if their_item in friend.inventory and my_item in self.inventory:
             self.add(their_item)
@@ -30,3 +31,14 @@ class Vendor:
             return True 
         else:
             return False 
+
+    def swap_first_item(self, friend):
+        """ this method swaps the first item in a 
+        vendor's inventory, and swaps same. """
+        # my_first_item = self.inventory[0]
+        # thier_first_item = friend.inventory[0]
+        if self.inventory and friend.inventory: 
+            self.swap_items(friend, self.inventory[0], friend.inventory[0])
+            return True
+        
+        return False 
