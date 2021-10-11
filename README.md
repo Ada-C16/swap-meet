@@ -168,7 +168,7 @@ When our test failures leave us confused and stuck, let's use the detailed proje
 
 The first two tests in wave 1 imply:
 
-- There is a module (file) named `vendor.py` inside of the `swap_meet` package (folder)
+- There is a module (file) named `vendor.py` inside of the `swap_meet` package (folder) -->
 - Inside this module, there is a class named `Vendor`
 - Each `Vendor` will have an attribute named `inventory`, which is an empty list by default
 - When we create initialize an instance of `Vendor`, we can optionally pass in a list with the keyword argument `inventory`
@@ -192,8 +192,8 @@ The first tests in wave 2 imply:
 
 - Inside this module, there is a class named `Item`
 - Each `Item` will have an attribute named `category`, which is an empty string by default
-- When we initialize an instance of `Item`, we can optionally pass in a string with the keyword argument `category`
-- Instances of `Vendor` have an instance method named `get_by_category`
+- When we initialize an instance of `Item`, we can optionally pass in a string with the keyword argument `category` -->
+<!-- - Instances of `Vendor` have an instance method named `get_by_category`
   - It takes one argument: a string, representing a category
   - This method returns a list of `Item`s in the inventory with that category
 
