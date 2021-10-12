@@ -1,5 +1,5 @@
 class Item:
-   def __init__(self, category = None, condition = None):
+    def __init__(self, category = None, condition = None):
         self.category = category if category is not None else ""
         self.condition = condition if condition is not None else 0.0
         
