@@ -220,20 +220,20 @@ The remaining tests in wave 3 imply:
 
 The tests in wave 4 imply:
 
-<!-- - Instances of `Vendor` have an instance method named `swap_first_item`
+- Instances of `Vendor` have an instance method named `swap_first_item`
   - It takes one argument: an instance of another `Vendor`, representing the friend that the vendor is swapping with
-  - This method considers the first item in the instance's `inventory`, and the first item in the friend's `inventory` -->
+  - This method considers the first item in the instance's `inventory`, and the first item in the friend's `inventory`
   - It removes the first item from its `inventory`, and adds the friend's first item
   - It removes the first item from the friend's `inventory`, and adds the instances first item
-  <!-- - It returns `True`
-  - If either itself or the friend have an empty `inventory`, the method returns `False` -->
+  - It returns `True`
+  - If either itself or the friend have an empty `inventory`, the method returns `False`
 
 ### Wave 5
 
 The tests in Wave 5 imply there are three additional modules with three additional classes:
 
 - `Clothing`
-  - Has an attribute `category` that is `"Clothing"`
+ - Has an attribute `category` that is `"Clothing"` -->
   - Its stringify method returns `"The finest clothing you could wear."`
 - `Decor`
   - Has an attribute `category` that is `"Decor"`

@@ -33,12 +33,7 @@ class Vendor:
             return False 
 
     def swap_first_item(self, friend):
-        """ this method swaps the first item in a 
-        vendor's inventory, and swaps same. """
-        # my_first_item = self.inventory[0]
-        # thier_first_item = friend.inventory[0]
         if self.inventory and friend.inventory: 
             self.swap_items(friend, self.inventory[0], friend.inventory[0])
             return True
-        
         return False 
