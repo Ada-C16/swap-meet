@@ -1,7 +1,7 @@
 from swap_meet.item import Item
 
 class Decor(Item):
-    def __init__(self, condition = 0):
+    def __init__(self, condition = 0, age = 0):
         self.category = "Decor"
         self.condition = condition 
     def __str__(self):

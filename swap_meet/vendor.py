@@ -15,6 +15,9 @@ class Vendor:
         return item
         
     def get_by_category(self, category_name):
+        """
+        gets list of items that match category name
+        """
         category = []
         if not category_name:
             return category
@@ -26,8 +29,11 @@ class Vendor:
         category = [i for i in self.inventory if i.category == category_name]
         return category
 
-    def swap_items(self, vendor, my_item, their_item):
-        other_vendor = vendor
+    def swap_items(self, other_vendor, my_item, their_item):
+        """
+        takes 3 params other vendor, swaps my item into their inventory
+        and theirs into mine returns false if neither is in their inventory
+        """
 
         if my_item not in self.inventory or their_item not in other_vendor.inventory:
             return False
@@ -35,13 +41,13 @@ class Vendor:
         their_swap = other_vendor.remove(their_item)
         my_swap = self.remove(my_item)
 
-        self.add(their_swap) and other_vendor.add(my_swap)
+        return self.add(their_swap) and other_vendor.add(my_swap)
 
-        return True
 
-    def swap_first_item(self, vendor):
-        other_vendor = vendor
-
+    def swap_first_item(self, other_vendor):
+        """
+        swaps first items in other vendor's inventory and mine
+        """
         if not self.inventory or not other_vendor.inventory:
             return False
 
@@ -52,21 +58,28 @@ class Vendor:
         
 
     def get_best_by_category(self, category):
+        """
+        gets item with best condition from category
+        uses capitalize in case string is provided in lowercase 
+        it ensure it matches category
+        """
         
         category = category.capitalize()
 
+        matching_category_from_inventory = self.get_by_category(category)
+
         best_condition = 0
         best_item = None
-        for item in self.inventory:
-            if item.category == category:
-                if item.condition > best_condition:
+
+        for item in matching_category_from_inventory:
+            if item.condition > best_condition:
                     best_condition = item.condition
                     best_item = item
 
 
         return best_item
         
-#         items_matching_cat = [item for item in self.inventory if item.category == category]
+
     def swap_best_by_category(self, other, my_priority, their_priority):
         """
         other - the other vendor
