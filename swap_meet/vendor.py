@@ -10,18 +10,20 @@ class Vendor:
         if item not in self.inventory:
             return False
 
-        result = self.inventory.pop(self.inventory.index(item))
-        return result
+        #result = self.inventory.pop(self.inventory.index(item))
+        self.inventory.remove(item)
+        return item
         
     def get_by_category(self, category_name):
         category = []
         if not category_name:
             return category
 
-        for i in self.inventory:
-            if category_name == i.category:
-                category.append(i)
+        # for i in self.inventory:
+        #     if category_name == i.category:
+        #         category.append(i)
 
+        category = [i for i in self.inventory if i.category == category_name]
         return category
 
     def swap_items(self, vendor, my_item, their_item):
