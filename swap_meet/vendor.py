@@ -33,8 +33,7 @@ class Vendor:
         their_swap = other_vendor.remove(their_item)
         my_swap = self.remove(my_item)
 
-        self.add(their_swap)
-        other_vendor.add(my_swap)
+        self.add(their_swap) and other_vendor.add(my_swap)
 
         return True
 
@@ -50,5 +49,38 @@ class Vendor:
         return self.swap_items(other_vendor, my_first_item, thier_first_item)
         
 
-        #return True
+    def get_best_by_category(self, category):
         
+        category = category.capitalize()
+
+        best_condition = 0
+        best_item = None
+        for item in self.inventory:
+            if item.category == category:
+                if item.condition > best_condition:
+                    best_condition = item.condition
+                    best_item = item
+
+
+        return best_item
+        
+#         items_matching_cat = [item for item in self.inventory if item.category == category]
+    def swap_best_by_category(self, other, my_priority, their_priority):
+        """
+        other - the other vendor
+        my_priority = the category vendor wants to receive
+        their_priority = category other vendor wants to recive
+        """
+        if not self.get_best_by_category(their_priority) and not other.get_best_by_category(my_priority):
+            return False
+
+        thier_priority_from_my_inv = self.get_best_by_category(their_priority)
+        my_priority_from_their_inv = other.get_best_by_category(my_priority)
+        
+
+        return self.swap_items(other, thier_priority_from_my_inv, my_priority_from_their_inv)
+
+        
+        
+
+
