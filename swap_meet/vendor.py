@@ -44,11 +44,11 @@ class Vendor:
         if not self.inventory or not other_vendor.inventory:
             return False
 
-        first_result = self.inventory.pop(0)
-        thier_first = other_vendor.inventory.pop(0)
+        my_first_item = self.inventory[0]
+        thier_first_item = other_vendor.inventory[0]
 
-        self.add(thier_first)
-        other_vendor.add(first_result)
+        return self.swap_items(other_vendor, my_first_item, thier_first_item)
+        
 
-        return True
+        #return True
         
