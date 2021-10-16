@@ -1,32 +1,41 @@
 class Vendor:
     def __init__(self, inventory = []):
+        """
+        vendor class creates inits an empty list
+        or takes inventory list
+        """
         self.inventory = inventory
 
     def add(self, item):
+        """
+        adds item to inventory and returns item
+        """
         self.inventory.append(item)
         return item
 
     def remove(self, item):
+        """
+        removes item from inventory, returns false
+        if item is not in inventory
+        returns removed item.
+        dint use .pop .index because of Time Com
+        """
         if item not in self.inventory:
             return False
 
-        #result = self.inventory.pop(self.inventory.index(item))
         self.inventory.remove(item)
         return item
         
     def get_by_category(self, category_name):
         """
         gets list of items that match category name
+        returns empty list if category name is empty
         """
         category = []
-        if not category_name:
+        if category_name == "":
             return category
 
-        # for i in self.inventory:
-        #     if category_name == i.category:
-        #         category.append(i)
-
-        category = [i for i in self.inventory if i.category == category_name]
+        category = [i for i in self.inventory if i.category.lower() == category_name.lower()]
         return category
 
     def swap_items(self, other_vendor, my_item, their_item):
@@ -48,7 +57,7 @@ class Vendor:
         """
         swaps first items in other vendor's inventory and mine
         """
-        if not self.inventory or not other_vendor.inventory:
+        if self.inventory == [] or other_vendor.inventory == []:
             return False
 
         my_first_item = self.inventory[0]
@@ -86,7 +95,7 @@ class Vendor:
         my_priority = the category vendor wants to receive
         their_priority = category other vendor wants to recive
         """
-        if not self.get_best_by_category(their_priority) and not other.get_best_by_category(my_priority):
+        if self.get_best_by_category(their_priority) == None or other.get_best_by_category(my_priority) == None:
             return False
 
         thier_priority_from_my_inv = self.get_best_by_category(their_priority)
@@ -94,8 +103,6 @@ class Vendor:
         
 
         return self.swap_items(other, thier_priority_from_my_inv, my_priority_from_their_inv)
-
+    #def get_by_newest(self):
         
-        
-
-
+    #def swap_by_newest(self):
