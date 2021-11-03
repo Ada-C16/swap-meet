@@ -1,3 +1,5 @@
+from .item import Item
+
 class Vendor:
     def __init__(self, inventory = []):
         self.inventory = inventory
@@ -12,3 +14,11 @@ class Vendor:
         else: 
             item = False
         return item
+
+    def get_by_category(self, category):
+        items = []
+        # [items.append(item) for item in self.inventory if item.category == category]
+        for item in self.inventory:
+            if item.category == category:
+                items.append(item)
+        return items
